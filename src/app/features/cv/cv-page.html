@@ -47,7 +47,7 @@
 
         <div class="masthead__actions">
           <cv-language-switcher />
-          <a class="masthead__pdf" [href]="'/pdf/cv-' + lang() + '.pdf'" download>
+          <a class="masthead__pdf" [href]="'pdf/cv-' + lang() + '.pdf'" download>
             {{ data.ui.downloadPdf }}
           </a>
         </div>
@@ -80,13 +80,13 @@
       </div>
 
       <main>
-        <cv-section [title]="data.ui.sections.experience" icon="/images/experience.png">
+        <cv-section [title]="data.ui.sections.experience" icon="images/experience.png">
           @for (entry of data.experience; track entry.id) {
             <cv-experience-card [entry]="entry" [lang]="lang()" [ui]="data.ui" />
           }
         </cv-section>
 
-        <cv-section [title]="data.ui.sections.education" icon="/images/education.png">
+        <cv-section [title]="data.ui.sections.education" icon="images/education.png">
           @for (item of data.education; track item.id) {
             <article class="education">
               <header class="education__header">
@@ -123,7 +123,7 @@
           }
         </cv-section>
 
-        <cv-section [title]="data.ui.sections.spokenLanguages" icon="/images/language.png">
+        <cv-section [title]="data.ui.sections.spokenLanguages" icon="images/language.png">
           <ul class="spoken">
             @for (spoken of data.profile.spokenLanguages; track spoken.code) {
               <li class="spoken__item">

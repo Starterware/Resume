@@ -49,6 +49,6 @@ import { Component, input } from '@angular/core';
 })
 export class Section {
   readonly title = input.required<string>();
-  /** Path to a monochrome image used as a mask, e.g. `/images/experience.png`. */
+  /** Path to a monochrome image used as a mask, e.g. `images/experience.png`. */
   readonly icon = input<string>();
 }

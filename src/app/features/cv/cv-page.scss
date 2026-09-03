@@ -115,8 +115,8 @@
     block-size: 0.95rem;
     flex-shrink: 0;
     background-color: currentColor;
-    mask: url('/images/address.png') center / contain no-repeat;
-    -webkit-mask: url('/images/address.png') center / contain no-repeat;
+    mask: url('images/address.png') center / contain no-repeat;
+    -webkit-mask: url('images/address.png') center / contain no-repeat;
   }
 }
 
@@ -233,7 +233,7 @@
 }
 
 .contact__item--github {
-  --icon: url('/images/github.png');
+  --icon: url('images/github.png');
 }
 
 /* No raster was supplied for LinkedIn, so the glyph is an inline SVG data URI.

@@ -70,6 +70,13 @@ A trilingual CV site, statically pre-rendered and deployed to GitHub Pages. See
 - **Two platforms, two loaders.** `ServerDataLoader` (disk, prerender-time) and
   `BrowserDataLoader` (HTTP, runtime). Anything importing `node:*` must be
   reachable only from `app.config.server.ts`, or it breaks the browser build.
+- **The site is served from a sub-path.** GitHub Pages hosts the `Resume`
+  repository at `/Resume/`, which the production build declares as `baseHref`.
+  Asset references must be relative (`images/x.png`, `pdf/cv-en.pdf`) so they
+  resolve against that base; a leading slash resolves against the domain root
+  and 404s in production while looking fine on `ng serve`. Relative `url()` in
+  a stylesheet only builds because `externalDependencies: ["images/*"]` stops
+  esbuild trying to resolve it as a bundled file.
 - **Every route must pre-render.** GitHub Pages cannot rewrite, so an
   unprerendered URL is a hard 404. New dynamic routes need a matching
   `getPrerenderParams` in `app.routes.server.ts`, and `tools/finalize-build.mjs`

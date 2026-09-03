@@ -4,7 +4,7 @@ A trilingual (EN / FR / NL) CV site, statically pre-rendered with Angular and
 deployed to GitHub Pages. Content lives in JSON; the website and the downloadable
 PDFs are both generated from it.
 
-Live at <https://starterware.github.io> once Pages is enabled.
+Live at <https://starterware.github.io/Resume/>.
 
 ## Why it is built this way
 
@@ -126,10 +126,15 @@ builds, generates the PDFs and publishes to Pages.
 
 One-time setup: **Settings → Pages → Source → GitHub Actions**.
 
-The repository must be named `Starterware.github.io` for the site to serve from
-the root path. To use a normally-named repo instead, either attach a custom
-domain or build with `--base-href /<repo>/` and adjust the absolute paths in
-`cv-page.html` and `static-server.mjs`.
+Pages serves a project repository from a sub-path, so the production build sets
+`"baseHref": "/Resume/"` in `angular.json` and every asset reference is written
+relative to it — never `/images/…`, which would resolve against the domain root
+and 404. `tools/static-server.mjs` reads that same `baseHref` and strips the
+prefix, so `npm run preview` and the PDF generator see what Pages serves.
+
+Renaming the repository therefore means changing `baseHref` to match. A repo
+named `Starterware.github.io`, or a custom domain, serves from the root: set
+`baseHref` to `/` and the sub-path handling drops out on its own.
 
 ## Project layout
 

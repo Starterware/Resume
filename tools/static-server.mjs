@@ -1,7 +1,24 @@
-import { createReadStream } from 'node:fs';
+import { createReadStream, readFileSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
-import { extname, join, normalize } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname, extname, join, normalize, resolve } from 'node:path';
+
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+/**
+ * GitHub Pages serves a project repository from `/<repo>/`, so the build sets
+ * a matching `<base href>` and every prerendered page asks for its assets
+ * under that prefix. Reading the value out of angular.json rather than
+ * repeating it keeps this server from drifting away from the build; strip the
+ * prefix and the served tree is the site root again.
+ */
+const baseHref =
+  JSON.parse(readFileSync(join(repoRoot, 'angular.json'), 'utf8')).projects.resume.architect.build
+    .configurations.production.baseHref ?? '/';
+
+/** `/Resume`, or an empty string when the site is deployed at the root. */
+export const basePath = baseHref.replace(/\/$/, '');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -23,7 +40,11 @@ const MIME = {
  */
 export function startStaticServer(root, port = 0) {
   const server = createServer(async (request, response) => {
-    const urlPath = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    let urlPath = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    if (basePath && (urlPath === basePath || urlPath.startsWith(`${basePath}/`))) {
+      urlPath = urlPath.slice(basePath.length) || '/';
+    }
+
     const candidates = [
       join(root, normalize(urlPath)),
       join(root, normalize(urlPath), 'index.html'),
