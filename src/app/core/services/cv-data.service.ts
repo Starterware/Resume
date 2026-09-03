@@ -1,6 +1,6 @@
 import { inject, Service, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
-import { Cv, DEFAULT_LANG, Lang } from '../models/cv.model';
+import { Cv, CvDocument, DEFAULT_LANG, Lang, UiStrings } from '../models/cv.model';
 import { DeepDive, LoadedDeepDive } from '../models/deep-dive.model';
 import { DATA_LOADER } from '../tokens/data-loader';
 
@@ -17,8 +17,21 @@ export class CvDataService {
   private readonly transferState = inject(TransferState);
   private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
+  /**
+   * The CV and its interface strings are two files, fetched together and joined
+   * here so pages keep receiving a single object. They are requested in
+   * parallel: neither depends on the other, and during prerendering this runs
+   * once per route.
+   */
   async loadCv(lang: Lang): Promise<Cv | null> {
-    return this.transferred(`cv:${lang}`, () => this.loader.loadJson<Cv>(`data/cv.${lang}.json`));
+    return this.transferred(`cv:${lang}`, async () => {
+      const [cv, ui] = await Promise.all([
+        this.loader.loadJson<CvDocument>(`data/cv.${lang}.json`),
+        this.loader.loadJson<UiStrings>(`data/ui.${lang}.json`),
+      ]);
+
+      return cv && ui ? { ...cv, ui } : null;
+    });
   }
 
   /**

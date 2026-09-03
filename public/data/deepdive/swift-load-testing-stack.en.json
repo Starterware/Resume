@@ -1,5 +1,5 @@
 {
-  "slug": "load-testing-stack",
+  "slug": "swift-load-testing-stack",
   "lang": "en",
   "title": "Putting JMeter, InfluxDB and Grafana in the release pipeline",
   "question": "Tell me about a time you improved how your team worked, not just what it shipped.",

@@ -1,17 +1,17 @@
 {
   "meta": {
     "lang": "en",
-    "updated": "2026-08-27"
+    "updated": "2026-09-03"
   },
   "profile": {
     "name": "Mikaël Lenaertz",
     "title": "Senior Software Engineer",
     "location": "Brussels, Belgium",
-    "summary": "Seasoned software engineer with 12+ years of experience designing and operating distributed systems at scale. Proven track record of taking ownership of complex, ambiguous problems and driving them to production with measurable impact and operational excellence. Now seeking a System/Software Engineer role to solve complex system and infrastructure challenges.",
+    "summary": "Senior software engineer with 12+ years designing and operating distributed systems at scale, from mission-critical dispatch platforms for the Belgian Police to AWS Lambda's control plane, which orchestrates serverless functions globally. I gravitate toward ambiguous, high-stakes problems that others avoid, and I own them end to end: diagnosing the root cause, designing the fix, and staying with it through production rollout. Now looking for a new opportunity where my technical ownership can make a real impact.",
     "narrative": {
       "intro": [
         "My fascination with software didn't start in a classroom; it began the moment my family got access to the internet. Wondering how programs worked under the hood, I wrote my first lines of C at fifteen. That first \"Hello, World!\" on the terminal sparked a lifelong drive for low-level performance and algorithmic efficiency.",
-        "At university, while earning my Master's in Computer Science with Great Distinction and a Master's in Computer Engineering, I thrived on hands-on implementation projects. I built multiplayer game tournament engines over raw sockets, implemented swarm intelligence algorithms like Ant Colony Optimization to solve shortest-path problems, engineered a soccer simulation where I replaced basic default behaviours with machine learning decision models, and constantly helped my peers debug their code. That early passion for algorithms naturally led me to competitive programming, where I honed my ability to dissect complex performance bottlenecks under tight time constraints. Over time, that foundation evolved into a disciplined engineering approach centred on clean code and operational excellence."
+        "At university, while earning my Master's in Computer Science with Great Distinction and a Master's in Computer Engineering, I thrived on hands-on implementation projects: multiplayer game tournament engines built over raw sockets, swarm intelligence algorithms like Ant Colony Optimization applied to shortest-path problems, and a soccer simulation where I replaced the default behaviours with machine learning decision models. That early passion for algorithms led me to competitive programming, where I learned to dissect complex performance bottlenecks under real time pressure. What stuck with me from those years wasn't the algorithms themselves, it was the habit of treating every inefficiency as a problem worth understanding all the way down. That habit has shaped how I've approached every system I've touched since."
       ],
       "chapters": [
         {
@@ -21,8 +21,9 @@
           "period": "April 2013 – April 2016",
           "location": "Brussels, Belgium",
           "paragraphs": [
-            "I started my professional career building mission-critical emergency call-taking and dispatching platforms for the Belgian Police and Fire-Medical departments, where reliability and performance were non-negotiable. Working across C++, C# and Oracle DB, I stepped up as Business Analyst and Tech Lead for a four-person team. Beyond leading client discovery to translate business problems into clean architectures, I focused heavily on system performance and maintainability.",
-            "When monolithic coupling slowed down feature releases, I designed a dynamic C# plugin framework using reflection to replace the fat-client codebase, drastically reducing time-to-market. My biggest breakthrough came when tackling an eight-hour database update bottleneck: by refactoring the legacy Soundex phonetic algorithm using a trie data structure, reverse-engineering un-indexed queries and batching updates, I cut processing times down to just a few minutes. To ensure our releases stayed reliable, I also partnered with the team to build our Jenkins CI/CD pipelines from scratch, eliminating manual deployment errors."
+            "After graduating, I was looking for a first opportunity with real impact, and Intergraph's public safety systems offered exactly that. I started my professional career building emergency call-taking and dispatching platforms for the Belgian Police and Fire-Medical departments, working across C++, C# and Oracle DB in an environment where reliability and performance were core requirements.",
+            "A new requirement came in that needed a business analyst, so I stepped up to fill that gap myself. I built out the proof of concept, and based on that work I was asked to lead and onboard a team of three external developers to help bring the product to life, taking on the Tech Lead role for the combined effort while continuing to code alongside them.",
+            "One of the satellite applications had tightly coupled modules that made independent development difficult, so I designed a dynamic C# plugin framework using reflection to replace the fat-client codebase, cutting time-to-market significantly. I also solved a persistent database update bottleneck: refactoring the legacy Soundex phonetic algorithm with a trie data structure, reverse-engineering the un-indexed queries underneath it, and batching the updates brought an eight-hour process down to a few minutes. Alongside that, I helped the team build our Jenkins CI/CD pipeline from scratch, which ended the manual deployment errors we'd been living with."
           ]
         },
         {
@@ -32,8 +33,11 @@
           "period": "April 2016 – November 2022",
           "location": "La Hulpe, Belgium",
           "paragraphs": [
-            "Seeking to tackle distributed architectures at massive scale, I joined SWIFT to work on core financial messaging systems. I spent my early years maintaining a cross-platform C++98 messaging engine across Linux, Windows, AIX and SunOS. I refactored 1000-line legacy functions, modernised database tools into a unified migration framework, and engineered custom thread-safe components to ensure high-throughput stability.",
-            "My role expanded as I was loaned to a cloud engineering team to help transition our legacy core into an event-driven microservices architecture using Java, Apache Kafka, JPA and Docker. I acted as the technical bridge between product, UX and engineering while building out robust automated testing suites. Later, on the instant payments connectivity platform, I built full end-to-end automated load-testing stacks using Ansible to catch bottlenecks before they reached production. Driven by curiosity, I also spent one day a week in SWIFT's R&D Lab engineering an NLP pipeline — spaCy, CNNs and Bloom embeddings — to parse unstructured text into structured physical address data."
+            "I joined SWIFT wanting to deepen my C++ expertise, aiming to eventually work on problems closer to the machine. My early years there were spent maintaining a cross-platform C++98 messaging engine running across Linux, Windows, AIX and SunOS: refactoring 1000-line legacy functions into something maintainable, consolidating a scattering of database tools into a single migration framework, and building custom thread-safe components to keep the system stable under high throughput.",
+            "My role expanded when my team, seeing that the cloud engineering group was short on resources, put me forward as a candidate to help transition our core messaging platform into an event-driven microservices architecture using Java, Apache Kafka, JPA and Docker. That move ended up shifting me away from the C++ specialization path I'd originally set out on, toward broader distributed systems work instead. I found myself working closely with product and UX to make sure the new architecture actually matched how the system was used, while building out automated testing to keep pace with the changes.",
+            "Driven by curiosity, in my second year I spent one day a week in SWIFT's R&D Lab engineering an NLP pipeline, using spaCy, CNNs and Bloom embeddings, to parse unstructured text into structured physical address data. That work matured enough to eventually be taken over by a dedicated product team.",
+            "After several years there, I took a break and left for Australia, spending three months visiting friends there and a month in Vietnam. The four months after I got back were spent job hunting, difficult going given COVID and how uncertain the market was at the time, until my previous Tech Lead vouched for me to rejoin SWIFT, this time on the instant payments connectivity team.",
+            "There, I worked on a Dockerized application built from multiple microservices in Java, using gRPC and queue adapters to connect them. My biggest impact came after our testers moved on to other roles: I automated deployment, integration testing, and performance testing to cover the gap they'd left behind, building a full end-to-end load-testing stack with Ansible to catch bottlenecks before they reached production."
           ]
         },
         {
@@ -43,18 +47,24 @@
           "period": "December 2022 – June 2026",
           "location": "Dublin, Ireland",
           "paragraphs": [
-            "Most recently at AWS, I worked on the Lambda control plane — the low-level infrastructure responsible for orchestrating, storing, optimising and deploying serverless functions globally at massive scale. I led end-to-end technical implementations across multi-org initiatives, including Lambda Managed Instances and Customer Managed Runtimes.",
-            "A major focus of my work involved customer code optimisation, where I ported and refactored core logic to Go to leverage high concurrency, designing a channel-based pipeline that cut processing latency by 50%. I also drove operational and financial efficiency: I spearheaded a storage optimisation effort that reclaimed 200PB of S3 storage — a 70% reduction — and cut artifact storage by 50% through deduplication, resolving weekly background job failures. Combining deep debugging with system resilience, I uncovered and fixed a day-one bug in function optimisation that caused random failures every ~10,000 function creations, and overhauled integration testing frameworks to bring weekly flaky test rollbacks from 20+ down to near-zero."
+            "Technology being the business itself was what pulled me toward AWS. I joined to work on the Lambda control plane, the low-level infrastructure responsible for orchestrating, storing, optimising and deploying serverless functions globally. There, I took a leading technical role in delivering my team's contribution to major initiatives, including Lambda Managed Instances, a runtime flexibility initiative, and an overhaul of the code deletion workflow.",
+            "One of the pieces I'm proudest of was rewriting the pipeline that packages and optimises Lambda functions, moving it from Java to a concurrent, channel-based design in Go that roughly halved processing latency.",
+            "Separately, another system hit real trouble when a legacy background job model started failing to scale in one of our largest regions, putting global rollouts at risk. I designed and shipped a deduplicated database model within a week to resolve it.",
+            "Not every problem I dealt with was a design choice, some just had to be found. After the service migrated from the US to Ireland, the team started getting paged constantly, sometimes over fifty times a week, dozens of those in the middle of the night, because of API load shedding despite our instances being heavily over-provisioned. Tracing it back took a while: high-volume workloads had quietly broken a background job architecture that was scanning the entire database daily. Fixing the query pattern and adding sharding ended the pages entirely. That stretch also taught me something about myself: running on too little sleep while trying to fight every fire at once just isn't sustainable, and I've since gotten better at recognising when I'm stretched too thin and need to step back or bring someone else in, rather than pushing through solo.",
+            "Beyond the code itself, I also took on reworking how the team ran day to day. Our Scrum process was clunky for a team shipping several times a day, standups dragged with little engagement, and planning didn't match how we actually worked. I restructured the rituals around the way the team actually shipped, and watched something I hadn't expected: once the formal meetings got lighter, people started resolving things with each other directly instead of saving every question for the next standup."
           ]
         }
+      ],
+      "closing": [
+        "After a bit over three years in Dublin, my wife and I decided to move back to Belgium, wanting to settle before our child got older rather than uproot them further down the line. I'm back in Brussels now, looking for what comes next."
       ]
     },
     "contact": {
       "email": "mikaellenaertz@gmail.com",
-      "sourceCode": "https://github.com/Starterware/Starterware.github.io",
+      "sourceCode": "https://github.com/Starterware/Resume",
       "github": "https://github.com/Starterware",
       "linkedin": "https://www.linkedin.com/in/mika%C3%ABl-lenaertz-7945b065/",
-      "website": "",
+      "website": "https://starterware.github.io/Resume/",
       "phone": "+32 475 85 63 89"
     },
     "spokenLanguages": [
@@ -94,121 +104,6 @@
     ],
     "photo": null
   },
-  "ui": {
-    "downloadPdf": "PDF version",
-    "sourceCode": "Resume Code",
-    "backToCv": "Back to CV",
-    "deepDiveCta": "More on this role:",
-    "narrative": {
-      "cta": "Read my path",
-      "title": "My path",
-      "journey": "Career journey"
-    },
-    "translationFallback": "This page has not been translated yet and is shown in English.",
-    "present": "Present",
-    "notFoundTitle": "Page not found",
-    "notFoundBody": "That link does not point anywhere. Try starting from the CV.",
-    "printedOn": "Generated on",
-    "deepDive": {
-      "situation": "Situation",
-      "task": "Task",
-      "action": "Action",
-      "result": "Result",
-      "reflection": "Reflection",
-      "followUps": {
-        "title": "Typical questions",
-        "whyThisApproach": "Why did you choose that specific approach?",
-        "challenge": "What did you find most challenging?",
-        "hardestBug": "What was the hardest bug?",
-        "teamReaction": "How did your team feel about that decision?",
-        "whatNext": "What happened next?",
-        "differently": "What would you do differently now?",
-        "learned": "What did you learn?",
-        "aboutYourself": "What did you learn about yourself?",
-        "enjoyed": "What did you enjoy most?"
-      }
-    },
-    "sections": {
-      "summary": "Profile",
-      "experience": "Experience",
-      "workExperience": "Work Experience",
-      "projects": "Projects",
-      "skills": "Skills",
-      "education": "Education",
-      "spokenLanguages": "Languages",
-      "interests": "Interests"
-    }
-  },
-  "skills": [
-    {
-      "category": "Languages",
-      "items": [
-        "Java",
-        "Go",
-        "Python",
-        "C#",
-        "C/C++",
-        "Bash"
-      ]
-    },
-    {
-      "category": "Cloud & Infra",
-      "items": [
-        "AWS Lambda",
-        "DynamoDB",
-        "SQS",
-        "EC2",
-        "Auto Scaling",
-        "CloudWatch",
-        "Serverless",
-        "Docker Swarm",
-        "Ansible"
-      ]
-    },
-    {
-      "category": "Frameworks",
-      "items": [
-        "Spring Boot",
-        "gRPC",
-        "JPA",
-        "Guice",
-        "JUnit",
-        "Mockito",
-        "AssertJ",
-        "JMeter",
-        "Lombok"
-      ]
-    },
-    {
-      "category": "Data & Messaging",
-      "items": [
-        "Kafka",
-        "IBM MQ",
-        "ActiveMQ",
-        "Oracle",
-        "InfluxDB"
-      ]
-    },
-    {
-      "category": "Practices",
-      "items": [
-        "Service design",
-        "Project leadership",
-        "Mentoring",
-        "CI/CD",
-        "Jenkins",
-        "SonarQube",
-        "Grafana"
-      ]
-    },
-    {
-      "category": "Other",
-      "items": [
-        "GenAI",
-        "Prompt engineering"
-      ]
-    }
-  ],
   "experience": [
     {
       "id": "aws",
@@ -227,31 +122,32 @@
           "role": "Software Development Engineer",
           "start": "2022-12",
           "end": "2026-06",
-          "summary": "Worked on AWS Lambda's control plane, responsible for orchestrating, storing, and optimizing the creation and updates of serverless functions at scale. Contributed across multiple internal services spanning code management, code optimization, and deployment infrastructure — driving cross-team technical initiatives, operational excellence, and engineering mentorship.",
+          "summary": "Worked on AWS Lambda's control plane, responsible for orchestrating, storing, and optimizing the creation and updates of serverless functions at scale, contributing across multiple internal services spanning code management, code optimization, and runtimes management. Drove cross-team technical initiatives, operational excellence, and engineering mentorship throughout the role.",
           "highlights": [
-            "Led end-to-end technical implementation of three major Lambda control plane initiatives, including Lambda Managed Instances — architecting low-level designs and coordinating across multiple engineering organisations.",
-            "Drove significant S3 cost reduction, cutting storage by 70% (200PB); simultaneously stabilised a critical optimisation system through code artifact deduplication — achieving a near 50% reduction in artifact storage — and background job improvements that resolved weekly recurring issues impacting thousands of functions.",
+            "Took a leading technical role in delivering my team's contribution to three major Lambda control plane initiatives, including Lambda Managed Instances, a runtime flexibility initiative, and a code deletion workflow overhaul, owning each piece end to end: shaping the design, acting as point of contact, driving implementation, and readiness for launch, while providing cross-team architectural guidance to engineers across the broader organization.",
             "Designed and implemented a channel-based pipeline architecture in Go enabling flexible parallel processing, reducing end-to-end processing time by 50%.",
-            "Resolved a day-one bug in function optimisations that had silently caused random failures for every ~10,000 function creations or updates since the service launched.",
-            "Overhauled the team's integration testing frameworks to enable independent execution, broaden business-critical coverage and eliminate security liabilities, reducing weekly rollbacks from 20+ to near-zero."
+            "Resolved recurring background job failures affecting thousands of functions, work that also deduplicated code artifacts, cutting artifact storage nearly 50%, and drove a broader S3 storage reduction of 70% (200PB).",
+            "Rewrote the team's integration testing frameworks to enable independent execution, broaden business-critical coverage and eliminate security liabilities, reducing weekly rollbacks from 20+ to near-zero.",
+            "Built multiple AI agents and skills for automated report generation and operational investigation, built on Kiro, AWS's AI-powered development environment.",
+            "Resolved a day-one bug in function optimisations that had silently caused random failures for every ~10,000 function creations or updates since the service launched."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "lambda-managed-instances",
-              "label": "Leading the Managed Instances rollout"
+              "slug": "aws-lambda-managed-instances",
+              "label": "Leading an initiative"
             },
             {
-              "slug": "background-job-load-shedding",
-              "label": "The hardest bug I have debugged"
+              "slug": "aws-background-job-load-shedding",
+              "label": "Deep diving an issue"
             },
             {
-              "slug": "lambda-go-pipeline",
-              "label": "Rewriting a pipeline in Go"
+              "slug": "aws-lambda-go-pipeline",
+              "label": "Improving latency"
             },
             {
               "slug": "aws-scrum-process",
-              "label": "Reworking how the team runs"
+              "label": "Impacting the team culture"
             }
           ]
         }
@@ -259,55 +155,29 @@
       "skills": [
         {
           "category": "Languages",
-          "items": [
-            "Java",
-            "Go",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "Go", "Python", "Bash"]
         },
         {
           "category": "Cloud & Infra",
-          "items": [
-            "AWS",
-            "EC2",
-            "DynamoDB",
-            "SQS",
-            "ASG",
-            "Lambda",
-            "CloudWatch",
-            "Serverless"
-          ]
+          "items": ["AWS", "EC2", "DynamoDB", "SQS", "ASG", "Lambda", "CloudWatch", "Serverless"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Guice",
-            "JUnit",
-            "AssertJ",
-            "Lombok"
-          ]
+          "items": ["Guice", "JUnit", "AssertJ", "Lombok"]
         },
         {
           "category": "Soft Skills",
-          "items": [
-            "Service Design",
-            "Project Leadership",
-            "Mentoring"
-          ]
+          "items": ["Service Design", "Project Leadership", "Mentoring"]
         },
         {
           "category": "Other",
-          "items": [
-            "GenAI",
-            "Prompt Engineering"
-          ]
+          "items": ["GenAI", "Prompt Engineering"]
         }
       ]
     },
     {
       "id": "swift",
-      "company": "SWIFT",
+      "company": "SWIFT – Society for Worldwide Interbank Financial Telecommunication",
       "location": "La Hulpe, Belgium",
       "url": "https://www.swift.com/",
       "logo": {
@@ -322,20 +192,21 @@
           "role": "Senior Software Engineer",
           "start": "2020-08",
           "end": "2022-11",
-          "summary": "Joined the team building the instant messaging connectivity solution on the Swift Network — receiving messages from financial institutions via REST APIs and message queue brokers and forwarding them securely to the network. Designed and delivered features that improved the reliability and scalability of the solution.",
+          "summary": "Joined the team building the instant payments connectivity solution on the Swift Network, receiving messages from financial institutions via REST APIs and message queue brokers and forwarding them securely to the network. Designed and delivered features that improved the reliability and scalability of the solution.",
           "highlights": [
-            "Built a full end-to-end and load testing stack, replacing a manual testing process and enabling the team to proactively identify and resolve bottlenecks before they reached production.",
-            "Implemented CI/CD pipelines with static analysis across multiple components, improving code quality and automating deployments."
+            "Rebuilt end-to-end test automation after the team lost both QA engineers, consolidating scattered Robot Framework suites into one repository and generalising tests across IBM MQ, ActiveMQ and REST endpoints, with Ansible-provisioned multi-node environments for automated compatibility testing.",
+            "Modernised Jenkins and CloudBees pipelines, migrating from imperative scripts to declarative pipelines with shared libraries to modularise logic across components.",
+            "Automated performance testing by parameterising JMeter scripts and integrating load tests into the Jenkins pipeline, streaming live metrics into InfluxDB with Grafana dashboards for real-time regression visibility."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "load-testing-stack",
+              "slug": "swift-load-testing-stack",
               "label": "Automating performance testing"
             },
             {
               "slug": "swift-test-automation",
-              "label": "Rebuilding test automation and CI/CD"
+              "label": "Going full CI/CD"
             }
           ]
         },
@@ -347,22 +218,22 @@
           "summary": "Part of the back-end team building the cross-platform messaging interface for secure financial information exchange between banking organisations and corporate customers, deployable on Windows, Red Hat, SunOS and AIX.",
           "highlights": [
             "Developed a cloud-based microservice to manage relationships between financial institutions, enabling secure and reliable financial information exchange across banking organisations and corporate customers.",
-            "Built a Named-Entity Recognition (NER) system as part of an NLP proof-of-concept, extracting structured information from unstructured financial data.",
-            "Improved test coverage across unit and integration test suites, increasing reliability of a cross-platform application."
+            "Built a Named-Entity Recognition (NER) system as part of an NLP proof-of-concept, extracting structured address data from unstructured, free-field text.",
+            "Replaced Oracle-specific backup and restore tooling with a unified, application-driven migration framework, refactoring complex legacy C++98 functions to decouple database logic without disrupting backup operations on a mission-critical financial messaging system."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
               "slug": "swift-db-migration",
-              "label": "Modernising the database migration path"
+              "label": "Modernising the DB backup"
             },
             {
               "slug": "swift-cloud-secondment",
-              "label": "Rebuilding a monolith as microservices"
+              "label": "Rebuilding a monolith as microservice"
             },
             {
               "slug": "swift-nlp-lab",
-              "label": "Building an NLP prototype"
+              "label": "Prototyping in SWIFT's R&D Lab"
             }
           ]
         }
@@ -370,23 +241,11 @@
       "skills": [
         {
           "category": "Languages",
-          "items": [
-            "Java",
-            "C/C++",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "C/C++", "Python", "Bash"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Spring Boot",
-            "gRPC",
-            "JPA",
-            "JUnit",
-            "Mockito",
-            "JMeter"
-          ]
+          "items": ["Spring Boot", "gRPC", "JPA", "JUnit", "Mockito", "JMeter"]
         },
         {
           "category": "Infra & Tools",
@@ -426,9 +285,9 @@
           "end": "2016-04",
           "summary": "Analysed, designed, implemented and supported mission-critical software for public safety, working on call-taking and dispatching solutions for the Belgian Federal and Local Police and the Fire-Medical Departments.",
           "highlights": [
-            "Dual role as Business Analyst and Technical Lead for an XML-to-database mapping application; gathered stakeholder requirements and led a 4-person team through design, code and delivery.",
-            "Architected and implemented a plugin-based platform, enabling customers to manage complex data structures through an intuitive UI — allowing independent data structure development and faster time-to-market.",
-            "Optimised the soundex algorithm with a trie and batched database updates, cutting update times from 8 hours to minutes and eliminating computation time as a bottleneck.",
+            "Stepped up to fill a business analyst role on a new requirement, delivering the proof of concept and subsequently leading and onboarding a team of three external developers, while continuing to code alongside them.",
+            "Designed and implemented a dynamic C# plugin framework using reflection to replace a satellite application's tightly coupled fat-client codebase, enabling independent feature development and significantly cutting time-to-market.",
+            "Optimised the Soundex algorithm with a trie and batched database updates, cutting update times from 8 hours to minutes.",
             "Built internal tooling (XML comparator, file format validator) and automated build patching and installation, significantly reducing manual work across the team."
           ],
           "includeInPdf": true,
@@ -442,7 +301,7 @@
               "label": "Making the case for a rewrite"
             },
             {
-              "slug": "soundex-optimisation",
+              "slug": "intergraph-soundex-optimisation",
               "label": "Solving a performance problem"
             }
           ]
@@ -451,60 +310,17 @@
       "skills": [
         {
           "category": "Languages",
-          "items": [
-            "C#",
-            "C/C++",
-            "Bash"
-          ]
+          "items": ["C#", "C/C++", "Bash"]
         },
         {
           "category": "Infra & Tools",
-          "items": [
-            "Oracle DB",
-            "Jenkins",
-            "SVN"
-          ]
+          "items": ["Oracle DB", "Jenkins", "SVN"]
         },
         {
           "category": "Soft Skills",
-          "items": [
-            "Requirements Analysis",
-            "Project Leadership"
-          ]
+          "items": ["Requirements Analysis", "Project Leadership"]
         }
       ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "dpgmedia",
-      "name": "DpgMedia",
-      "summary": "Real-time listener interaction platform, written in Go.",
-      "url": "https://github.com/Starterware/DpgMedia",
-      "stack": [
-        "Go"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "mycraft",
-      "name": "MyCraft",
-      "summary": "A voxel world engine built in Java.",
-      "url": "https://github.com/Starterware/MyCraft",
-      "stack": [
-        "Java"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "chess",
-      "name": "Chess",
-      "summary": "A chess game and engine, built in C# for the pleasure of it.",
-      "url": "https://github.com/Starterware/Chess",
-      "stack": [
-        "C#"
-      ],
-      "includeInPdf": false
     }
   ],
   "education": [
@@ -525,9 +341,7 @@
           "degree": "Master in Computer Engineering",
           "start": "2012-09",
           "end": "2013-06",
-          "notes": [
-            "Complementary Master"
-          ],
+          "notes": ["Complementary Master"],
           "includeInPdf": true
         },
         {
@@ -542,28 +356,6 @@
           "includeInPdf": true
         }
       ]
-    }
-  ],
-  "interests": [
-    {
-      "id": "competitions",
-      "name": "Programming competitions",
-      "detail": "Solving algorithmic challenges, alone or in a team."
-    },
-    {
-      "id": "books",
-      "name": "Books",
-      "detail": "Continuously expanding my knowledge by reading about different topics."
-    },
-    {
-      "id": "training",
-      "name": "Calisthenics, gymnastics, yoga",
-      "detail": "Training several times a week to stay in shape."
-    },
-    {
-      "id": "boardsports",
-      "name": "Surf, snowboard, wakeboard, longboard",
-      "detail": "Travelling to practise these sports whenever I can."
     }
   ]
 }

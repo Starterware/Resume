@@ -1,0 +1,43 @@
+{
+  "pdfFileName": "Curriculum vitae",
+  "downloadPdf": "Version PDF",
+  "sourceCode": "Code du CV",
+  "backToCv": "Retour au CV",
+  "deepDiveCta": "En savoir plus sur ce poste :",
+  "narrative": {
+    "cta": "Lire mon histoire complète",
+    "title": "Mon histoire",
+    "journey": "Parcours professionnel"
+  },
+  "translationFallback": "Cette page n'a pas encore été traduite et s'affiche en anglais.",
+  "present": "Aujourd'hui",
+  "notFoundTitle": "Page introuvable",
+  "notFoundBody": "Ce lien ne mène nulle part. Repartez du CV.",
+  "printedOn": "Généré le",
+  "deepDive": {
+    "situation": "Situation",
+    "task": "Mission",
+    "action": "Action",
+    "result": "Résultat",
+    "reflection": "Recul",
+    "followUps": {
+      "title": "Questions fréquentes",
+      "whyThisApproach": "Pourquoi avoir choisi cette approche en particulier ?",
+      "challenge": "Qu’est-ce qui a été le plus difficile ?",
+      "hardestBug": "Quel a été le bug le plus coriace ?",
+      "teamReaction": "Comment votre équipe a-t-elle réagi à cette décision ?",
+      "whatNext": "Que s’est-il passé ensuite ?",
+      "differently": "Que feriez-vous différemment aujourd’hui ?",
+      "learned": "Qu’avez-vous appris ?",
+      "aboutYourself": "Qu’avez-vous appris sur vous-même ?",
+      "enjoyed": "Qu’est-ce que vous avez le plus apprécié ?"
+    }
+  },
+  "sections": {
+    "summary": "Profil",
+    "experience": "Expérience",
+    "workExperience": "Expérience professionnelle",
+    "education": "Formation",
+    "spokenLanguages": "Langues"
+  }
+}

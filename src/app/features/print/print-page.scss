@@ -1,7 +1,12 @@
-/* A faithful port of the original cv.html print layout: the same type scale,
-   the same greys, the same bordered role blocks and tinted skill strip. Sizes
-   are kept in px because that is what the source used — converting them to pt
-   would move every one of them by a rounding step. */
+/* A faithful port of the original cv.html print layout: the same greys, the
+   same bordered role blocks and tinted skill strip. Sizes are kept in px
+   because that is what the source used — converting them to pt would move
+   every one of them by a rounding step.
+
+   The type scale is four steps, declared once below. The source CV drifted
+   between 12px, 12.5px and 13px for text doing the same job; collapsing that
+   into `--fs-meta` and `--fs-body` is what keeps dates, locations and the
+   skill strip reading as one register rather than three near-misses. */
 
 :host {
   display: block;
@@ -9,7 +14,14 @@
   color: #222;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
-  font-size: 12.5px;
+  /* Everything secondary: contact strip, locations, dates, skill strip. */
+  --fs-meta: 12.5px;
+  /* Running text: profile, role descriptions, bullets, education subtitles. */
+  --fs-body: 13px;
+  --fs-company: 14px;
+  --fs-role: 15px;
+
+  font-size: var(--fs-body);
   line-height: 1.55;
   /* Playwright prints with printBackground, but the tinted skill strip and the
      contact icons still need this to survive Chrome's colour-saving pass. */
@@ -36,6 +48,7 @@
 
 .cv__name {
   margin: 0;
+  padding-left: 16px;
   font-size: 30px;
   font-weight: 400;
   letter-spacing: -0.5px;
@@ -49,12 +62,19 @@
 .contact-info {
   align-self: flex-start;
   text-align: right;
-  font-size: 12.5px;
+  font-size: var(--fs-meta);
   line-height: 1.7;
   font-weight: 500;
 
   div {
     margin-bottom: 2px;
+  }
+
+  /* Chromium carries the link annotation into the PDF, so the CV address is
+     clickable in the file; on paper it should still read as plain text. */
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 
@@ -93,7 +113,7 @@
 
 .profile {
   margin-bottom: 16px;
-  font-size: 13px;
+  font-size: var(--fs-body);
   line-height: 1.5;
   color: #555;
   text-align: justify;
@@ -107,8 +127,9 @@
 
 .section-title {
   margin: 0 0 10px;
-  font-size: 13px;
-  font-weight: 600;
+  /* Uppercase and letter-spaced, so it reads as a heading at body size. */
+  font-size: var(--fs-body);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #333;
@@ -139,7 +160,7 @@
 }
 
 .entry-company {
-  font-size: 14px;
+  font-size: var(--fs-company);
   font-weight: 500;
   color: #666;
 }
@@ -147,7 +168,7 @@
 .entry-location {
   flex-shrink: 0;
   margin-left: 12px;
-  font-size: 12.5px;
+  font-size: var(--fs-meta);
   color: #888;
   white-space: nowrap;
 }
@@ -155,19 +176,20 @@
 .entry-desc {
   margin-top: 6px;
   margin-bottom: 4px;
-  font-size: 13px;
+  font-size: var(--fs-body);
   line-height: 1.55;
   color: #444;
   text-align: justify;
 
   ul {
     margin: 4px 0 0 20px;
+    padding-left: 0;
     color: #444;
   }
 
   li {
     margin-bottom: 3px;
-    font-size: 13px;
+    font-size: var(--fs-body);
   }
 }
 
@@ -182,7 +204,7 @@
   padding: 5px 10px;
   border-radius: 3px;
   background-color: #f7f7f7;
-  font-size: 12px;
+  font-size: var(--fs-meta);
   color: #777;
 
   strong {
@@ -212,8 +234,7 @@
   border-left: 2px solid #ddd;
   padding-left: 14px;
   margin-bottom: 8px;
-  /* Never split a role across two pages. */
-  break-inside: avoid;
+  break-inside: auto;
 
   &:last-child {
     margin-bottom: 0;
@@ -221,21 +242,22 @@
 }
 
 .role-header {
+  break-after: avoid;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
 .role-title {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--fs-role);
+  font-weight: 500;
   color: #111;
 }
 
 .role-date {
   flex-shrink: 0;
   margin-left: 12px;
-  font-size: 12px;
+  font-size: var(--fs-meta);
   color: #888;
   white-space: nowrap;
 }
@@ -243,7 +265,7 @@
 /* ---- Education ---- */
 
 .edu-subtitle {
-  font-size: 13px;
+  font-size: var(--fs-body);
   font-weight: 500;
   color: #888;
 }

@@ -1,0 +1,43 @@
+{
+  "pdfFileName": "Curriculum vitae",
+  "downloadPdf": "PDF version",
+  "sourceCode": "Resume Code",
+  "backToCv": "Back to CV",
+  "deepDiveCta": "More on this role:",
+  "narrative": {
+    "cta": "Read my full story",
+    "title": "My story",
+    "journey": "Career journey"
+  },
+  "translationFallback": "This page has not been translated yet and is shown in English.",
+  "present": "Present",
+  "notFoundTitle": "Page not found",
+  "notFoundBody": "That link does not point anywhere. Try starting from the CV.",
+  "printedOn": "Generated on",
+  "deepDive": {
+    "situation": "Situation",
+    "task": "Task",
+    "action": "Action",
+    "result": "Result",
+    "reflection": "Reflection",
+    "followUps": {
+      "title": "Typical questions",
+      "whyThisApproach": "Why did you choose that specific approach?",
+      "challenge": "What did you find most challenging?",
+      "hardestBug": "What was the hardest bug?",
+      "teamReaction": "How did your team feel about that decision?",
+      "whatNext": "What happened next?",
+      "differently": "What would you do differently now?",
+      "learned": "What did you learn?",
+      "aboutYourself": "What did you learn about yourself?",
+      "enjoyed": "What did you enjoy most?"
+    }
+  },
+  "sections": {
+    "summary": "Profile",
+    "experience": "Experience",
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "spokenLanguages": "Languages"
+  }
+}

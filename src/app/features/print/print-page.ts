@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Cv, Lang } from '../../core/models/cv.model';
+import { Cv, Lang, splitName } from '../../core/models/cv.model';
 import { MonthYearPipe } from '../../shared/pipes/month-year-pipe';
 import { PrettyUrlPipe } from '../../shared/pipes/pretty-url-pipe';
 
@@ -37,18 +37,8 @@ export class PrintPage {
       }))
       .filter((company) => company.roles.length > 0),
   );
-  /**
-   * The source CV sets the surname in bold and the given name light, so the
-   * name is split on its last space. A name whose family part is more than one
-   * word would need the split to live in the data instead.
-   */
-  protected readonly nameParts = computed(() => {
-    const full = this.cv()?.profile.name ?? '';
-    const cut = full.lastIndexOf(' ');
-    return cut === -1
-      ? { given: full, family: '' }
-      : { given: full.slice(0, cut), family: full.slice(cut + 1) };
-  });
+  /** The source CV sets the family name in bold and the given name light. */
+  protected readonly nameParts = computed(() => splitName(this.cv()?.profile.name ?? ''));
 
   protected readonly education = computed(() =>
     (this.cv()?.education ?? [])

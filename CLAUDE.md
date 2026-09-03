@@ -90,8 +90,8 @@ A trilingual CV site, statically pre-rendered and deployed to GitHub Pages. See
   `tools/generate-pdfs.mjs` prints it with Playwright after the build.
 - **Per-employer skills live on the company, not the role** (`experience[].skills`,
   a `SkillGroup[]`). Technology names stay in English in every locale; only the
-  category label and soft-skill phrases are translated. The top-level `skills`
-  array is separate and feeds the PDF only.
+  category label and soft-skill phrases are translated. There is no aggregate
+  skills list: the per-employer panels are the only place skills appear.
 - **Section headings take an optional `icon`** — a path to a monochrome PNG used
   as a CSS mask, so it inherits the heading's accent colour instead of staying
   grey. Ordinary `<img>` would not recolour.
@@ -122,6 +122,8 @@ A trilingual CV site, statically pre-rendered and deployed to GitHub Pages. See
   first in the build and fails on mismatched ids, mismatched `ui` keys, or a
   deep-dive slug with no English file. Adding an entry means adding it to all
   three CV files.
-- **Interface strings live in the CV JSON** under `ui`. There is no translation
-  library; adding user-visible text means adding a key to all three files and to
-  the `UiStrings` type.
+- **Interface strings live in `public/data/ui.<lang>.json`**, one file per
+  locale, joined onto the CV by `CvDataService` so templates still read
+  `data.ui.…`. There is no translation library; adding user-visible text means
+  adding a key to all three `ui` files and to the `UiStrings` type, and
+  `tools/validate-data.mjs` fails the build if the three drift apart.

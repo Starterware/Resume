@@ -9,12 +9,32 @@ export function isLang(value: unknown): value is Lang {
   return typeof value === 'string' && (LANGUAGES as readonly string[]).includes(value);
 }
 
+/**
+ * Splits a full name on its last space.
+ *
+ * The PDF sets the family name in bold and the given name light, and the
+ * downloaded file is named family-first, so both need the same split. A name
+ * whose family part is more than one word would have to be split in the data
+ * instead.
+ */
+export function splitName(full: string): { given: string; family: string } {
+  const cut = full.lastIndexOf(' ');
+  return cut === -1
+    ? { given: full, family: '' }
+    : { given: full.slice(0, cut), family: full.slice(cut + 1) };
+}
+
 export interface Contact {
   email: string;
   /** This site's own repository. Shown on the website only, never on the PDF. */
   sourceCode: string;
   github: string;
   linkedin: string;
+  /**
+   * The published address of this CV. Rendered on the PDF only — that is the
+   * copy which gets forwarded and needs to say where the live version lives;
+   * the site itself has no reason to print its own URL.
+   */
   website: string;
   /** Rendered on the PDF only. Leave empty to omit it everywhere. */
   phone: string;
@@ -73,9 +93,21 @@ export interface Photo {
   alt: string;
 }
 
-/** Interface chrome. Lives alongside the content so one fetch serves the whole page. */
+/**
+ * Interface chrome, in `public/data/ui.<lang>.json`.
+ *
+ * It lives apart from the CV because it changes for different reasons: the CV
+ * is content its owner edits, while these are labels that only move when the
+ * interface itself does. `CvDataService` fetches both and hands components a
+ * single `Cv`, so a template still reads `data.ui.…`.
+ */
 export interface UiStrings {
   downloadPdf: string;
+  /**
+   * Leading words of the saved PDF's file name, completed with the name of its
+   * owner: `Curriculum vitae - Lenaertz Mikaël.pdf`.
+   */
+  pdfFileName: string;
   /** Label on the link to this site's own source. */
   sourceCode: string;
   backToCv: string;
@@ -118,11 +150,8 @@ export interface UiStrings {
     experience: string;
     /** The longer form used on the PDF, matching the printed CV it ports. */
     workExperience: string;
-    projects: string;
-    skills: string;
     education: string;
     spokenLanguages: string;
-    interests: string;
   };
 }
 
@@ -193,15 +222,6 @@ export interface ExperienceEntry {
   skills: SkillGroup[];
 }
 
-export interface ProjectEntry {
-  id: string;
-  name: string;
-  summary: string;
-  url: string;
-  stack: string[];
-  includeInPdf: boolean;
-}
-
 export interface Degree {
   id: string;
   degree: string;
@@ -227,19 +247,17 @@ export interface EducationEntry {
   degrees: Degree[];
 }
 
-export interface InterestEntry {
-  id: string;
-  name: string;
-  detail: string;
-}
-
-export interface Cv {
+/** The contents of one `cv.<lang>.json`. */
+export interface CvDocument {
   meta: { lang: Lang; updated: string };
   profile: Profile;
-  ui: UiStrings;
-  skills: SkillGroup[];
   experience: ExperienceEntry[];
-  projects: ProjectEntry[];
   education: EducationEntry[];
-  interests: InterestEntry[];
 }
+
+/**
+ * What a page receives: the CV document with its locale's interface strings
+ * attached. The two are separate files but always travel together, so joining
+ * them in the service keeps every component reading one object.
+ */
+export type Cv = CvDocument & { ui: UiStrings };

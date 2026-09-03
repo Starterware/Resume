@@ -51,10 +51,10 @@
     },
     "contact": {
       "email": "mikaellenaertz@gmail.com",
-      "sourceCode": "https://github.com/Starterware/Starterware.github.io",
+      "sourceCode": "https://github.com/Starterware/Resume",
       "github": "https://github.com/Starterware",
       "linkedin": "https://www.linkedin.com/in/mika%C3%ABl-lenaertz-7945b065/",
-      "website": "",
+      "website": "https://starterware.github.io/Resume/",
       "phone": "+32 475 85 63 89"
     },
     "spokenLanguages": [
@@ -94,121 +94,6 @@
     ],
     "photo": null
   },
-  "ui": {
-    "downloadPdf": "PDF-versie",
-    "sourceCode": "Cv-code",
-    "backToCv": "Terug naar cv",
-    "deepDiveCta": "Meer over deze rol:",
-    "narrative": {
-      "cta": "Lees mijn traject",
-      "title": "Mijn traject",
-      "journey": "Loopbaan"
-    },
-    "translationFallback": "Deze pagina is nog niet vertaald en wordt in het Engels getoond.",
-    "present": "Heden",
-    "notFoundTitle": "Pagina niet gevonden",
-    "notFoundBody": "Deze link leidt nergens heen. Begin opnieuw bij het cv.",
-    "printedOn": "Gegenereerd op",
-    "deepDive": {
-      "situation": "Situatie",
-      "task": "Opdracht",
-      "action": "Actie",
-      "result": "Resultaat",
-      "reflection": "Reflectie",
-      "followUps": {
-        "title": "Veelgestelde vragen",
-        "whyThisApproach": "Waarom koos je juist voor die aanpak?",
-        "challenge": "Wat vond je het lastigst?",
-        "hardestBug": "Wat was de lastigste bug?",
-        "teamReaction": "Hoe reageerde je team op die beslissing?",
-        "whatNext": "Wat gebeurde er daarna?",
-        "differently": "Wat zou je nu anders doen?",
-        "learned": "Wat heb je geleerd?",
-        "aboutYourself": "Wat heb je over jezelf geleerd?",
-        "enjoyed": "Wat vond je het leukst?"
-      }
-    },
-    "sections": {
-      "summary": "Profiel",
-      "experience": "Ervaring",
-      "workExperience": "Werkervaring",
-      "projects": "Projecten",
-      "skills": "Vaardigheden",
-      "education": "Opleiding",
-      "spokenLanguages": "Talen",
-      "interests": "Interesses"
-    }
-  },
-  "skills": [
-    {
-      "category": "Talen",
-      "items": [
-        "Java",
-        "Go",
-        "Python",
-        "C#",
-        "C/C++",
-        "Bash"
-      ]
-    },
-    {
-      "category": "Cloud & infra",
-      "items": [
-        "AWS Lambda",
-        "DynamoDB",
-        "SQS",
-        "EC2",
-        "Auto Scaling",
-        "CloudWatch",
-        "Serverless",
-        "Docker Swarm",
-        "Ansible"
-      ]
-    },
-    {
-      "category": "Frameworks",
-      "items": [
-        "Spring Boot",
-        "gRPC",
-        "JPA",
-        "Guice",
-        "JUnit",
-        "Mockito",
-        "AssertJ",
-        "JMeter",
-        "Lombok"
-      ]
-    },
-    {
-      "category": "Data & messaging",
-      "items": [
-        "Kafka",
-        "IBM MQ",
-        "ActiveMQ",
-        "Oracle",
-        "InfluxDB"
-      ]
-    },
-    {
-      "category": "Werkwijze",
-      "items": [
-        "Serviceontwerp",
-        "Projectleiding",
-        "Mentoring",
-        "CI/CD",
-        "Jenkins",
-        "SonarQube",
-        "Grafana"
-      ]
-    },
-    {
-      "category": "Overig",
-      "items": [
-        "Generatieve AI",
-        "Prompt engineering"
-      ]
-    }
-  ],
   "experience": [
     {
       "id": "aws",
@@ -238,15 +123,15 @@
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "lambda-managed-instances",
+              "slug": "aws-lambda-managed-instances",
               "label": "De uitrol van Managed Instances leiden"
             },
             {
-              "slug": "background-job-load-shedding",
+              "slug": "aws-background-job-load-shedding",
               "label": "De lastigste bug die ik heb opgelost"
             },
             {
-              "slug": "lambda-go-pipeline",
+              "slug": "aws-lambda-go-pipeline",
               "label": "Een pipeline herschrijven in Go"
             },
             {
@@ -259,55 +144,29 @@
       "skills": [
         {
           "category": "Talen",
-          "items": [
-            "Java",
-            "Go",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "Go", "Python", "Bash"]
         },
         {
           "category": "Cloud & infra",
-          "items": [
-            "AWS",
-            "EC2",
-            "DynamoDB",
-            "SQS",
-            "ASG",
-            "Lambda",
-            "CloudWatch",
-            "Serverless"
-          ]
+          "items": ["AWS", "EC2", "DynamoDB", "SQS", "ASG", "Lambda", "CloudWatch", "Serverless"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Guice",
-            "JUnit",
-            "AssertJ",
-            "Lombok"
-          ]
+          "items": ["Guice", "JUnit", "AssertJ", "Lombok"]
         },
         {
           "category": "Soft skills",
-          "items": [
-            "Serviceontwerp",
-            "Projectleiding",
-            "Mentoring"
-          ]
+          "items": ["Serviceontwerp", "Projectleiding", "Mentoring"]
         },
         {
           "category": "Overig",
-          "items": [
-            "Generatieve AI",
-            "Prompt engineering"
-          ]
+          "items": ["Generatieve AI", "Prompt engineering"]
         }
       ]
     },
     {
       "id": "swift",
-      "company": "SWIFT",
+      "company": "SWIFT – Society for Worldwide Interbank Financial Telecommunication",
       "location": "Terhulpen, België",
       "url": "https://www.swift.com/",
       "logo": {
@@ -330,7 +189,7 @@
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "load-testing-stack",
+              "slug": "swift-load-testing-stack",
               "label": "Prestatietests automatiseren"
             },
             {
@@ -370,23 +229,11 @@
       "skills": [
         {
           "category": "Talen",
-          "items": [
-            "Java",
-            "C/C++",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "C/C++", "Python", "Bash"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Spring Boot",
-            "gRPC",
-            "JPA",
-            "JUnit",
-            "Mockito",
-            "JMeter"
-          ]
+          "items": ["Spring Boot", "gRPC", "JPA", "JUnit", "Mockito", "JMeter"]
         },
         {
           "category": "Infra & tools",
@@ -442,7 +289,7 @@
               "label": "Pleiten voor een herschrijving"
             },
             {
-              "slug": "soundex-optimisation",
+              "slug": "intergraph-soundex-optimisation",
               "label": "Een prestatieprobleem oplossen"
             }
           ]
@@ -451,60 +298,17 @@
       "skills": [
         {
           "category": "Talen",
-          "items": [
-            "C#",
-            "C/C++",
-            "Bash"
-          ]
+          "items": ["C#", "C/C++", "Bash"]
         },
         {
           "category": "Infra & tools",
-          "items": [
-            "Oracle DB",
-            "Jenkins",
-            "SVN"
-          ]
+          "items": ["Oracle DB", "Jenkins", "SVN"]
         },
         {
           "category": "Soft skills",
-          "items": [
-            "Requirementsanalyse",
-            "Projectleiding"
-          ]
+          "items": ["Requirementsanalyse", "Projectleiding"]
         }
       ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "dpgmedia",
-      "name": "DpgMedia",
-      "summary": "Realtime interactieplatform voor luisteraars, geschreven in Go.",
-      "url": "https://github.com/Starterware/DpgMedia",
-      "stack": [
-        "Go"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "mycraft",
-      "name": "MyCraft",
-      "summary": "Een voxel-wereldengine gebouwd in Java.",
-      "url": "https://github.com/Starterware/MyCraft",
-      "stack": [
-        "Java"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "chess",
-      "name": "Chess",
-      "summary": "Een schaakspel en -engine, in C# gebouwd voor het plezier.",
-      "url": "https://github.com/Starterware/Chess",
-      "stack": [
-        "C#"
-      ],
-      "includeInPdf": false
     }
   ],
   "education": [
@@ -525,9 +329,7 @@
           "degree": "Master in de computerwetenschappen (ingenieursrichting)",
           "start": "2012-09",
           "end": "2013-06",
-          "notes": [
-            "Aanvullende master"
-          ],
+          "notes": ["Aanvullende master"],
           "includeInPdf": true
         },
         {
@@ -542,28 +344,6 @@
           "includeInPdf": true
         }
       ]
-    }
-  ],
-  "interests": [
-    {
-      "id": "competitions",
-      "name": "Programmeerwedstrijden",
-      "detail": "Algoritmische puzzels oplossen, alleen of in teamverband."
-    },
-    {
-      "id": "books",
-      "name": "Lezen",
-      "detail": "Mijn kennis voortdurend verbreden door over uiteenlopende onderwerpen te lezen."
-    },
-    {
-      "id": "training",
-      "name": "Calisthenics, gymnastiek, yoga",
-      "detail": "Meerdere keren per week trainen om in vorm te blijven."
-    },
-    {
-      "id": "boardsports",
-      "name": "Surfen, snowboarden, wakeboarden, longboarden",
-      "detail": "Reizen om deze sporten te beoefenen wanneer het kan."
     }
   ]
 }

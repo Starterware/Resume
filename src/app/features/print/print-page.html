@@ -5,8 +5,10 @@
 
       <div class="contact-info">
         <div>
-          @if (data.profile.contact.github) {
-            <span class="ci ci--github">{{ data.profile.contact.github | prettyUrl }}</span>
+          @if (data.profile.contact.website) {
+            <span class="ci ci--github">
+              <a [href]="data.profile.contact.website">{{ data.profile.contact.website | prettyUrl }}</a>
+            </span>
           }
           <span class="ci ci--address">{{ data.profile.location }}</span>
         </div>

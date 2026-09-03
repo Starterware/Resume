@@ -47,7 +47,7 @@
 
         <div class="masthead__actions">
           <cv-language-switcher />
-          <a class="masthead__pdf" [href]="'pdf/cv-' + lang() + '.pdf'" download>
+          <a class="masthead__pdf" [href]="'pdf/cv-' + lang() + '.pdf'" [download]="pdfFileName()">
             {{ data.ui.downloadPdf }}
           </a>
         </div>
@@ -64,11 +64,6 @@
           @if (data.profile.contact.linkedin) {
             <li class="contact__item contact__item--linkedin">
               <a [href]="data.profile.contact.linkedin" rel="noopener">LinkedIn</a>
-            </li>
-          }
-          @if (data.profile.contact.website) {
-            <li class="contact__item contact__item--website">
-              <a [href]="data.profile.contact.website" rel="noopener">{{ data.profile.contact.website | prettyUrl }}</a>
             </li>
           }
           @if (data.profile.contact.sourceCode) {

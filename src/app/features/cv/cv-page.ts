@@ -1,17 +1,16 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
-import { Cv, Lang } from '../../core/models/cv.model';
+import { Cv, Lang, splitName } from '../../core/models/cv.model';
 import { ExperienceCard } from '../../shared/components/experience-card/experience-card';
 import { LanguageSwitcher } from '../../shared/components/language-switcher/language-switcher';
 import { LogoChip } from '../../shared/components/logo/logo';
 import { Section } from '../../shared/components/section/section';
-import { PrettyUrlPipe } from '../../shared/pipes/pretty-url-pipe';
 
 @Component({
   selector: 'cv-page',
-  imports: [ExperienceCard, LanguageSwitcher, LogoChip, PrettyUrlPipe, RouterLink, Section],
+  imports: [ExperienceCard, LanguageSwitcher, LogoChip, RouterLink, Section],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.scss',
 })
@@ -20,6 +19,21 @@ export class CvPage {
   readonly lang = input.required<Lang>();
   /** Bound from the `cv` key of the route's resolved data. */
   readonly cv = input.required<Cv | null>();
+
+  /**
+   * What the browser saves the PDF as. The file on the server is `cv-en.pdf`,
+   * which says nothing to someone with a folder full of applications; the
+   * `download` attribute renames it on the way out.
+   */
+  protected readonly pdfFileName = computed(() => {
+    const cv = this.cv();
+    if (!cv) {
+      return 'cv.pdf';
+    }
+
+    const { given, family } = splitName(cv.profile.name);
+    return `${cv.ui.pdfFileName} - ${[family, given].filter(Boolean).join(' ')}.pdf`;
+  });
 
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);

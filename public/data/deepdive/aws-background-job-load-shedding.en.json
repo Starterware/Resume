@@ -1,5 +1,5 @@
 {
-  "slug": "background-job-load-shedding",
+  "slug": "aws-background-job-load-shedding",
   "lang": "en",
   "title": "The background job that was starving the API",
   "question": "Tell me about the hardest bug you have debugged.",

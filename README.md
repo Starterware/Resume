@@ -14,9 +14,12 @@ minus the hosting bill and the uptime risk. All data access goes through
 `CvDataService`, so swapping in a real API later means changing one provider.
 
 **No i18n framework.** Nearly all the text on the page is CV content, which is
-already per-locale JSON. The handful of interface labels ride along in the same
-file under `ui`. Locale is the first URL segment, so switching language is a
-navigation and every page is independently linkable.
+already per-locale JSON. The handful of interface labels sit beside it in
+`ui.<lang>.json`, kept apart from the CV because they change for different
+reasons — one is content its owner edits, the other is chrome that moves when
+the interface does. `CvDataService` fetches both and hands pages one object.
+Locale is the first URL segment, so switching language is a navigation and
+every page is independently linkable.
 
 **Everything is pre-rendered.** GitHub Pages has no rewrite rules, so a URL with
 no file behind it is a hard 404. `npm run build` therefore generates one HTML
@@ -53,12 +56,13 @@ Everything a reader sees is in `public/data/`:
 
 ```
 public/data/
-  cv.en.json  cv.fr.json  cv.nl.json     loaded with the page
+  cv.en.json  cv.fr.json  cv.nl.json     the CV itself
+  ui.en.json  ui.fr.json  ui.nl.json     interface labels, joined to the above
   deepdive/
-    lambda-managed-instances.en.json     lazy-loaded per route
+    aws-lambda-managed-instances.en.json     lazy-loaded per route
     silent-failure-bug.en.json
-    load-testing-stack.en.json
-    soundex-optimisation.en.json
+    swift-load-testing-stack.en.json
+    intergraph-soundex-optimisation.en.json
 ```
 
 `experience` is a list of employers, each holding a `roles` array, so two
@@ -66,13 +70,10 @@ positions at one company read as a progression rather than two unrelated jobs.
 Deep dives reference *role* ids. Each employer carries its own grouped
 `skills`, rendered as the tinted panel at the foot of its card.
 
-Projects, Skills and Interests render on the PDF only — Skills earns its place there
-because applicant tracking systems match on it. Their data stays in the JSON.
-
 The three CV files share a schema (typed in `src/app/core/models/cv.model.ts`).
 Their `id` values must stay identical across languages, since ids drive routing —
-`npm run validate` enforces that, along with matching `ui` keys and the existence
-of every linked deep dive. It runs as the first step of `npm run build`, so drift
+`npm run validate` enforces that, along with matching keys across the three
+`ui` files and the existence of every linked deep dive. It runs as the first step of `npm run build`, so drift
 fails the build instead of quietly producing a broken page.
 
 `profile.contact.phone` and `profile.contact.email` are rendered on the PDF
@@ -112,7 +113,7 @@ that is nice-to-have.
 Step 3 is genuinely optional. A missing translation falls back to English with a
 notice on the page, so a story can go live as soon as one language is ready
 rather than waiting for all three. Every deep dive is currently English-only, so
-`/fr/deep-dive/soundex-optimisation` shows that behaviour in action.
+`/fr/deep-dive/intergraph-soundex-optimisation` shows that behaviour in action.
 
 The four deep dives are scaffolds, not finished answers. Their titles, questions
 and `situation` sections are drawn from the CV; the `task`, `action` and

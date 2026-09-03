@@ -28,14 +28,25 @@ function serviceWith(files: Record<string, unknown>): {
 describe('CvDataService', () => {
   afterEach(() => TestBed.resetTestingModule());
 
-  it('loads the CV for the requested locale', async () => {
-    const { service } = serviceWith({ 'data/cv.fr.json': { meta: { lang: 'fr' } } });
+  it('joins the interface strings onto the CV of the requested locale', async () => {
+    const { service } = serviceWith({
+      'data/cv.fr.json': { meta: { lang: 'fr' } },
+      'data/ui.fr.json': { present: 'Aujourd’hui' },
+    });
     const cv = await service.loadCv('fr');
     expect(cv?.meta.lang).toBe('fr');
+    expect(cv?.ui.present).toBe('Aujourd’hui');
   });
 
   it('returns null when a locale has no CV file', async () => {
     const { service } = serviceWith({});
+    expect(await service.loadCv('nl')).toBeNull();
+  });
+
+  // A CV rendered with no labels is a page of blank headings, which is worse
+  // than the not-found page the caller shows for a null.
+  it('returns null when a locale has no interface strings', async () => {
+    const { service } = serviceWith({ 'data/cv.nl.json': { meta: { lang: 'nl' } } });
     expect(await service.loadCv('nl')).toBeNull();
   });
 

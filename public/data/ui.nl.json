@@ -1,0 +1,43 @@
+{
+  "pdfFileName": "Curriculum vitae",
+  "downloadPdf": "PDF-versie",
+  "sourceCode": "Cv-code",
+  "backToCv": "Terug naar cv",
+  "deepDiveCta": "Meer over deze rol:",
+  "narrative": {
+    "cta": "Lees mijn volledige verhaal",
+    "title": "Mijn verhaal",
+    "journey": "Loopbaan"
+  },
+  "translationFallback": "Deze pagina is nog niet vertaald en wordt in het Engels getoond.",
+  "present": "Heden",
+  "notFoundTitle": "Pagina niet gevonden",
+  "notFoundBody": "Deze link leidt nergens heen. Begin opnieuw bij het cv.",
+  "printedOn": "Gegenereerd op",
+  "deepDive": {
+    "situation": "Situatie",
+    "task": "Opdracht",
+    "action": "Actie",
+    "result": "Resultaat",
+    "reflection": "Reflectie",
+    "followUps": {
+      "title": "Veelgestelde vragen",
+      "whyThisApproach": "Waarom koos je juist voor die aanpak?",
+      "challenge": "Wat vond je het lastigst?",
+      "hardestBug": "Wat was de lastigste bug?",
+      "teamReaction": "Hoe reageerde je team op die beslissing?",
+      "whatNext": "Wat gebeurde er daarna?",
+      "differently": "Wat zou je nu anders doen?",
+      "learned": "Wat heb je geleerd?",
+      "aboutYourself": "Wat heb je over jezelf geleerd?",
+      "enjoyed": "Wat vond je het leukst?"
+    }
+  },
+  "sections": {
+    "summary": "Profiel",
+    "experience": "Ervaring",
+    "workExperience": "Werkervaring",
+    "education": "Opleiding",
+    "spokenLanguages": "Talen"
+  }
+}

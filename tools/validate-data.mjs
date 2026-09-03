@@ -44,11 +44,15 @@ function leafPaths(value, prefix = '') {
 
 async function main() {
   const cvs = {};
+  const uis = {};
   for (const lang of languages) {
     cvs[lang] = JSON.parse(await readFile(join(dataDir, `cv.${lang}.json`), 'utf-8'));
+    // A locale whose interface strings are missing renders a page of blanks,
+    // so the read failing here is the intended outcome.
+    uis[lang] = JSON.parse(await readFile(join(dataDir, `ui.${lang}.json`), 'utf-8'));
   }
 
-  for (const label of ['experience', 'projects', 'education', 'interests']) {
+  for (const label of ['experience', 'education']) {
     compareIds(label, cvs);
   }
 
@@ -88,9 +92,9 @@ async function main() {
 
   // Every locale must define the same interface strings, or a page renders a
   // blank label in one language only.
-  const expectedUiKeys = leafPaths(cvs[reference].ui).sort();
+  const expectedUiKeys = leafPaths(uis[reference]).sort();
   for (const lang of languages) {
-    const actual = leafPaths(cvs[lang].ui).sort();
+    const actual = leafPaths(uis[lang]).sort();
     const missing = expectedUiKeys.filter((key) => !actual.includes(key));
     const extra = actual.filter((key) => !expectedUiKeys.includes(key));
     if (missing.length || extra.length) {

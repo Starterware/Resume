@@ -51,10 +51,10 @@
     },
     "contact": {
       "email": "mikaellenaertz@gmail.com",
-      "sourceCode": "https://github.com/Starterware/Starterware.github.io",
+      "sourceCode": "https://github.com/Starterware/Resume",
       "github": "https://github.com/Starterware",
       "linkedin": "https://www.linkedin.com/in/mika%C3%ABl-lenaertz-7945b065/",
-      "website": "",
+      "website": "https://starterware.github.io/Resume/",
       "phone": "+32 475 85 63 89"
     },
     "spokenLanguages": [
@@ -94,121 +94,6 @@
     ],
     "photo": null
   },
-  "ui": {
-    "downloadPdf": "Version PDF",
-    "sourceCode": "Code du CV",
-    "backToCv": "Retour au CV",
-    "deepDiveCta": "En savoir plus sur ce poste :",
-    "narrative": {
-      "cta": "Lire mon parcours",
-      "title": "Mon parcours",
-      "journey": "Parcours professionnel"
-    },
-    "translationFallback": "Cette page n'a pas encore été traduite et s'affiche en anglais.",
-    "present": "Aujourd'hui",
-    "notFoundTitle": "Page introuvable",
-    "notFoundBody": "Ce lien ne mène nulle part. Repartez du CV.",
-    "printedOn": "Généré le",
-    "deepDive": {
-      "situation": "Situation",
-      "task": "Mission",
-      "action": "Action",
-      "result": "Résultat",
-      "reflection": "Recul",
-      "followUps": {
-        "title": "Questions fréquentes",
-        "whyThisApproach": "Pourquoi avoir choisi cette approche en particulier ?",
-        "challenge": "Qu’est-ce qui a été le plus difficile ?",
-        "hardestBug": "Quel a été le bug le plus coriace ?",
-        "teamReaction": "Comment votre équipe a-t-elle réagi à cette décision ?",
-        "whatNext": "Que s’est-il passé ensuite ?",
-        "differently": "Que feriez-vous différemment aujourd’hui ?",
-        "learned": "Qu’avez-vous appris ?",
-        "aboutYourself": "Qu’avez-vous appris sur vous-même ?",
-        "enjoyed": "Qu’est-ce que vous avez le plus apprécié ?"
-      }
-    },
-    "sections": {
-      "summary": "Profil",
-      "experience": "Expérience",
-      "workExperience": "Expérience professionnelle",
-      "projects": "Projets",
-      "skills": "Compétences",
-      "education": "Formation",
-      "spokenLanguages": "Langues",
-      "interests": "Centres d'intérêt"
-    }
-  },
-  "skills": [
-    {
-      "category": "Langages",
-      "items": [
-        "Java",
-        "Go",
-        "Python",
-        "C#",
-        "C/C++",
-        "Bash"
-      ]
-    },
-    {
-      "category": "Cloud & infra",
-      "items": [
-        "AWS Lambda",
-        "DynamoDB",
-        "SQS",
-        "EC2",
-        "Auto Scaling",
-        "CloudWatch",
-        "Serverless",
-        "Docker Swarm",
-        "Ansible"
-      ]
-    },
-    {
-      "category": "Frameworks",
-      "items": [
-        "Spring Boot",
-        "gRPC",
-        "JPA",
-        "Guice",
-        "JUnit",
-        "Mockito",
-        "AssertJ",
-        "JMeter",
-        "Lombok"
-      ]
-    },
-    {
-      "category": "Données & messagerie",
-      "items": [
-        "Kafka",
-        "IBM MQ",
-        "ActiveMQ",
-        "Oracle",
-        "InfluxDB"
-      ]
-    },
-    {
-      "category": "Pratiques",
-      "items": [
-        "Conception de services",
-        "Conduite de projet",
-        "Mentorat",
-        "CI/CD",
-        "Jenkins",
-        "SonarQube",
-        "Grafana"
-      ]
-    },
-    {
-      "category": "Autres",
-      "items": [
-        "IA générative",
-        "Prompt engineering"
-      ]
-    }
-  ],
   "experience": [
     {
       "id": "aws",
@@ -238,15 +123,15 @@
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "lambda-managed-instances",
+              "slug": "aws-lambda-managed-instances",
               "label": "Piloter le lancement des Managed Instances"
             },
             {
-              "slug": "background-job-load-shedding",
+              "slug": "aws-background-job-load-shedding",
               "label": "Le bug le plus difficile que j’aie résolu"
             },
             {
-              "slug": "lambda-go-pipeline",
+              "slug": "aws-lambda-go-pipeline",
               "label": "Réécrire un pipeline en Go"
             },
             {
@@ -259,55 +144,29 @@
       "skills": [
         {
           "category": "Langages",
-          "items": [
-            "Java",
-            "Go",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "Go", "Python", "Bash"]
         },
         {
           "category": "Cloud & infra",
-          "items": [
-            "AWS",
-            "EC2",
-            "DynamoDB",
-            "SQS",
-            "ASG",
-            "Lambda",
-            "CloudWatch",
-            "Serverless"
-          ]
+          "items": ["AWS", "EC2", "DynamoDB", "SQS", "ASG", "Lambda", "CloudWatch", "Serverless"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Guice",
-            "JUnit",
-            "AssertJ",
-            "Lombok"
-          ]
+          "items": ["Guice", "JUnit", "AssertJ", "Lombok"]
         },
         {
           "category": "Savoir-être",
-          "items": [
-            "Conception de services",
-            "Conduite de projet",
-            "Mentorat"
-          ]
+          "items": ["Conception de services", "Conduite de projet", "Mentorat"]
         },
         {
           "category": "Autres",
-          "items": [
-            "IA générative",
-            "Prompt engineering"
-          ]
+          "items": ["IA générative", "Prompt engineering"]
         }
       ]
     },
     {
       "id": "swift",
-      "company": "SWIFT",
+      "company": "SWIFT – Society for Worldwide Interbank Financial Telecommunication",
       "location": "La Hulpe, Belgique",
       "url": "https://www.swift.com/",
       "logo": {
@@ -330,7 +189,7 @@
           "includeInPdf": true,
           "deepDives": [
             {
-              "slug": "load-testing-stack",
+              "slug": "swift-load-testing-stack",
               "label": "Automatiser les tests de performance"
             },
             {
@@ -370,23 +229,11 @@
       "skills": [
         {
           "category": "Langages",
-          "items": [
-            "Java",
-            "C/C++",
-            "Python",
-            "Bash"
-          ]
+          "items": ["Java", "C/C++", "Python", "Bash"]
         },
         {
           "category": "Frameworks",
-          "items": [
-            "Spring Boot",
-            "gRPC",
-            "JPA",
-            "JUnit",
-            "Mockito",
-            "JMeter"
-          ]
+          "items": ["Spring Boot", "gRPC", "JPA", "JUnit", "Mockito", "JMeter"]
         },
         {
           "category": "Infra & outils",
@@ -442,7 +289,7 @@
               "label": "Défendre une réécriture"
             },
             {
-              "slug": "soundex-optimisation",
+              "slug": "intergraph-soundex-optimisation",
               "label": "Résoudre un problème de performance"
             }
           ]
@@ -451,60 +298,17 @@
       "skills": [
         {
           "category": "Langages",
-          "items": [
-            "C#",
-            "C/C++",
-            "Bash"
-          ]
+          "items": ["C#", "C/C++", "Bash"]
         },
         {
           "category": "Infra & outils",
-          "items": [
-            "Oracle DB",
-            "Jenkins",
-            "SVN"
-          ]
+          "items": ["Oracle DB", "Jenkins", "SVN"]
         },
         {
           "category": "Savoir-être",
-          "items": [
-            "Analyse des besoins",
-            "Conduite de projet"
-          ]
+          "items": ["Analyse des besoins", "Conduite de projet"]
         }
       ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "dpgmedia",
-      "name": "DpgMedia",
-      "summary": "Plateforme d'interaction en temps réel avec les auditeurs, écrite en Go.",
-      "url": "https://github.com/Starterware/DpgMedia",
-      "stack": [
-        "Go"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "mycraft",
-      "name": "MyCraft",
-      "summary": "Un moteur de monde voxel développé en Java.",
-      "url": "https://github.com/Starterware/MyCraft",
-      "stack": [
-        "Java"
-      ],
-      "includeInPdf": false
-    },
-    {
-      "id": "chess",
-      "name": "Chess",
-      "summary": "Un jeu et un moteur d'échecs, écrits en C# pour le plaisir.",
-      "url": "https://github.com/Starterware/Chess",
-      "stack": [
-        "C#"
-      ],
-      "includeInPdf": false
     }
   ],
   "education": [
@@ -525,9 +329,7 @@
           "degree": "Master en ingénierie informatique",
           "start": "2012-09",
           "end": "2013-06",
-          "notes": [
-            "Master complémentaire"
-          ],
+          "notes": ["Master complémentaire"],
           "includeInPdf": true
         },
         {
@@ -542,28 +344,6 @@
           "includeInPdf": true
         }
       ]
-    }
-  ],
-  "interests": [
-    {
-      "id": "competitions",
-      "name": "Concours de programmation",
-      "detail": "Résoudre des défis algorithmiques, seul ou en équipe."
-    },
-    {
-      "id": "books",
-      "name": "Lecture",
-      "detail": "Élargir continuellement mes connaissances en lisant sur des sujets variés."
-    },
-    {
-      "id": "training",
-      "name": "Callisthénie, gymnastique, yoga",
-      "detail": "M'entraîner plusieurs fois par semaine pour rester en forme."
-    },
-    {
-      "id": "boardsports",
-      "name": "Surf, snowboard, wakeboard, longboard",
-      "detail": "Voyager pour pratiquer ces sports dès que possible."
     }
   ]
 }

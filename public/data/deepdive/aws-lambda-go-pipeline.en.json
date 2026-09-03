@@ -1,5 +1,5 @@
 {
-  "slug": "lambda-go-pipeline",
+  "slug": "aws-lambda-go-pipeline",
   "lang": "en",
   "title": "Rewriting the Lambda package pipeline in Go",
   "question": "Tell me about a time you replaced a critical system running at scale.",
