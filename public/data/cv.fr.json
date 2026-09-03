@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "lang": "fr",
+    "updated": "2026-08-27"
+  },
+  "profile": {
+    "name": "Mikaël Lenaertz",
+    "title": "Ingénieur logiciel senior",
+    "location": "Bruxelles, Belgique",
+    "summary": "Ingénieur logiciel chevronné, fort de plus de 12 ans d'expérience dans la conception et l'exploitation de systèmes distribués à grande échelle. J'ai fait la preuve de ma capacité à prendre en charge des problèmes complexes et mal définis, et à les mener jusqu'en production avec un impact mesurable et une exigence opérationnelle constante. Je recherche aujourd'hui un poste de System/Software Engineer pour m'attaquer à des défis systèmes et infrastructures d'envergure.",
+    "narrative": {
+      "intro": [
+        "Ma fascination pour le logiciel n'a pas commencé en classe, mais le jour où ma famille a eu accès à internet. Curieux de comprendre ce qui se passait sous le capot, j'ai écrit mes premières lignes de C à quinze ans. Ce premier « Hello, World! » dans le terminal a déclenché un intérêt durable pour la performance bas niveau et l'efficacité algorithmique.",
+        "À l'université, tout en obtenant mon master en sciences informatiques avec grande distinction et un master en ingénierie informatique, je me suis épanoui dans les projets d'implémentation. J'ai construit des moteurs de tournois de jeu multijoueurs sur sockets bruts, implémenté des algorithmes d'intelligence en essaim comme l'optimisation par colonies de fourmis pour résoudre des problèmes de plus court chemin, développé une simulation de football où j'ai remplacé les comportements par défaut par des modèles de décision issus de l'apprentissage automatique, et aidé sans cesse mes camarades à déboguer leur code. Cette passion précoce pour les algorithmes m'a naturellement mené à la programmation compétitive, où j'ai affiné ma capacité à disséquer des goulets d'étranglement complexes sous forte contrainte de temps. Avec le temps, cette base est devenue une approche d'ingénierie rigoureuse, centrée sur le code propre et l'excellence opérationnelle."
+      ],
+      "chapters": [
+        {
+          "id": "intergraph",
+          "company": "Intergraph (Hexagon Safety & Infrastructure)",
+          "role": "System Engineer",
+          "period": "Avril 2013 – avril 2016",
+          "location": "Bruxelles, Belgique",
+          "paragraphs": [
+            "J'ai commencé ma carrière en construisant des plateformes critiques de prise d'appels d'urgence et de dispatching pour la police et les services d'incendie et médicaux belges, où fiabilité et performance n'étaient pas négociables. En C++, C# et Oracle DB, j'ai pris le rôle d'analyste métier et de responsable technique d'une équipe de quatre personnes. Au-delà de mener la découverte client pour traduire les problèmes métier en architectures propres, je me suis beaucoup concentré sur la performance et la maintenabilité du système.",
+            "Lorsque le couplage monolithique a ralenti les livraisons, j'ai conçu un framework de plugins C# dynamique fondé sur la réflexion pour remplacer le client lourd, réduisant fortement le délai de mise sur le marché. Ma plus grande avancée est venue d'un goulet d'étranglement de huit heures sur les mises à jour de la base : en refactorisant l'algorithme phonétique Soundex hérité autour d'une structure trie, en rétro-concevant des requêtes non indexées et en regroupant les mises à jour par lots, j'ai ramené le traitement à quelques minutes. Pour fiabiliser nos livraisons, j'ai également construit avec l'équipe nos pipelines CI/CD Jenkins depuis zéro, éliminant les erreurs de déploiement manuel."
+          ]
+        },
+        {
+          "id": "swift",
+          "company": "SWIFT",
+          "role": "Senior Software Engineer & Systems Developer",
+          "period": "Avril 2016 – novembre 2022",
+          "location": "La Hulpe, Belgique",
+          "paragraphs": [
+            "Cherchant à m'attaquer aux architectures distribuées à très grande échelle, j'ai rejoint SWIFT pour travailler sur les systèmes de messagerie financière. J'ai passé mes premières années à maintenir un moteur de messagerie C++98 multiplateforme sur Linux, Windows, AIX et SunOS. J'ai refactorisé des fonctions héritées de plus de mille lignes, modernisé les outils de base de données en un framework de migration unifié, et conçu des composants thread-safe sur mesure pour garantir la stabilité à haut débit.",
+            "Mon rôle s'est élargi lorsque j'ai été détaché auprès d'une équipe cloud pour aider à faire passer notre cœur historique vers une architecture microservices événementielle en Java, Apache Kafka, JPA et Docker. J'ai servi de pont technique entre le produit, l'UX et l'ingénierie tout en construisant des suites de tests automatisés robustes. Plus tard, sur la plateforme de connectivité des paiements instantanés, j'ai bâti des chaînes complètes de tests de charge automatisés avec Ansible pour détecter les goulets d'étranglement avant la production. Par curiosité, j'ai aussi consacré un jour par semaine au laboratoire R&D de SWIFT pour concevoir une chaîne de traitement du langage naturel — spaCy, réseaux convolutifs et embeddings Bloom — capable de transformer du texte non structuré en adresses postales structurées."
+          ]
+        },
+        {
+          "id": "aws",
+          "company": "Amazon Web Services",
+          "role": "Software Development Engineer",
+          "period": "Décembre 2022 – juin 2026",
+          "location": "Dublin, Irlande",
+          "paragraphs": [
+            "Plus récemment, chez AWS, j'ai travaillé sur le plan de contrôle de Lambda — l'infrastructure bas niveau chargée d'orchestrer, stocker, optimiser et déployer les fonctions serverless à l'échelle mondiale. J'ai mené des implémentations techniques de bout en bout sur des initiatives transverses à plusieurs organisations, dont Lambda Managed Instances et Customer Managed Runtimes.",
+            "Une grande partie de mon travail a porté sur l'optimisation du code client : j'ai porté et refactorisé la logique centrale en Go pour tirer parti d'une forte concurrence, en concevant un pipeline à base de canaux qui a réduit la latence de traitement de 50 %. J'ai aussi mené des gains opérationnels et financiers : j'ai piloté un effort d'optimisation du stockage qui a récupéré 200 Po sur S3 — soit 70 % de moins — et réduit de moitié le stockage d'artefacts par déduplication, en résolvant des échecs hebdomadaires de traitements de fond. En combinant débogage approfondi et résilience système, j'ai découvert et corrigé un bug présent depuis le premier jour dans l'optimisation des fonctions, qui provoquait des échecs aléatoires toutes les ~10 000 créations, et refondu les frameworks de tests d'intégration pour faire passer les rollbacks hebdomadaires de plus de 20 à quasiment zéro."
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "email": "mikaellenaertz@gmail.com",
+      "sourceCode": "https://github.com/Starterware/Starterware.github.io",
+      "github": "https://github.com/Starterware",
+      "linkedin": "https://www.linkedin.com/in/mika%C3%ABl-lenaertz-7945b065/",
+      "website": "",
+      "phone": "+32 475 85 63 89"
+    },
+    "spokenLanguages": [
+      {
+        "code": "fr",
+        "name": "Français",
+        "level": "Maternelle",
+        "flag": {
+          "src": "images/french.jpg",
+          "width": 45,
+          "height": 30,
+          "alt": ""
+        }
+      },
+      {
+        "code": "nl",
+        "name": "Néerlandais",
+        "level": "Maternelle",
+        "flag": {
+          "src": "images/dutch.jpg",
+          "width": 50,
+          "height": 34,
+          "alt": ""
+        }
+      },
+      {
+        "code": "en",
+        "name": "Anglais",
+        "level": "Courant",
+        "flag": {
+          "src": "images/english.jpg",
+          "width": 26,
+          "height": 16,
+          "alt": ""
+        }
+      }
+    ],
+    "photo": null
+  },
+  "ui": {
+    "downloadPdf": "Version PDF",
+    "sourceCode": "Code du CV",
+    "backToCv": "Retour au CV",
+    "deepDiveCta": "En savoir plus sur ce poste :",
+    "narrative": {
+      "cta": "Lire mon parcours",
+      "title": "Mon parcours",
+      "journey": "Parcours professionnel"
+    },
+    "translationFallback": "Cette page n'a pas encore été traduite et s'affiche en anglais.",
+    "present": "Aujourd'hui",
+    "notFoundTitle": "Page introuvable",
+    "notFoundBody": "Ce lien ne mène nulle part. Repartez du CV.",
+    "printedOn": "Généré le",
+    "deepDive": {
+      "situation": "Situation",
+      "task": "Mission",
+      "action": "Action",
+      "result": "Résultat",
+      "reflection": "Recul",
+      "followUps": {
+        "title": "Questions fréquentes",
+        "whyThisApproach": "Pourquoi avoir choisi cette approche en particulier ?",
+        "challenge": "Qu’est-ce qui a été le plus difficile ?",
+        "hardestBug": "Quel a été le bug le plus coriace ?",
+        "teamReaction": "Comment votre équipe a-t-elle réagi à cette décision ?",
+        "whatNext": "Que s’est-il passé ensuite ?",
+        "differently": "Que feriez-vous différemment aujourd’hui ?",
+        "learned": "Qu’avez-vous appris ?",
+        "aboutYourself": "Qu’avez-vous appris sur vous-même ?",
+        "enjoyed": "Qu’est-ce que vous avez le plus apprécié ?"
+      }
+    },
+    "sections": {
+      "summary": "Profil",
+      "experience": "Expérience",
+      "workExperience": "Expérience professionnelle",
+      "projects": "Projets",
+      "skills": "Compétences",
+      "education": "Formation",
+      "spokenLanguages": "Langues",
+      "interests": "Centres d'intérêt"
+    }
+  },
+  "skills": [
+    {
+      "category": "Langages",
+      "items": [
+        "Java",
+        "Go",
+        "Python",
+        "C#",
+        "C/C++",
+        "Bash"
+      ]
+    },
+    {
+      "category": "Cloud & infra",
+      "items": [
+        "AWS Lambda",
+        "DynamoDB",
+        "SQS",
+        "EC2",
+        "Auto Scaling",
+        "CloudWatch",
+        "Serverless",
+        "Docker Swarm",
+        "Ansible"
+      ]
+    },
+    {
+      "category": "Frameworks",
+      "items": [
+        "Spring Boot",
+        "gRPC",
+        "JPA",
+        "Guice",
+        "JUnit",
+        "Mockito",
+        "AssertJ",
+        "JMeter",
+        "Lombok"
+      ]
+    },
+    {
+      "category": "Données & messagerie",
+      "items": [
+        "Kafka",
+        "IBM MQ",
+        "ActiveMQ",
+        "Oracle",
+        "InfluxDB"
+      ]
+    },
+    {
+      "category": "Pratiques",
+      "items": [
+        "Conception de services",
+        "Conduite de projet",
+        "Mentorat",
+        "CI/CD",
+        "Jenkins",
+        "SonarQube",
+        "Grafana"
+      ]
+    },
+    {
+      "category": "Autres",
+      "items": [
+        "IA générative",
+        "Prompt engineering"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "aws",
+      "company": "Amazon Web Services",
+      "location": "Dublin, Irlande",
+      "url": "https://aws.amazon.com/",
+      "logo": {
+        "src": "images/aws.png",
+        "width": 225,
+        "height": 225,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "aws-sde",
+          "role": "Software Development Engineer",
+          "start": "2022-12",
+          "end": "2026-06",
+          "summary": "Travail sur le plan de contrôle d'AWS Lambda, responsable de l'orchestration, du stockage et de l'optimisation de la création et de la mise à jour des fonctions serverless à grande échelle. Contributions à plusieurs services internes couvrant la gestion du code, son optimisation et l'infrastructure de déploiement — en portant des initiatives techniques transverses, l'excellence opérationnelle et le mentorat technique.",
+          "highlights": [
+            "Piloté de bout en bout la mise en œuvre technique de trois initiatives majeures du plan de contrôle Lambda, dont Lambda Managed Instances — conception détaillée de l'architecture et coordination entre plusieurs organisations d'ingénierie.",
+            "Mené une réduction significative des coûts S3, avec 70 % de stockage en moins (200 Po) ; stabilisé en parallèle un système d'optimisation critique par déduplication des artefacts de code — près de 50 % de stockage d'artefacts en moins — et amélioré les traitements de fond, résolvant des incidents hebdomadaires récurrents affectant des milliers de fonctions.",
+            "Conçu et implémenté en Go une architecture de pipeline à base de canaux permettant un traitement parallèle flexible, réduisant de 50 % le temps de traitement de bout en bout.",
+            "Résolu un bug présent depuis le premier jour dans l'optimisation des fonctions, qui provoquait silencieusement des échecs aléatoires toutes les ~10 000 créations ou mises à jour de fonctions depuis le lancement du service.",
+            "Refondu les frameworks de tests d'intégration de l'équipe pour permettre une exécution indépendante, élargir la couverture des parcours critiques et supprimer des failles de sécurité, faisant passer les rollbacks hebdomadaires de plus de 20 à quasiment zéro."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "lambda-managed-instances",
+              "label": "Piloter le lancement des Managed Instances"
+            },
+            {
+              "slug": "background-job-load-shedding",
+              "label": "Le bug le plus difficile que j’aie résolu"
+            },
+            {
+              "slug": "lambda-go-pipeline",
+              "label": "Réécrire un pipeline en Go"
+            },
+            {
+              "slug": "aws-scrum-process",
+              "label": "Repenser le fonctionnement de l’équipe"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Langages",
+          "items": [
+            "Java",
+            "Go",
+            "Python",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Cloud & infra",
+          "items": [
+            "AWS",
+            "EC2",
+            "DynamoDB",
+            "SQS",
+            "ASG",
+            "Lambda",
+            "CloudWatch",
+            "Serverless"
+          ]
+        },
+        {
+          "category": "Frameworks",
+          "items": [
+            "Guice",
+            "JUnit",
+            "AssertJ",
+            "Lombok"
+          ]
+        },
+        {
+          "category": "Savoir-être",
+          "items": [
+            "Conception de services",
+            "Conduite de projet",
+            "Mentorat"
+          ]
+        },
+        {
+          "category": "Autres",
+          "items": [
+            "IA générative",
+            "Prompt engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swift",
+      "company": "SWIFT",
+      "location": "La Hulpe, Belgique",
+      "url": "https://www.swift.com/",
+      "logo": {
+        "src": "images/swift.png",
+        "width": 80,
+        "height": 80,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "swift-senior",
+          "role": "Ingénieur logiciel senior",
+          "start": "2020-08",
+          "end": "2022-11",
+          "summary": "Intégré l'équipe construisant la solution de connectivité de messagerie instantanée sur le réseau Swift — réception des messages des institutions financières via des API REST et des brokers de files de messages, puis transmission sécurisée vers le réseau. Conception et livraison de fonctionnalités améliorant la fiabilité et la scalabilité de la solution.",
+          "highlights": [
+            "Construit une chaîne complète de tests de bout en bout et de charge, remplaçant un processus manuel et permettant à l'équipe d'identifier et de résoudre les goulets d'étranglement avant la production.",
+            "Mis en place des pipelines CI/CD avec analyse statique sur plusieurs composants, améliorant la qualité du code et automatisant les déploiements."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "load-testing-stack",
+              "label": "Automatiser les tests de performance"
+            },
+            {
+              "slug": "swift-test-automation",
+              "label": "Reconstruire l’automatisation des tests et la CI/CD"
+            }
+          ]
+        },
+        {
+          "id": "swift-developer",
+          "role": "Développeur / Ingénieur systèmes",
+          "start": "2016-04",
+          "end": "2019-10",
+          "summary": "Membre de l'équipe back-end développant l'interface de messagerie multiplateforme pour l'échange sécurisé d'informations financières entre organisations bancaires et clients corporate, déployable sur Windows, Red Hat, SunOS et AIX.",
+          "highlights": [
+            "Développé un microservice cloud pour gérer les relations entre institutions financières, permettant un échange d'informations financières sûr et fiable entre organisations bancaires et clients corporate.",
+            "Construit un système de reconnaissance d'entités nommées (NER) dans le cadre d'une preuve de concept NLP, extrayant des informations structurées de données financières non structurées.",
+            "Amélioré la couverture des suites de tests unitaires et d'intégration, renforçant la fiabilité d'une application multiplateforme."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "swift-db-migration",
+              "label": "Moderniser la migration de la base de données"
+            },
+            {
+              "slug": "swift-cloud-secondment",
+              "label": "Reconstruire un monolithe en microservices"
+            },
+            {
+              "slug": "swift-nlp-lab",
+              "label": "Construire un prototype NLP"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Langages",
+          "items": [
+            "Java",
+            "C/C++",
+            "Python",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Frameworks",
+          "items": [
+            "Spring Boot",
+            "gRPC",
+            "JPA",
+            "JUnit",
+            "Mockito",
+            "JMeter"
+          ]
+        },
+        {
+          "category": "Infra & outils",
+          "items": [
+            "Kafka",
+            "IBM MQ",
+            "ActiveMQ",
+            "Docker Swarm",
+            "REST APIs",
+            "Jenkins",
+            "SonarQube",
+            "CI/CD",
+            "Ansible",
+            "Grafana",
+            "InfluxDB",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intergraph",
+      "company": "Intergraph Belgium — Hexagon Safety & Infrastructure",
+      "location": "Bruxelles, Belgique",
+      "url": "https://www.octave.com/?utm_easyredir=intergraph.com",
+      "logo": {
+        "src": "images/intergraph.svg",
+        "width": 1000,
+        "height": 1000,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "intergraph-system-engineer",
+          "role": "Ingénieur systèmes",
+          "start": "2013-04",
+          "end": "2016-04",
+          "summary": "Analyse, conception, implémentation et support d'applications critiques pour la sécurité publique, sur les solutions de prise d'appel et de dispatching de la Police fédérale et locale belge et des services d'incendie et d'aide médicale urgente.",
+          "highlights": [
+            "Double rôle d'analyste métier et de responsable technique pour une application de mapping XML vers base de données ; recueil des besoins auprès des parties prenantes et encadrement d'une équipe de 4 personnes de la conception à la livraison.",
+            "Architecturé et implémenté une plateforme à base de plugins, permettant aux clients de gérer des structures de données complexes via une interface intuitive — développement indépendant des structures de données et mise sur le marché accélérée.",
+            "Optimisé l'algorithme soundex avec une structure trie et des mises à jour groupées, ramenant les temps de mise à jour de 8 heures à quelques minutes et éliminant le temps de calcul comme goulet d'étranglement.",
+            "Développé des outils internes (comparateur XML, validateur de format de fichier) et automatisé le patching des builds et l'installation, réduisant fortement le travail manuel de l'équipe."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "intergraph-excel-ingestion",
+              "label": "Reprendre un rôle de lead"
+            },
+            {
+              "slug": "intergraph-plugin-framework",
+              "label": "Défendre une réécriture"
+            },
+            {
+              "slug": "soundex-optimisation",
+              "label": "Résoudre un problème de performance"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Langages",
+          "items": [
+            "C#",
+            "C/C++",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Infra & outils",
+          "items": [
+            "Oracle DB",
+            "Jenkins",
+            "SVN"
+          ]
+        },
+        {
+          "category": "Savoir-être",
+          "items": [
+            "Analyse des besoins",
+            "Conduite de projet"
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "dpgmedia",
+      "name": "DpgMedia",
+      "summary": "Plateforme d'interaction en temps réel avec les auditeurs, écrite en Go.",
+      "url": "https://github.com/Starterware/DpgMedia",
+      "stack": [
+        "Go"
+      ],
+      "includeInPdf": false
+    },
+    {
+      "id": "mycraft",
+      "name": "MyCraft",
+      "summary": "Un moteur de monde voxel développé en Java.",
+      "url": "https://github.com/Starterware/MyCraft",
+      "stack": [
+        "Java"
+      ],
+      "includeInPdf": false
+    },
+    {
+      "id": "chess",
+      "name": "Chess",
+      "summary": "Un jeu et un moteur d'échecs, écrits en C# pour le plaisir.",
+      "url": "https://github.com/Starterware/Chess",
+      "stack": [
+        "C#"
+      ],
+      "includeInPdf": false
+    }
+  ],
+  "education": [
+    {
+      "id": "ulb",
+      "institution": "Université Libre de Bruxelles",
+      "location": "Bruxelles, Belgique",
+      "url": "https://www.ulb.be/",
+      "logo": {
+        "src": "images/ulb.png",
+        "width": 100,
+        "height": 100,
+        "alt": ""
+      },
+      "degrees": [
+        {
+          "id": "ulb-master-engineering",
+          "degree": "Master en ingénierie informatique",
+          "start": "2012-09",
+          "end": "2013-06",
+          "notes": [
+            "Master complémentaire"
+          ],
+          "includeInPdf": true
+        },
+        {
+          "id": "ulb-cs",
+          "degree": "Bachelier et Master en sciences informatiques",
+          "start": "2007-09",
+          "end": "2012-06",
+          "notes": [
+            "Finalité intelligence artificielle",
+            "Mémoire réalisé à l'IRIDIA ULB : « Formal Verification of Flexibility in Swarm Robotic Systems »"
+          ],
+          "includeInPdf": true
+        }
+      ]
+    }
+  ],
+  "interests": [
+    {
+      "id": "competitions",
+      "name": "Concours de programmation",
+      "detail": "Résoudre des défis algorithmiques, seul ou en équipe."
+    },
+    {
+      "id": "books",
+      "name": "Lecture",
+      "detail": "Élargir continuellement mes connaissances en lisant sur des sujets variés."
+    },
+    {
+      "id": "training",
+      "name": "Callisthénie, gymnastique, yoga",
+      "detail": "M'entraîner plusieurs fois par semaine pour rester en forme."
+    },
+    {
+      "id": "boardsports",
+      "name": "Surf, snowboard, wakeboard, longboard",
+      "detail": "Voyager pour pratiquer ces sports dès que possible."
+    }
+  ]
+}

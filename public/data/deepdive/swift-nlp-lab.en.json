@@ -1,0 +1,45 @@
+{
+  "slug": "swift-nlp-lab",
+  "lang": "en",
+  "title": "Teaching a model to read addresses out of free-form text",
+  "question": "Tell me about a time you had to learn an entirely new domain.",
+  "experienceId": "swift-developer",
+  "tags": [
+    "machine learning",
+    "NLP",
+    "spaCy",
+    "Python",
+    "research"
+  ],
+  "star": {
+    "situation": [
+      "I dedicated one day per week for a year to the company's R&D innovation lab, exploring how emerging technologies could automate and optimise manual, text-heavy operations."
+    ],
+    "task": [
+      "Build a machine learning model capable of parsing unstructured, free-form text fields to accurately extract structured physical address components."
+    ],
+    "action": [
+      "Domain research and pipeline architecture: I consulted computer science professors from ULB to evaluate custom TensorFlow neural network implementations, before identifying and adopting spaCy in Python for a faster, pre-optimised neural network.",
+      "Data engineering and iteration: I curated the training datasets, ran extensive feature engineering using Bloom embeddings and residual CNNs, and trained the model iteratively so it could handle messy, real-world address inputs."
+    ],
+    "result": [
+      "I delivered a functional NLP prototype and a custom validation engine that proved machine learning could structure operational data with good accuracy. The project's success led to presenting our findings and methodology at the Swift Operations Forum in Amsterdam."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Navigating the initial architectural uncertainty with limited time, at one day a week. I consulted computer science professors at ULB to explore building custom neural network architectures in TensorFlow, then pivoted to spaCy in Python once I recognised it offered a far more practical, pre-optimised neural network for our timeline."
+  ],
+  "hardestBug": [
+    "Programmatically determining whether consecutive lines in a free-form text block belonged to the same logical address line or required concatenation. I mitigated it by building structural pattern matchers against the expected output schemas, creating a feedback loop that guided model accuracy during preprocessing."
+  ],
+  "differently": [
+    "I would take full public ownership of my contributions from the start. As the main contributor driving the research, the architecture and the validation tool, I initially undersold my role; owning that impact earlier would have positioned me more effectively as the core technical authority during presentations and internal evaluations."
+  ],
+  "aboutYourself": [
+    "This R&D effort showed me that I am highly adaptable and capable of self-directed technical growth. Operating with high autonomy proved I can quickly translate unfamiliar academic concepts into practical, working software systems."
+  ],
+  "enjoyed": [
+    "Building a custom Python validation tool that generated interactive HTML reports with accuracy summaries, performance graphs and failed case highlights. It made error analysis intuitive by visually highlighting misclassified fields, so we could instantly diagnose whether a failure came from corrupted source data or a model edge case."
+  ]
+}

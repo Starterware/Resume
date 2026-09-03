@@ -1,0 +1,45 @@
+{
+  "slug": "lambda-managed-instances",
+  "lang": "en",
+  "title": "Taking Managed Instances through design, security and rollout",
+  "question": "Tell me about a time you drove a technical initiative that spanned multiple teams.",
+  "experienceId": "aws-sde",
+  "tags": [
+    "technical leadership",
+    "system design",
+    "cross-team",
+    "security",
+    "control plane"
+  ],
+  "star": {
+    "situation": [
+      "AWS launched Managed Instances for Lambda so customers could run functions on EC2 infrastructure with native scaling and cost efficiency. As part of the Code Management & Optimization team, our service had to support function packaging, artifact storage and optimisation for this new execution tier."
+    ],
+    "task": [
+      "I took ownership of my team's initiative: leading the high-level design and the operational readiness review, driving the multi-service deployment, and acting as the primary technical contact for the control plane and data plane partner teams."
+    ],
+    "action": [
+      "Architectural steering and pivot: when the security requirements shifted mid-project from S3 KMS encryption to dedicated artifact encryption at rest, I identified early that full alignment with Lambda On-Demand was no longer possible. I re-architected the design and rewrote the core components before our team could become a blocker.",
+      "Cross-service delivery: I orchestrated end-to-end integration and a zero-customer-impact deployment across several control plane and data plane dependencies, establishing rigorous validation pipelines along the way."
+    ],
+    "result": [
+      "All of the team's code changes and operational readiness requirements landed on schedule with zero customer impact, giving Lambda Managed Instances seamless support from our service."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Adapting to a major architectural shift mid-development. Realising we could not fully mirror Lambda On-Demand, because of the new mandatory artifact encryption-at-rest requirement, meant revisiting our fundamental data flows and rewriting a large part of the codebase under a tight timeline."
+  ],
+  "hardestBug": [
+    "Cross-service failure scenarios during joint testing. Our code interacted with several external control and data plane services, so I regularly had to run exhaustive isolation tests to pinpoint edge-case failures and demonstrate to partner teams that the fault lay in their service layer."
+  ],
+  "differently": [
+    "I would push for an explicit early audit of emerging security and compliance requirements, rather than assuming a new feature paradigm can align fully with legacy execution patterns like Lambda On-Demand."
+  ],
+  "aboutYourself": [
+    "I have the technical depth and the confidence to drive major architectural decisions across organisational boundaries. It showed me I can guide multi-team initiatives, challenge flawed assumptions and pivot a high-level design without giving up the timeline."
+  ],
+  "enjoyed": [
+    "Mapping out the end-to-end system design, finding the subtle edge cases, and reasoning through complex multi-service interactions across the AWS control and data plane ecosystem."
+  ]
+}

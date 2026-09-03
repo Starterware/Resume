@@ -1,0 +1,206 @@
+/* Design tokens.
+   The site deliberately commits to one look — a white A4 sheet lifted off a
+   dark brushed-metal ground — rather than following the OS theme, so the CV
+   reads the same way for every visitor and matches the PDF it produces. */
+:root {
+  /* Steel blue scale. 500 is the canonical steelblue; the darker steps carry
+     text and headings, where 500 alone is too light for AA contrast on white. */
+  --steel-200: #c5dcec;
+  --steel-300: #9dbdd6;
+  --steel-400: #6b9dc2;
+  --steel-500: #4682b4;
+  --steel-600: #3a6d99;
+  --steel-700: #2d5678;
+  --steel-800: #22415b;
+
+  /* The metal ground. */
+  --metal-900: #2b3035;
+  --metal-800: #3d444a;
+  --metal-700: #4a5259;
+  --metal-200: #c3cad1;
+  --metal-100: #dfe4e9;
+
+  /* Neutral greys, for controls that should read as chrome rather than as
+     part of the document. Kept separate from the steel scale so quietening a
+     button never means desaturating the accent. */
+  --grey-100: #f3f5f7;
+  --grey-200: #e7ebef;
+  --grey-300: #d5dbe1;
+
+  /* Paper. */
+  --colour-sheet: #ffffff;
+  --colour-text: #1a1d21;
+  --colour-muted: #5f6b76;
+  --colour-accent: var(--steel-600);
+  --colour-inverse: #ffffff;
+  --colour-rule: #dde3e9;
+  --colour-chip: #eef2f6;
+
+  /* Chrome that sits on the metal rather than on the paper. */
+  --colour-on-metal: var(--metal-100);
+  --colour-on-metal-muted: var(--metal-200);
+  --colour-metal-rule: rgba(255, 255, 255, 0.18);
+
+  --font-body:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* An A4 width scaled up: the printed PDF is still A4, but the screen has
+     room to spare, and the wider sheet lets the two-column rows in the header
+     and contact strip breathe. */
+  --sheet-width: calc(21cm * 1.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-block-size: 100vh;
+  color: var(--colour-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  /* Brushed metal: a broad diagonal sheen, a darker opposing wash, and a fine
+     repeating grain. Kept low-contrast so it reads as material, not pattern. */
+  background-color: var(--metal-800);
+  background-image:
+    linear-gradient(158deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(22deg, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0) 62%),
+    repeating-linear-gradient(
+      104deg,
+      rgba(255, 255, 255, 0.03) 0 2px,
+      rgba(0, 0, 0, 0.03) 2px 4px
+    );
+  background-attachment: fixed;
+}
+
+/* The print route renders the same components onto real paper, so the metal
+   must not leak into the generated PDF. */
+body.is-print {
+  background-color: #fff;
+  background-image: none;
+  color: #111;
+}
+
+a {
+  color: var(--colour-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+}
+
+:focus-visible {
+  outline: 2px solid var(--steel-400);
+  outline-offset: 2px;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+
+/* A "read more" link: a short label followed by a chevron that nudges on
+   hover. Global rather than per-component because the masthead and the
+   experience cards use the same idiom, and Angular's style encapsulation would
+   otherwise mean maintaining it twice. Colours come in as custom properties so
+   it can sit on paper or on the dark band. */
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--read-more-colour, var(--steel-600));
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  /* Atomic: the label and its chevron never split across a line. */
+  white-space: nowrap;
+}
+
+.read-more::after {
+  content: '';
+  inline-size: 0.4rem;
+  block-size: 0.4rem;
+  border-block-start: 1.5px solid currentColor;
+  border-inline-end: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 150ms ease;
+}
+
+.read-more:hover {
+  color: var(--read-more-hover, var(--steel-800));
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.read-more:hover::after {
+  transform: translateX(0.15rem) rotate(45deg);
+}
+
+
+/* The back link on the secondary pages: it sits on the metal above the sheet,
+   not inside it, so it reads as leaving the page rather than as part of the
+   document. Global for the same reason as `.read-more` — two pages use it, and
+   style encapsulation would mean maintaining it twice. */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-end: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--colour-on-metal-muted);
+  text-decoration: none;
+}
+
+.back-link::before {
+  content: '';
+  inline-size: 0.4rem;
+  block-size: 0.4rem;
+  border-block-start: 1.5px solid currentColor;
+  border-inline-end: 1.5px solid currentColor;
+  transform: rotate(-135deg);
+  transition: transform 150ms ease;
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+.back-link:hover::before {
+  transform: translateX(-0.15rem) rotate(-135deg);
+}
+
+
+/* A read-more link that opens a page of its own rather than continuing the
+   sentence. Rotating the chevron is not enough — at 45° increments it only
+   ever points at an edge — so this swaps in a proper diagonal arrow, drawn as
+   an SVG mask over currentColor so it still takes the link's colour. */
+.read-more--opens::after {
+  inline-size: 0.62rem;
+  block-size: 0.62rem;
+  border: 0;
+  transform: none;
+  background-color: currentColor;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>') center / contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>') center / contain no-repeat;
+  transition: transform 150ms ease;
+}
+
+.read-more--opens:hover::after {
+  transform: translate(0.12rem, -0.12rem);
+}

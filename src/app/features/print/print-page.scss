@@ -1,0 +1,262 @@
+/* A faithful port of the original cv.html print layout: the same type scale,
+   the same greys, the same bordered role blocks and tinted skill strip. Sizes
+   are kept in px because that is what the source used — converting them to pt
+   would move every one of them by a rounding step. */
+
+:host {
+  display: block;
+  background: #fff;
+  color: #222;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.55;
+  /* Playwright prints with printBackground, but the tinted skill strip and the
+     contact icons still need this to survive Chrome's colour-saving pass. */
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.cv {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+
+.cv__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #555;
+  margin-bottom: 14px;
+  color: #888;
+}
+
+.cv__name {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+
+  span {
+    font-weight: 700;
+    color: #555;
+  }
+}
+
+.contact-info {
+  align-self: flex-start;
+  text-align: right;
+  font-size: 12.5px;
+  line-height: 1.7;
+  font-weight: 500;
+
+  div {
+    margin-bottom: 2px;
+  }
+}
+
+/* Each entry carries its icon as a left-hand background, which is what keeps
+   the column right-aligned — an inline <img> would not sit on the text edge. */
+.ci {
+  padding: 0 10px 0 24px;
+  background-image: var(--icon);
+  background-size: 17px;
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+.ci--address {
+  --icon: url('/images/address.png');
+}
+
+.ci--phone {
+  --icon: url('/images/phone.png');
+}
+
+.ci--mail {
+  --icon: url('/images/mail.png');
+}
+
+.ci--github {
+  --icon: url('/images/github.png');
+}
+
+.level {
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* ---- Profile ---- */
+
+.profile {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+  text-align: justify;
+}
+
+/* ---- Sections ---- */
+
+.section {
+  margin-bottom: 22px;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  /* A heading must never be the last thing on a page. */
+  break-after: avoid;
+}
+
+/* ---- Entries ---- */
+
+.entry {
+  margin-bottom: 14px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* An employer must never be the last thing on a page: `break-after: avoid`
+   pulls the header onto the next page with the role it introduces, and the
+   role block's own `break-inside: avoid` keeps that role whole. */
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+  break-after: avoid;
+}
+
+.entry-company {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.entry-location {
+  flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 12.5px;
+  color: #888;
+  white-space: nowrap;
+}
+
+.entry-desc {
+  margin-top: 6px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #444;
+  text-align: justify;
+
+  ul {
+    margin: 4px 0 0 20px;
+    color: #444;
+  }
+
+  li {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+}
+
+.entry-separator {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 12px 0 0;
+}
+
+.entry-skills {
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  font-size: 12px;
+  color: #777;
+
+  strong {
+    color: #555;
+    font-weight: 600;
+  }
+}
+
+/* The source separated the groups with a run of non-breaking spaces; a spacer
+   does the same job without putting whitespace in the data. */
+.entry-skills__group::after {
+  content: '';
+  display: inline-block;
+  inline-size: 12px;
+}
+
+/* ---- Role rows inside the bordered block ---- */
+
+.role-section {
+  margin: 6px 0 0 4px;
+  /* Belt and braces with the header's break-after: some engines honour one
+     rule and not the other. */
+  break-before: avoid;
+}
+
+.role-block {
+  border-left: 2px solid #ddd;
+  padding-left: 14px;
+  margin-bottom: 8px;
+  /* Never split a role across two pages. */
+  break-inside: avoid;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.role-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.role-date {
+  flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+}
+
+/* ---- Education ---- */
+
+.edu-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+}
+
+p,
+li {
+  orphans: 2;
+  widows: 2;
+}
+
+/* The generator prints with zero browser margins, so the page margin lives
+   here — which also keeps it identical on every page of a two-page CV. */
+@page {
+  size: A4;
+  margin: 1.1cm 1.3cm;
+}

@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "lang": "en",
+    "updated": "2026-08-27"
+  },
+  "profile": {
+    "name": "Mikaël Lenaertz",
+    "title": "Senior Software Engineer",
+    "location": "Brussels, Belgium",
+    "summary": "Seasoned software engineer with 12+ years of experience designing and operating distributed systems at scale. Proven track record of taking ownership of complex, ambiguous problems and driving them to production with measurable impact and operational excellence. Now seeking a System/Software Engineer role to solve complex system and infrastructure challenges.",
+    "narrative": {
+      "intro": [
+        "My fascination with software didn't start in a classroom; it began the moment my family got access to the internet. Wondering how programs worked under the hood, I wrote my first lines of C at fifteen. That first \"Hello, World!\" on the terminal sparked a lifelong drive for low-level performance and algorithmic efficiency.",
+        "At university, while earning my Master's in Computer Science with Great Distinction and a Master's in Computer Engineering, I thrived on hands-on implementation projects. I built multiplayer game tournament engines over raw sockets, implemented swarm intelligence algorithms like Ant Colony Optimization to solve shortest-path problems, engineered a soccer simulation where I replaced basic default behaviours with machine learning decision models, and constantly helped my peers debug their code. That early passion for algorithms naturally led me to competitive programming, where I honed my ability to dissect complex performance bottlenecks under tight time constraints. Over time, that foundation evolved into a disciplined engineering approach centred on clean code and operational excellence."
+      ],
+      "chapters": [
+        {
+          "id": "intergraph",
+          "company": "Intergraph (Hexagon Safety & Infrastructure)",
+          "role": "System Engineer",
+          "period": "April 2013 – April 2016",
+          "location": "Brussels, Belgium",
+          "paragraphs": [
+            "I started my professional career building mission-critical emergency call-taking and dispatching platforms for the Belgian Police and Fire-Medical departments, where reliability and performance were non-negotiable. Working across C++, C# and Oracle DB, I stepped up as Business Analyst and Tech Lead for a four-person team. Beyond leading client discovery to translate business problems into clean architectures, I focused heavily on system performance and maintainability.",
+            "When monolithic coupling slowed down feature releases, I designed a dynamic C# plugin framework using reflection to replace the fat-client codebase, drastically reducing time-to-market. My biggest breakthrough came when tackling an eight-hour database update bottleneck: by refactoring the legacy Soundex phonetic algorithm using a trie data structure, reverse-engineering un-indexed queries and batching updates, I cut processing times down to just a few minutes. To ensure our releases stayed reliable, I also partnered with the team to build our Jenkins CI/CD pipelines from scratch, eliminating manual deployment errors."
+          ]
+        },
+        {
+          "id": "swift",
+          "company": "SWIFT",
+          "role": "Senior Software Engineer & Systems Developer",
+          "period": "April 2016 – November 2022",
+          "location": "La Hulpe, Belgium",
+          "paragraphs": [
+            "Seeking to tackle distributed architectures at massive scale, I joined SWIFT to work on core financial messaging systems. I spent my early years maintaining a cross-platform C++98 messaging engine across Linux, Windows, AIX and SunOS. I refactored 1000-line legacy functions, modernised database tools into a unified migration framework, and engineered custom thread-safe components to ensure high-throughput stability.",
+            "My role expanded as I was loaned to a cloud engineering team to help transition our legacy core into an event-driven microservices architecture using Java, Apache Kafka, JPA and Docker. I acted as the technical bridge between product, UX and engineering while building out robust automated testing suites. Later, on the instant payments connectivity platform, I built full end-to-end automated load-testing stacks using Ansible to catch bottlenecks before they reached production. Driven by curiosity, I also spent one day a week in SWIFT's R&D Lab engineering an NLP pipeline — spaCy, CNNs and Bloom embeddings — to parse unstructured text into structured physical address data."
+          ]
+        },
+        {
+          "id": "aws",
+          "company": "Amazon Web Services",
+          "role": "Software Development Engineer",
+          "period": "December 2022 – June 2026",
+          "location": "Dublin, Ireland",
+          "paragraphs": [
+            "Most recently at AWS, I worked on the Lambda control plane — the low-level infrastructure responsible for orchestrating, storing, optimising and deploying serverless functions globally at massive scale. I led end-to-end technical implementations across multi-org initiatives, including Lambda Managed Instances and Customer Managed Runtimes.",
+            "A major focus of my work involved customer code optimisation, where I ported and refactored core logic to Go to leverage high concurrency, designing a channel-based pipeline that cut processing latency by 50%. I also drove operational and financial efficiency: I spearheaded a storage optimisation effort that reclaimed 200PB of S3 storage — a 70% reduction — and cut artifact storage by 50% through deduplication, resolving weekly background job failures. Combining deep debugging with system resilience, I uncovered and fixed a day-one bug in function optimisation that caused random failures every ~10,000 function creations, and overhauled integration testing frameworks to bring weekly flaky test rollbacks from 20+ down to near-zero."
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "email": "mikaellenaertz@gmail.com",
+      "sourceCode": "https://github.com/Starterware/Starterware.github.io",
+      "github": "https://github.com/Starterware",
+      "linkedin": "https://www.linkedin.com/in/mika%C3%ABl-lenaertz-7945b065/",
+      "website": "",
+      "phone": "+32 475 85 63 89"
+    },
+    "spokenLanguages": [
+      {
+        "code": "fr",
+        "name": "French",
+        "level": "Native",
+        "flag": {
+          "src": "images/french.jpg",
+          "width": 45,
+          "height": 30,
+          "alt": ""
+        }
+      },
+      {
+        "code": "nl",
+        "name": "Dutch",
+        "level": "Native",
+        "flag": {
+          "src": "images/dutch.jpg",
+          "width": 50,
+          "height": 34,
+          "alt": ""
+        }
+      },
+      {
+        "code": "en",
+        "name": "English",
+        "level": "Fluent",
+        "flag": {
+          "src": "images/english.jpg",
+          "width": 26,
+          "height": 16,
+          "alt": ""
+        }
+      }
+    ],
+    "photo": null
+  },
+  "ui": {
+    "downloadPdf": "PDF version",
+    "sourceCode": "Resume Code",
+    "backToCv": "Back to CV",
+    "deepDiveCta": "More on this role:",
+    "narrative": {
+      "cta": "Read my path",
+      "title": "My path",
+      "journey": "Career journey"
+    },
+    "translationFallback": "This page has not been translated yet and is shown in English.",
+    "present": "Present",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "That link does not point anywhere. Try starting from the CV.",
+    "printedOn": "Generated on",
+    "deepDive": {
+      "situation": "Situation",
+      "task": "Task",
+      "action": "Action",
+      "result": "Result",
+      "reflection": "Reflection",
+      "followUps": {
+        "title": "Typical questions",
+        "whyThisApproach": "Why did you choose that specific approach?",
+        "challenge": "What did you find most challenging?",
+        "hardestBug": "What was the hardest bug?",
+        "teamReaction": "How did your team feel about that decision?",
+        "whatNext": "What happened next?",
+        "differently": "What would you do differently now?",
+        "learned": "What did you learn?",
+        "aboutYourself": "What did you learn about yourself?",
+        "enjoyed": "What did you enjoy most?"
+      }
+    },
+    "sections": {
+      "summary": "Profile",
+      "experience": "Experience",
+      "workExperience": "Work Experience",
+      "projects": "Projects",
+      "skills": "Skills",
+      "education": "Education",
+      "spokenLanguages": "Languages",
+      "interests": "Interests"
+    }
+  },
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        "Java",
+        "Go",
+        "Python",
+        "C#",
+        "C/C++",
+        "Bash"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "items": [
+        "AWS Lambda",
+        "DynamoDB",
+        "SQS",
+        "EC2",
+        "Auto Scaling",
+        "CloudWatch",
+        "Serverless",
+        "Docker Swarm",
+        "Ansible"
+      ]
+    },
+    {
+      "category": "Frameworks",
+      "items": [
+        "Spring Boot",
+        "gRPC",
+        "JPA",
+        "Guice",
+        "JUnit",
+        "Mockito",
+        "AssertJ",
+        "JMeter",
+        "Lombok"
+      ]
+    },
+    {
+      "category": "Data & Messaging",
+      "items": [
+        "Kafka",
+        "IBM MQ",
+        "ActiveMQ",
+        "Oracle",
+        "InfluxDB"
+      ]
+    },
+    {
+      "category": "Practices",
+      "items": [
+        "Service design",
+        "Project leadership",
+        "Mentoring",
+        "CI/CD",
+        "Jenkins",
+        "SonarQube",
+        "Grafana"
+      ]
+    },
+    {
+      "category": "Other",
+      "items": [
+        "GenAI",
+        "Prompt engineering"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "aws",
+      "company": "Amazon Web Services",
+      "location": "Dublin, Ireland",
+      "url": "https://aws.amazon.com/",
+      "logo": {
+        "src": "images/aws.png",
+        "width": 225,
+        "height": 225,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "aws-sde",
+          "role": "Software Development Engineer",
+          "start": "2022-12",
+          "end": "2026-06",
+          "summary": "Worked on AWS Lambda's control plane, responsible for orchestrating, storing, and optimizing the creation and updates of serverless functions at scale. Contributed across multiple internal services spanning code management, code optimization, and deployment infrastructure — driving cross-team technical initiatives, operational excellence, and engineering mentorship.",
+          "highlights": [
+            "Led end-to-end technical implementation of three major Lambda control plane initiatives, including Lambda Managed Instances — architecting low-level designs and coordinating across multiple engineering organisations.",
+            "Drove significant S3 cost reduction, cutting storage by 70% (200PB); simultaneously stabilised a critical optimisation system through code artifact deduplication — achieving a near 50% reduction in artifact storage — and background job improvements that resolved weekly recurring issues impacting thousands of functions.",
+            "Designed and implemented a channel-based pipeline architecture in Go enabling flexible parallel processing, reducing end-to-end processing time by 50%.",
+            "Resolved a day-one bug in function optimisations that had silently caused random failures for every ~10,000 function creations or updates since the service launched.",
+            "Overhauled the team's integration testing frameworks to enable independent execution, broaden business-critical coverage and eliminate security liabilities, reducing weekly rollbacks from 20+ to near-zero."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "lambda-managed-instances",
+              "label": "Leading the Managed Instances rollout"
+            },
+            {
+              "slug": "background-job-load-shedding",
+              "label": "The hardest bug I have debugged"
+            },
+            {
+              "slug": "lambda-go-pipeline",
+              "label": "Rewriting a pipeline in Go"
+            },
+            {
+              "slug": "aws-scrum-process",
+              "label": "Reworking how the team runs"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Languages",
+          "items": [
+            "Java",
+            "Go",
+            "Python",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Cloud & Infra",
+          "items": [
+            "AWS",
+            "EC2",
+            "DynamoDB",
+            "SQS",
+            "ASG",
+            "Lambda",
+            "CloudWatch",
+            "Serverless"
+          ]
+        },
+        {
+          "category": "Frameworks",
+          "items": [
+            "Guice",
+            "JUnit",
+            "AssertJ",
+            "Lombok"
+          ]
+        },
+        {
+          "category": "Soft Skills",
+          "items": [
+            "Service Design",
+            "Project Leadership",
+            "Mentoring"
+          ]
+        },
+        {
+          "category": "Other",
+          "items": [
+            "GenAI",
+            "Prompt Engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swift",
+      "company": "SWIFT",
+      "location": "La Hulpe, Belgium",
+      "url": "https://www.swift.com/",
+      "logo": {
+        "src": "images/swift.png",
+        "width": 80,
+        "height": 80,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "swift-senior",
+          "role": "Senior Software Engineer",
+          "start": "2020-08",
+          "end": "2022-11",
+          "summary": "Joined the team building the instant messaging connectivity solution on the Swift Network — receiving messages from financial institutions via REST APIs and message queue brokers and forwarding them securely to the network. Designed and delivered features that improved the reliability and scalability of the solution.",
+          "highlights": [
+            "Built a full end-to-end and load testing stack, replacing a manual testing process and enabling the team to proactively identify and resolve bottlenecks before they reached production.",
+            "Implemented CI/CD pipelines with static analysis across multiple components, improving code quality and automating deployments."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "load-testing-stack",
+              "label": "Automating performance testing"
+            },
+            {
+              "slug": "swift-test-automation",
+              "label": "Rebuilding test automation and CI/CD"
+            }
+          ]
+        },
+        {
+          "id": "swift-developer",
+          "role": "Developer / Systems Engineer",
+          "start": "2016-04",
+          "end": "2019-10",
+          "summary": "Part of the back-end team building the cross-platform messaging interface for secure financial information exchange between banking organisations and corporate customers, deployable on Windows, Red Hat, SunOS and AIX.",
+          "highlights": [
+            "Developed a cloud-based microservice to manage relationships between financial institutions, enabling secure and reliable financial information exchange across banking organisations and corporate customers.",
+            "Built a Named-Entity Recognition (NER) system as part of an NLP proof-of-concept, extracting structured information from unstructured financial data.",
+            "Improved test coverage across unit and integration test suites, increasing reliability of a cross-platform application."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "swift-db-migration",
+              "label": "Modernising the database migration path"
+            },
+            {
+              "slug": "swift-cloud-secondment",
+              "label": "Rebuilding a monolith as microservices"
+            },
+            {
+              "slug": "swift-nlp-lab",
+              "label": "Building an NLP prototype"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Languages",
+          "items": [
+            "Java",
+            "C/C++",
+            "Python",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Frameworks",
+          "items": [
+            "Spring Boot",
+            "gRPC",
+            "JPA",
+            "JUnit",
+            "Mockito",
+            "JMeter"
+          ]
+        },
+        {
+          "category": "Infra & Tools",
+          "items": [
+            "Kafka",
+            "IBM MQ",
+            "ActiveMQ",
+            "Docker Swarm",
+            "REST APIs",
+            "Jenkins",
+            "SonarQube",
+            "CI/CD",
+            "Ansible",
+            "Grafana",
+            "InfluxDB",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intergraph",
+      "company": "Intergraph Belgium — Hexagon Safety & Infrastructure",
+      "location": "Brussels, Belgium",
+      "url": "https://www.octave.com/?utm_easyredir=intergraph.com",
+      "logo": {
+        "src": "images/intergraph.svg",
+        "width": 1000,
+        "height": 1000,
+        "alt": ""
+      },
+      "roles": [
+        {
+          "id": "intergraph-system-engineer",
+          "role": "System Engineer",
+          "start": "2013-04",
+          "end": "2016-04",
+          "summary": "Analysed, designed, implemented and supported mission-critical software for public safety, working on call-taking and dispatching solutions for the Belgian Federal and Local Police and the Fire-Medical Departments.",
+          "highlights": [
+            "Dual role as Business Analyst and Technical Lead for an XML-to-database mapping application; gathered stakeholder requirements and led a 4-person team through design, code and delivery.",
+            "Architected and implemented a plugin-based platform, enabling customers to manage complex data structures through an intuitive UI — allowing independent data structure development and faster time-to-market.",
+            "Optimised the soundex algorithm with a trie and batched database updates, cutting update times from 8 hours to minutes and eliminating computation time as a bottleneck.",
+            "Built internal tooling (XML comparator, file format validator) and automated build patching and installation, significantly reducing manual work across the team."
+          ],
+          "includeInPdf": true,
+          "deepDives": [
+            {
+              "slug": "intergraph-excel-ingestion",
+              "label": "Stepping into a lead role"
+            },
+            {
+              "slug": "intergraph-plugin-framework",
+              "label": "Making the case for a rewrite"
+            },
+            {
+              "slug": "soundex-optimisation",
+              "label": "Solving a performance problem"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "category": "Languages",
+          "items": [
+            "C#",
+            "C/C++",
+            "Bash"
+          ]
+        },
+        {
+          "category": "Infra & Tools",
+          "items": [
+            "Oracle DB",
+            "Jenkins",
+            "SVN"
+          ]
+        },
+        {
+          "category": "Soft Skills",
+          "items": [
+            "Requirements Analysis",
+            "Project Leadership"
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "dpgmedia",
+      "name": "DpgMedia",
+      "summary": "Real-time listener interaction platform, written in Go.",
+      "url": "https://github.com/Starterware/DpgMedia",
+      "stack": [
+        "Go"
+      ],
+      "includeInPdf": false
+    },
+    {
+      "id": "mycraft",
+      "name": "MyCraft",
+      "summary": "A voxel world engine built in Java.",
+      "url": "https://github.com/Starterware/MyCraft",
+      "stack": [
+        "Java"
+      ],
+      "includeInPdf": false
+    },
+    {
+      "id": "chess",
+      "name": "Chess",
+      "summary": "A chess game and engine, built in C# for the pleasure of it.",
+      "url": "https://github.com/Starterware/Chess",
+      "stack": [
+        "C#"
+      ],
+      "includeInPdf": false
+    }
+  ],
+  "education": [
+    {
+      "id": "ulb",
+      "institution": "Université Libre de Bruxelles",
+      "location": "Brussels, Belgium",
+      "url": "https://www.ulb.be/",
+      "logo": {
+        "src": "images/ulb.png",
+        "width": 100,
+        "height": 100,
+        "alt": ""
+      },
+      "degrees": [
+        {
+          "id": "ulb-master-engineering",
+          "degree": "Master in Computer Engineering",
+          "start": "2012-09",
+          "end": "2013-06",
+          "notes": [
+            "Complementary Master"
+          ],
+          "includeInPdf": true
+        },
+        {
+          "id": "ulb-cs",
+          "degree": "Bachelor and Master in Computer Science",
+          "start": "2007-09",
+          "end": "2012-06",
+          "notes": [
+            "Major in Artificial Intelligence",
+            "Master thesis at IRIDIA ULB: \"Formal Verification of Flexibility in Swarm Robotic Systems\""
+          ],
+          "includeInPdf": true
+        }
+      ]
+    }
+  ],
+  "interests": [
+    {
+      "id": "competitions",
+      "name": "Programming competitions",
+      "detail": "Solving algorithmic challenges, alone or in a team."
+    },
+    {
+      "id": "books",
+      "name": "Books",
+      "detail": "Continuously expanding my knowledge by reading about different topics."
+    },
+    {
+      "id": "training",
+      "name": "Calisthenics, gymnastics, yoga",
+      "detail": "Training several times a week to stay in shape."
+    },
+    {
+      "id": "boardsports",
+      "name": "Surf, snowboard, wakeboard, longboard",
+      "detail": "Travelling to practise these sports whenever I can."
+    }
+  ]
+}

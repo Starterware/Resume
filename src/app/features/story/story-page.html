@@ -1,0 +1,38 @@
+@if (cv(); as data) {
+  <div class="page">
+    <!-- Outside the sheet, on the metal: leaving the page is not part of the
+         document, and the deep dives already read this way. -->
+    <a class="back-link" [routerLink]="['/', lang()]">{{ data.ui.backToCv }}</a>
+
+    <article class="sheet">
+      <header class="story__header">
+        <p class="story__kicker">{{ data.profile.name }} · {{ data.profile.title }}</p>
+        <h1 class="story__title">{{ data.ui.narrative.title }}</h1>
+      </header>
+
+      <div class="story__body">
+        @for (paragraph of data.profile.narrative.intro; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+
+        <h2 class="story__journey">{{ data.ui.narrative.journey }}</h2>
+
+        @for (chapter of data.profile.narrative.chapters; track chapter.id) {
+          <section class="chapter">
+            <header class="chapter__header">
+              <h3 class="chapter__company">{{ chapter.company }}</h3>
+              <p class="chapter__role">{{ chapter.role }}</p>
+              <p class="chapter__meta">{{ chapter.period }} · {{ chapter.location }}</p>
+            </header>
+
+            @for (paragraph of chapter.paragraphs; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </section>
+        }
+      </div>
+    </article>
+  </div>
+} @else {
+  <p class="load-error">CV data could not be loaded.</p>
+}

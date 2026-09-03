@@ -1,0 +1,46 @@
+{
+  "slug": "lambda-go-pipeline",
+  "lang": "en",
+  "title": "Rewriting the Lambda package pipeline in Go",
+  "question": "Tell me about a time you replaced a critical system running at scale.",
+  "experienceId": "aws-sde",
+  "tags": [
+    "Go",
+    "concurrency",
+    "pipeline architecture",
+    "control plane",
+    "integration testing"
+  ],
+  "star": {
+    "situation": [
+      "The existing Java pipeline that optimised AWS Lambda function ZIP packages, with and without layers, and ingested them into the data plane format was hard to maintain, short on throughput, and dependent on legacy S3 notifications."
+    ],
+    "task": [
+      "I was put in charge of designing and implementing a high-performance replacement service in Go supporting both SQS-driven and direct HTTP invocation, and of refactoring the control plane orchestration so it handled function layer edge cases cleanly."
+    ],
+    "action": [
+      "Pipeline engineering in Go: I designed a concurrent, channel-based pipeline with adaptive interfaces for dual SQS and HTTP handling, replacing the legacy Java version and cutting processing latency by 50%.",
+      "Control plane refactoring: I joined an away team to refactor the orchestration service that fetches layers and organises storage. I ended up rewriting most of the component to cover missing edge cases such as Lambda@Edge, and built a rapid integration testing framework around it.",
+      "Production crisis recovery: when a legacy background job concept scaled poorly in a major AWS region and started impacting control plane operations, I designed and deployed a deduplicated database concept within a week, eliminating redundant function copies and letting global rollouts resume safely."
+    ],
+    "result": [
+      "End-to-end package processing time halved, automated test coverage held across the edge cases, and regional scaling was restored during a high-severity control plane bottleneck."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Safely executing the multi-phase migration from the legacy path to the new Go engine, particularly managing new state concepts such as function activation status. The hardest operational hurdle was the legacy background job model for ZIP functions failing to scale in a massive region, which meant re-architecting the database data model under pressure to eliminate data copying and unblock global deployment."
+  ],
+  "hardestBug": [
+    "Subtle architectural edge cases across the different Lambda variants — Lambda@Edge in particular — which needed specialised processing paths that were poorly documented in the legacy codebase and only surfaced during deep scenario testing."
+  ],
+  "differently": [
+    "I would push for end-to-end stress and performance testing under synthetic noisy-neighbour conditions early in the design phase. Our functional integration testing was exhaustive, but validating control plane behaviour under heavy concurrent load would have exposed the regional background job scaling limits before production did."
+  ],
+  "aboutYourself": [
+    "I learned to be patient when diving into massive, unfamiliar codebases. Systems that feel overwhelming at first become manageable once you methodically trace the data flows, ask targeted questions, and build safety nets through testing frameworks."
+  ],
+  "enjoyed": [
+    "Working directly with principal engineers in the US, debating complex distributed workflows and resolving high-impact system bottlenecks together."
+  ]
+}

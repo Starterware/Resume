@@ -1,0 +1,46 @@
+{
+  "slug": "background-job-load-shedding",
+  "lang": "en",
+  "title": "The background job that was starving the API",
+  "question": "Tell me about the hardest bug you have debugged.",
+  "experienceId": "aws-sde",
+  "tags": [
+    "debugging",
+    "operational excellence",
+    "reliability",
+    "databases",
+    "on-call"
+  ],
+  "star": {
+    "situation": [
+      "After the service migrated from the US to Ireland, the team was being paged 50 or more times a week — dozens of those in the middle of the night — because of API load shedding, even though our instances were heavily over-provisioned."
+    ],
+    "task": [
+      "I took on finding the root cause of the resource exhaustion, ending the operational nightmare, and re-architecting the system so the load shedding could not come back."
+    ],
+    "action": [
+      "Root cause analysis: I dug into the system and found that onboarding high-volume ZIP functions — the workload had previously been only 10% image functions — had broken the background job architecture. The jobs were scanning the whole database daily and filtering the active records locally on the host nodes instead of at the query layer.",
+      "Query and architectural refactoring: I designed a simplified querying framework keyed on entity state and targeted timestamps, so a host only fetched the records that actually needed work, bringing per-host execution under a minute.",
+      "State sharding and rate limiting: to stay under the database partition throughput limits and avoid throttling, I introduced state sharding and rate limiting, letting several concurrent background workers each process their own dedicated shard safely."
+    ],
+    "result": [
+      "API load shedding and the operational pages disappeared entirely, per-host work dropped to under a minute, and background job throughput went up tenfold with dynamic scaling built in."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Diagnosing why high-priority API calls were being dropped in production. The service had only recently moved from the US to Europe, so team knowledge was thin and the existing operational metrics were poorly understood, which made it hard to pin the cause on background scans starving the API threads."
+  ],
+  "hardestBug": [
+    "Tracing the hidden interaction between the database partition limits and background job host execution. Seeing that local in-memory filtering was both burning CPU and thrashing partition throughput meant correlating disparate database metrics with host-level load shedding logs."
+  ],
+  "differently": [
+    "I would master the service's existing telemetry and query metrics first, and build custom dashboards, before dropping into code-level debugging. Working on an inherited service without a solid grasp of its metric boundaries slowed the early diagnosis down."
+  ],
+  "aboutYourself": [
+    "I learned to swallow my pride and ask for help earlier. During one intense on-call week I was paged 53 times, half of them in the middle of the night, and it taught me that pushing through in isolation is far less effective than leaning on the team during an operational crisis."
+  ],
+  "enjoyed": [
+    "Watching the impact land on the CloudWatch dashboards: page volume dropping to zero, API drops flatlining, and background job throughput spiking tenfold."
+  ]
+}

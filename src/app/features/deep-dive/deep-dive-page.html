@@ -1,0 +1,78 @@
+@if (deepDive(); as loaded) {
+  <div class="page">
+    <a class="back-link" [routerLink]="['/', lang()]">{{ cv()?.ui?.backToCv }}</a>
+
+    <article class="sheet">
+      <header class="deep-dive__header">
+        <h1 class="deep-dive__title">{{ loaded.content.title }}</h1>
+        <blockquote class="deep-dive__question">{{ loaded.content.question }}</blockquote>
+        @if (loaded.content.tags.length) {
+          <ul class="deep-dive__tags" aria-label="Tags">
+            @for (tag of loaded.content.tags; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+        }
+      </header>
+
+      <main>
+        @if (loaded.fallback) {
+          <p class="fallback-notice" role="status">{{ cv()?.ui?.translationFallback }}</p>
+        }
+
+        @if (cv(); as data) {
+          <cv-section [title]="data.ui.deepDive.situation">
+            @for (paragraph of loaded.content.star.situation; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </cv-section>
+          <cv-section [title]="data.ui.deepDive.task">
+            @for (paragraph of loaded.content.star.task; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </cv-section>
+          <cv-section [title]="data.ui.deepDive.action">
+            @for (paragraph of loaded.content.star.action; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </cv-section>
+          <cv-section [title]="data.ui.deepDive.result">
+            @for (paragraph of loaded.content.star.result; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </cv-section>
+
+          @if (loaded.content.reflection.length) {
+            <cv-section [title]="data.ui.deepDive.reflection">
+              @for (paragraph of loaded.content.reflection; track paragraph) {
+                <p>{{ paragraph }}</p>
+              }
+            </cv-section>
+          }
+
+          <!-- The questions an interviewer asks once the STAR answer is out.
+               Each is optional: an older story may not answer all of them, and
+               the section as a whole disappears if none are present. -->
+          @if (followUps().length) {
+            <cv-section [title]="data.ui.deepDive.followUps.title">
+              <dl class="follow-ups">
+                @for (item of followUps(); track item.key) {
+                  <div class="follow-up">
+                    <dt class="follow-up__question">
+                      {{ data.ui.deepDive.followUps[item.key] }}
+                    </dt>
+                    <dd class="follow-up__answer">
+                      @for (paragraph of item.answer; track paragraph) {
+                        <p>{{ paragraph }}</p>
+                      }
+                    </dd>
+                  </div>
+                }
+              </dl>
+            </cv-section>
+          }
+        }
+      </main>
+    </article>
+  </div>
+}

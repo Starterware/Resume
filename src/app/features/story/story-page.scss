@@ -1,0 +1,109 @@
+.page {
+  max-inline-size: var(--sheet-width);
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.sheet {
+  --sheet-pad-x: 2.25rem;
+
+  display: block;
+  background: var(--colour-sheet);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24),
+    0 14px 30px rgba(0, 0, 0, 0.34),
+    0 44px 80px rgba(0, 0, 0, 0.28);
+}
+
+.story__header {
+  padding: 1.9rem var(--sheet-pad-x) 1.8rem;
+  background: linear-gradient(135deg, var(--steel-700), var(--steel-800));
+  color: #fff;
+}
+
+/* Kicker above the title, as in the CV masthead: the name identifies whose
+   path this is without competing with the heading. */
+.story__kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--steel-200);
+}
+
+.story__title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.story__body {
+  padding: 1.7rem var(--sheet-pad-x) 1.9rem;
+
+  p {
+    margin: 0 0 1.1rem;
+    max-inline-size: 72ch;
+    text-align: justify;
+    hyphens: auto;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}
+
+/* Divides the opening from the employer-by-employer part. */
+.story__journey {
+  margin: 2rem 0 1.4rem;
+  padding-block-end: 0.4rem;
+  border-block-end: 1px solid var(--colour-rule);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--colour-accent);
+}
+
+.chapter + .chapter {
+  margin-block-start: 1.8rem;
+}
+
+/* Company, role and dates stacked rather than spread across a row: the story
+   reads top to bottom, and a right-aligned date would pull the eye sideways
+   out of the prose. */
+.chapter__header {
+  margin-block-end: 0.8rem;
+}
+
+.chapter__company {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--steel-800);
+}
+
+.chapter__role {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.chapter__meta {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+}
+
+.load-error {
+  max-inline-size: var(--sheet-width);
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--colour-sheet);
+  border-radius: 2px;
+}

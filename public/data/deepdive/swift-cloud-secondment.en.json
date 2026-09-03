@@ -1,0 +1,41 @@
+{
+  "slug": "swift-cloud-secondment",
+  "lang": "en",
+  "title": "Rebuilding a monolith segment as an event-driven microservice",
+  "question": "Tell me about a time you had to align conflicting stakeholders.",
+  "experienceId": "swift-developer",
+  "tags": [
+    "microservices",
+    "Kafka",
+    "stakeholder management",
+    "Java"
+  ],
+  "star": {
+    "situation": [
+      "Because of my domain expertise, I was loaned for a year to a specialised cloud engineering team, to move a core segment of the legacy financial application into a cloud-native microservices architecture."
+    ],
+    "task": [
+      "The goal was to port legacy logic into a new stack — Java, Kafka, JPA, Docker. But the legacy application was tightly coupled, so we had to re-architect the service from scratch, from a blend of historical specifications and entirely new cloud requirements."
+    ],
+    "action": [
+      "Cross-functional alignment: I was the technical bridge between product owners, UX designers and engineering. When requirements conflicted — UX asking for late specification changes, or technical writers misreading legacy constraints — I ran alignment meetings to establish a single source of truth.",
+      "Modern engineering: I implemented standard JPA data layers and orchestrated event-driven communication with Apache Kafka. Just as importantly, I introduced comprehensive automated unit and integration testing."
+    ],
+    "result": [
+      "Delivered the cloud-native microservice on schedule, and established a blueprint for how the company could systematically break its monolith into event-driven services."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Managing fragmented documentation and conflicting stakeholder requirements, particularly where the official requirements lacked the historical and technical context behind them."
+  ],
+  "hardestBug": [
+    "An asynchronous data integrity issue during Kafka event replays. When certain business events were squashed by compaction during a replay, it triggered foreign key violations on linked entity deletions. I resolved it by refactoring the event-handling lifecycle and auditing data integrity at the application level during replays."
+  ],
+  "learned": [
+    "Stakeholder management and conflict resolution, and how to communicate technical limitations to non-technical teams by aligning on shared project goals rather than on the constraint itself."
+  ],
+  "enjoyed": [
+    "The move to modern practice — Docker, Kafka event streams, JPA, and the confidence that automated integration testing gives you."
+  ]
+}

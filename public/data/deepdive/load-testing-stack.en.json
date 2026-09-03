@@ -1,0 +1,45 @@
+{
+  "slug": "load-testing-stack",
+  "lang": "en",
+  "title": "Putting JMeter, InfluxDB and Grafana in the release pipeline",
+  "question": "Tell me about a time you improved how your team worked, not just what it shipped.",
+  "experienceId": "swift-senior",
+  "tags": [
+    "testing",
+    "performance",
+    "JMeter",
+    "Grafana",
+    "CI/CD"
+  ],
+  "star": {
+    "situation": [
+      "The team had no continuous performance feedback. Load testing meant manual, static JMeter runs that needed tedious hand-editing of test variables between executions, and nothing kept a history of the metrics."
+    ],
+    "task": [
+      "Modernise and automate the load and performance testing suite: remove the manual variable maintenance, move execution into CI/CD, and make performance trends visible in real time."
+    ],
+    "action": [
+      "Dynamic load suite design: I refactored the JMeter performance scripts to take the new test data formats and to parameterise the execution variables, so nothing had to be edited by hand between runs.",
+      "CI/CD and telemetry pipeline: I integrated JMeter into the Jenkins pipelines so load tests ran automatically ahead of a release, streamed the live metrics from JMeter into InfluxDB, and built custom Grafana dashboards on top for immediate visual feedback."
+    ],
+    "result": [
+      "Performance feedback arrived while the build was still running: the team could spot regressions during pre-release builds and validate the system's load capacity safely, instead of discovering both in production."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Working through sparse JMeter documentation and debugging script behaviour. JMeter scripting and its backend listeners were unfamiliar to the whole team, so building the automated pipeline took a trial-and-error approach to get the data streams mapping accurately onto the InfluxDB schemas."
+  ],
+  "hardestBug": [
+    "Silent failures in JMeter runs executing inside headless Jenkins agents. When an environment-specific endpoint was unreachable or a variable failed to evaluate, JMeter would fail with no clear error output, which made it hard to tell whether the fault lay in the load generator or in the target service."
+  ],
+  "differently": [
+    "I would put logging and automated smoke tests in from the start. Simple pre-flight checks — validating that the endpoints are reachable and printing the evaluated variable state before spinning up a full load test — save a great deal of debugging time."
+  ],
+  "aboutYourself": [
+    "I have the confidence and adaptability to take on complex, unfamiliar technology that nobody else on the team knows, and turn that ambiguity into a fully automated, production-ready solution."
+  ],
+  "enjoyed": [
+    "Watching the Grafana dashboards fill in live during a run, giving the whole team clear, immediate metrics on how a release performed."
+  ]
+}

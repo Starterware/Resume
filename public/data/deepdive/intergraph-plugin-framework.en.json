@@ -1,0 +1,45 @@
+{
+  "slug": "intergraph-plugin-framework",
+  "lang": "en",
+  "title": "Making the case for a rewrite, then building the plugin framework",
+  "question": "Tell me about a time you convinced someone to invest in technical work.",
+  "experienceId": "intergraph-system-engineer",
+  "tags": [
+    "solution architecture",
+    "influence",
+    "legacy migration",
+    "C#"
+  ],
+  "star": {
+    "situation": [
+      "The legacy desktop client had evolved into a monolithic architecture where tight coupling made adding new features slow, fragile and risky."
+    ],
+    "task": [
+      "I needed to secure manager buy-in for a partial system rewrite and architect a scalable, plug-and-play framework that would decouple new modules from the core desktop engine."
+    ],
+    "action": [
+      "Consultative discovery and pitch: I presented a clear business case to management demonstrating the long-term return on modernising the core client, contrasting the rising cost of technical debt against faster future feature deployment.",
+      "Architecture and quality controls: I architected and implemented a dynamic plugin framework using C# reflection. The design decoupled individual modules, letting developers build, load and integrate new features dynamically without modifying or recompiling existing modules.",
+      "UX and validation improvements: I improved the desktop user experience by adding real-time validation feedback directly within dynamic UI tables, preventing invalid data entry before form submission."
+    ],
+    "result": [
+      "The new architecture drastically cut time-to-market for subsequent features, simplifying module development while stabilising the legacy desktop application and delivering a smoother user experience."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Balancing an aggressive delivery schedule while accurately porting complex legacy business logic into the new decoupled architecture without introducing regressions."
+  ],
+  "hardestBug": [
+    "Debugging complex Windows Forms UI tables whose advanced behaviour pushed the native WinForms event lifecycle past its limits. Standard event handlers were firing out of the expected sequence during dynamic layouts, which meant going down into the low-level UI render loops to resolve the state inconsistencies."
+  ],
+  "differently": [
+    "I would build a suite of automated regression tests to explicitly verify parity between the old and refactored versions. Porting legacy business logic relies heavily on manual verification if the safety nets are not in place upfront; having automated behavioural tests to validate that the output remained identical across both implementations would have saved significant debugging time and given us instant confidence."
+  ],
+  "aboutYourself": [
+    "Architecting this framework showed me that I enjoy solving foundational engineering problems that empower other developers. I thrive when creating structure out of chaotic legacy setups, and when thinking through the long-term downstream impact of architectural choices."
+  ],
+  "enjoyed": [
+    "Seeing how clean, decoupled and simple the individual modules became once the framework was live, turning complex feature additions into straightforward plugins."
+  ]
+}

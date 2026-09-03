@@ -1,0 +1,44 @@
+{
+  "slug": "soundex-optimisation",
+  "lang": "en",
+  "title": "Turning an eight-hour database update into minutes",
+  "question": "Tell me about a performance problem you solved.",
+  "experienceId": "intergraph-system-engineer",
+  "tags": [
+    "performance",
+    "algorithms",
+    "databases",
+    "C#"
+  ],
+  "star": {
+    "situation": [
+      "The system relied on a legacy Soundex pipeline for processing street name data that already suffered from severe performance issues, taking up to eight hours to execute across millions of records."
+    ],
+    "task": [
+      "My explicit task was simply to add a new set of prefixes and suffixes to the phonetic cleaning logic. But because the eight-hour execution time made local testing and database validation agonisingly slow, I took the initiative to optimise both the matching algorithm and the underlying database layer."
+    ],
+    "action": [
+      "Proactive algorithmic refactoring: to clean street names efficiently before Soundex encoding, I implemented a prefix trie in C#. A trie makes almost no difference for a single record, but scaling it across millions eliminated redundant lookups and cut the algorithmic execution time in half.",
+      "Database optimisation: lacking direct access to the legacy querying application's source, I reverse-engineered the query execution patterns. I turned individual sequential row updates into high-throughput batched multi-update queries to write the computed Soundex values back into the target database efficiently."
+    ],
+    "result": [
+      "Total processing time fell from eight hours to a few minutes, turning a painful testing bottleneck into a system-wide performance breakthrough across millions of records."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Reverse-engineering the end-to-end data flow and diagnosing the database performance bottlenecks without direct visibility into the legacy application's source code."
+  ],
+  "hardestBug": [
+    "Discovering why the legacy C# process was forced to run in Debug mode. Stepping through execution uncovered a hidden off-by-one index error that caused memory boundary exceptions in Release mode. Resolving it let us compile and run optimised Release builds safely."
+  ],
+  "differently": [
+    "I would build an automated comparison tool upfront to continuously validate parity between the old and new implementations. Early on I relied too heavily on testing against a local instance of the product. A standalone verification script from the start would have given immediate feedback and isolated algorithm correctness from local environment state."
+  ],
+  "aboutYourself": [
+    "This project reinforced that I excel at deep technical troubleshooting, and at applying theoretical computer science to practical, high-impact business problems. It showed me that I thrive on complex, low-visibility performance challenges where I can dig into the data structures and the query mechanics."
+  ],
+  "enjoyed": [
+    "Applying advanced data structures like tries to a real system bottleneck, and seeing an eight-hour process collapse into a matter of minutes."
+  ]
+}

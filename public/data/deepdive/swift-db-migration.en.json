@@ -1,0 +1,42 @@
+{
+  "slug": "swift-db-migration",
+  "lang": "en",
+  "title": "Moving backup and restore off Oracle's own tools",
+  "question": "Tell me about a time you replaced a piece of working legacy infrastructure.",
+  "experienceId": "swift-developer",
+  "tags": [
+    "data migration",
+    "Oracle",
+    "C++",
+    "cross-platform"
+  ],
+  "star": {
+    "situation": [
+      "I spent two years on a mission-critical, enterprise-scale SWIFT application used for routing international financial messages between global banking institutions. Its database backup and restore path ran on native, Oracle-specific tooling — which sat awkwardly inside an application that had to compile and behave identically across several operating systems, and which put a core piece of the data path outside the application's own control."
+    ],
+    "task": [
+      "Move backup and restore off those native tools and onto a unified, application-driven migration framework, without interrupting a system handling international financial data. The codebase made that harder than the idea sounds: massive, legacy C++98, with a hybrid architecture of Java web services over a C++ core and an early, partially implemented multi-tenant model that had to be carried across carefully."
+    ],
+    "action": [
+      "Migration framework: I replaced the Oracle-specific backup and restore mechanisms with a single application-driven framework, so the migration path became something the application owned and could reason about rather than something delegated to the database vendor's tooling.",
+      "Legacy refactoring: getting there meant working through highly complex legacy functions running past a thousand lines, and decoupling database logic that had accumulated in them into migration code that could be maintained on its own terms.",
+      "Around it: to get high-throughput thread safety before the modern standard libraries existed, we engineered custom thread-safe string implementations and advanced entity-component concepts; and I spearheaded code security initiatives using Coverity and runtime code guards."
+    ],
+    "result": [
+      "The application's data migration path was significantly modernised and brought under the application's own control, while the system maintained 100% uptime and the compliance standards required for international financial data processing."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "Navigating the sheer scale and constraints of a cross-platform C++98 codebase while bridging synchronous C++ logic with asynchronous Java web services — and doing it to a mechanism that could not be allowed to fail."
+  ],
+  "hardestBug": [
+    "Less a single bug than the friction around finding them: running fully manual integration tests in a complex, multi-OS financial environment, where verifying a migration meant exercising it by hand on every platform. That bottleneck is what motivated my interest in robust automation in the roles that followed."
+  ],
+  "learned": [
+    "Deepened my expertise in enterprise software security with Coverity, in memory management, and in cross-platform compilation guards — the last of which is exactly what makes a database path portable or not."
+  ],
+  "enjoyed": [
+    "Decoupling complex legacy database functions into elegant, maintainable migration code, and the architectural problem-solving around it — including building the custom thread-safe components the core needed."
+  ]
+}

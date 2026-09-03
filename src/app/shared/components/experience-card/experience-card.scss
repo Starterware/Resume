@@ -1,0 +1,199 @@
+/* Spacing lives on the host, not on .company: each card contains exactly one
+   company, so a `.company:last-child` rule would match every one of them and
+   collapse every gap. */
+:host {
+  display: block;
+  margin-block-end: 1.5rem;
+}
+
+:host(:last-of-type) {
+  margin-block-end: 0;
+}
+
+/* The rule runs alongside the roles only — the employer heading above it and
+   the skills panel below it belong to the company, not to any one role. The
+   hairlines that used to sit between consecutive roles stay gone; the hover
+   highlight separates them now. */
+.roles {
+  border-inline-start: 2px solid var(--colour-rule);
+  padding-inline-start: 1.15rem;
+}
+
+.company__header {
+  margin-block-end: 0.9rem;
+}
+
+/* The whole header is the link, not just the name: logo, employer and location
+   are one target, running the full width of the card. The negative inline
+   margin lets the hover tint bleed past the text on both sides. */
+.company__link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.4rem 0.55rem;
+  margin-inline: -0.55rem;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 120ms ease;
+
+  &:hover {
+    background: var(--colour-chip);
+  }
+}
+
+/* Keeps the heading's colour rather than turning link-blue: underlining it on
+   hover is signal enough, and a coloured name would fight the logo. */
+.company__name {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--steel-800);
+}
+
+.company__location {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+}
+
+.role {
+  margin-block-end: 1.4rem;
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+/* Back in place of the hover highlight: without either, two roles at one
+   employer run together. */
+.role + .role {
+  border-block-start: 1px solid var(--colour-rule);
+  padding-block-start: 1.2rem;
+}
+
+.role__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.9rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-block-end: 0.4rem;
+}
+
+.role__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.role__dates {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+  white-space: nowrap;
+}
+
+/* Justified like the profile band. Without hyphenation a measure this long
+   opens rivers of white space, so the browser is allowed to break words. */
+.role__summary {
+  margin: 0 0 0.6rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.role__highlights {
+  margin: 0;
+  padding-inline-start: 1.1rem;
+  text-align: justify;
+  hyphens: auto;
+
+  li {
+    margin-block-end: 0.3rem;
+  }
+}
+
+/* The lead-in sits on the same line as the links, so the whole thing reads as
+   one sentence of further reading rather than a labelled block. */
+.role__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.9rem;
+  margin-block-start: 0.9rem;
+}
+
+.role__more-lead {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--colour-muted);
+}
+
+.role__more-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tinted panel, one row per category, following the original CV. */
+.skills {
+  margin: 1.1rem 0 0;
+  padding: 0.7rem 0.85rem;
+  background: var(--colour-chip);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+.skills__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.7rem;
+  padding-block: 0.4rem;
+
+  &:first-child {
+    padding-block-start: 0;
+  }
+
+  &:last-child {
+    padding-block-end: 0;
+  }
+}
+
+/* Grey, not steel: the labels are signposts, and the chips beside them are
+   what the eye should land on. */
+.skills__category {
+  flex: 0 0 7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--colour-muted);
+}
+
+.skills__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  flex: 1;
+  margin: 0;
+}
+
+/* A white chip on the tinted panel. No shadow: depth would undo the flattening
+   the pale palette is there for. steel-700 is the floor for the label — the
+   next step down measures 3.87:1 on this fill, below AA at this size. */
+.skills__item {
+  padding: 0.14rem 0.62rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--steel-700);
+  font-size: 0.78rem;
+  font-weight: 600;
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "swift-test-automation",
+  "lang": "en",
+  "title": "Rebuilding test automation and CI/CD after both QA engineers left",
+  "question": "Tell me about a time you stepped up when your team lost capacity.",
+  "experienceId": "swift-senior",
+  "tags": [
+    "testing",
+    "automation",
+    "CI/CD",
+    "Ansible",
+    "Jenkins"
+  ],
+  "star": {
+    "situation": [
+      "When I returned to SWIFT for an instant payment project, both QA engineers left the team at the same time, leaving the developers with no automated test execution and no centralised test environments."
+    ],
+    "task": [
+      "I took the lead on consolidating, modernising and automating our end-to-end testing infrastructure, so release quality held while we waited for new QA people to join."
+    ],
+    "action": [
+      "Test suite standardisation: I gathered the Robot Framework test files scattered across several legacy VMs into a single repository, and refactored the messaging tests to handle message exchanges generically across IBM MQ, ActiveMQ and REST endpoints.",
+      "Infrastructure as code: I wrote the Ansible playbooks that provision and configure the multi-VM deployment environments — up to three nodes running Docker Compose — which made automated OS (RedHat) and software version compatibility matrices possible.",
+      "CI/CD modernisation: I built the Jenkins and CloudBees pipelines, migrating from imperative scripts to declarative pipelines and creating Jenkins shared libraries to modularise the pipeline logic."
+    ],
+    "result": [
+      "The manual QA bottleneck disappeared, compatibility testing across complex multi-node setups became fast and automated, and the team gained a suite of developer tools — including an SSH remote-testing tunnel — that sped up their daily testing."
+    ]
+  },
+  "reflection": [],
+  "challenge": [
+    "The slow feedback loops that come with infrastructure-as-code and CI/CD work. Validating Ansible playbooks and Jenkins pipelines meant long end-to-end runs, so I established local testing practices and unit tested the pipeline code through the shared libraries."
+  ],
+  "hardestBug": [
+    "Trying to write dynamic, highly generic logic directly inside Jenkins declarative pipelines. The strict declarative syntax made dynamic execution paths hard to maintain until I moved the complex logic out into reusable Jenkins shared library functions."
+  ],
+  "differently": [
+    "I would adopt Jenkins shared libraries much earlier in the migration. Handling complex, dynamic pipeline logic inside native declarative scripts created friction that the refactor into structured Groovy library code removed."
+  ],
+  "aboutYourself": [
+    "I learned the value of patience on low-visibility, infrastructure-heavy problems. Waiting on slow deployment iterations taught me to plan changes methodically and invest in early feedback loops rather than rushing runs."
+  ],
+  "enjoyed": [
+    "Designing a custom SSH tunnelling utility early on that let developers trigger and debug the automated test suites remotely. Seeing the team adopt and rely on something I built to make their day easier was hugely satisfying."
+  ]
+}

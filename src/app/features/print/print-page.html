@@ -1,0 +1,117 @@
+@if (cv(); as data) {
+  <div class="cv">
+    <header class="cv__header">
+      <h1 class="cv__name">{{ nameParts().given }} <span>{{ nameParts().family }}</span></h1>
+
+      <div class="contact-info">
+        <div>
+          @if (data.profile.contact.github) {
+            <span class="ci ci--github">{{ data.profile.contact.github | prettyUrl }}</span>
+          }
+          <span class="ci ci--address">{{ data.profile.location }}</span>
+        </div>
+        <div>
+          @if (data.profile.contact.phone) {
+            <span class="ci ci--phone">{{ data.profile.contact.phone }}</span>
+          }
+          @if (data.profile.contact.email) {
+            <span class="ci ci--mail">{{ data.profile.contact.email }}</span>
+          }
+        </div>
+        <div>
+          @for (spoken of data.profile.spokenLanguages; track spoken.code) {
+            <span class="ci ci--flag" [style.--icon]="'url(' + spoken.flag?.src + ')'">
+              {{ spoken.name }} <span class="level">· {{ spoken.level }}</span>
+            </span>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- No heading, as in the source CV: the profile reads as the opening
+         paragraph of the document rather than as a section of it. -->
+    <div class="profile">{{ data.profile.summary }}</div>
+
+    <section class="section">
+      <div class="section-title">{{ data.ui.sections.workExperience }}</div>
+
+      @for (company of experience(); track company.id; let lastCompany = $last) {
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-company">{{ company.company }}</span>
+            <span class="entry-location">{{ company.location }}</span>
+          </div>
+
+          <div class="role-section">
+            @for (role of company.roles; track role.id) {
+              <div class="role-block">
+                <div class="role-header">
+                  <span class="role-title">{{ role.role }}</span>
+                  <span class="role-date">
+                    {{ role.start | monthYear: lang() }} – {{ role.end | monthYear: lang() : data.ui.present }}
+                  </span>
+                </div>
+
+                <div class="entry-desc">
+                  {{ role.summary }}
+                  @if (role.highlights.length) {
+                    <ul>
+                      @for (highlight of role.highlights; track highlight) {
+                        <li>{{ highlight }}</li>
+                      }
+                    </ul>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+          @if (company.skills.length) {
+            <div class="entry-skills">
+              @for (group of company.skills; track group.category) {
+                <span class="entry-skills__group">
+                  <strong>{{ group.category }}:</strong> {{ group.items.join(' · ') }}
+                </span>
+              }
+            </div>
+          }
+
+          @if (!lastCompany) {
+            <hr class="entry-separator" />
+          }
+        </div>
+      }
+    </section>
+
+    <section class="section">
+      <div class="section-title">{{ data.ui.sections.education }}</div>
+
+      @for (institution of education(); track institution.id) {
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-company">{{ institution.institution }}</span>
+            <span class="entry-location">{{ institution.location }}</span>
+          </div>
+
+          <div class="role-section">
+            @for (degree of institution.degrees; track degree.id) {
+              <div class="role-block">
+                <div class="role-header">
+                  <span class="role-title">{{ degree.degree }}</span>
+                  <span class="role-date">{{ degree.start.slice(0, 4) }} – {{ degree.end.slice(0, 4) }}</span>
+                </div>
+                @if (degree.notes.length) {
+                  <div class="edu-subtitle">
+                    @for (note of degree.notes; track note) {
+                      <div>{{ note }}</div>
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </section>
+  </div>
+}

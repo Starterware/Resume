@@ -1,0 +1,150 @@
+@if (cv(); as data) {
+  <div class="page">
+    <article class="sheet">
+      <header class="masthead">
+        <!-- Reserved whether or not a photo is set, so adding one later does
+             not shift the header. Website only; the PDF omits it. -->
+        <div class="masthead__photo">
+          @if (data.profile.photo; as photo) {
+            <img
+              class="masthead__photo-image"
+              [src]="photo.src"
+              [width]="photo.width"
+              [height]="photo.height"
+              [alt]="photo.alt"
+            />
+          } @else {
+            <span class="masthead__photo-placeholder" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="12" cy="8.5" r="3.75" />
+                <path d="M4.5 20.5c0-4.1 3.36-6.75 7.5-6.75s7.5 2.65 7.5 6.75" stroke-linecap="round" />
+              </svg>
+            </span>
+          }
+        </div>
+
+        <div class="masthead__identity">
+          <!-- The role reads as a kicker above the name: it is what a reader is
+               scanning for, and it lets the name carry the size on its own. -->
+          <p class="masthead__kicker">{{ data.profile.title }}</p>
+          <h1 class="masthead__name">{{ data.profile.name }}</h1>
+          <p class="masthead__location">{{ data.profile.location }}</p>
+        </div>
+
+        <!-- A direct child of the grid, not nested in the identity column:
+             only direct children take part in the grid's areas. The band runs
+             full width; the paragraph inside it caps the reading measure. -->
+        <div class="masthead__summary">
+          <!-- The link runs on from the prose rather than sitting under it, so
+               it reads as the sentence continuing. -->
+          <p class="masthead__summary-text">
+            {{ data.profile.summary }}
+            <a class="read-more" [routerLink]="['/', lang(), 'story']">
+              {{ data.ui.narrative.cta }}
+            </a>
+          </p>
+        </div>
+
+        <div class="masthead__actions">
+          <cv-language-switcher />
+          <a class="masthead__pdf" [href]="'/pdf/cv-' + lang() + '.pdf'" download>
+            {{ data.ui.downloadPdf }}
+          </a>
+        </div>
+      </header>
+
+      <!-- Full-bleed strip so the links row can carry its own colour. -->
+      <div class="contact-strip">
+        <ul class="contact" aria-label="Contact">
+          @if (data.profile.contact.github) {
+            <li class="contact__item contact__item--github">
+              <a [href]="data.profile.contact.github" rel="noopener">GitHub</a>
+            </li>
+          }
+          @if (data.profile.contact.linkedin) {
+            <li class="contact__item contact__item--linkedin">
+              <a [href]="data.profile.contact.linkedin" rel="noopener">LinkedIn</a>
+            </li>
+          }
+          @if (data.profile.contact.website) {
+            <li class="contact__item contact__item--website">
+              <a [href]="data.profile.contact.website" rel="noopener">{{ data.profile.contact.website | prettyUrl }}</a>
+            </li>
+          }
+          @if (data.profile.contact.sourceCode) {
+            <li class="contact__item contact__item--code">
+              <a [href]="data.profile.contact.sourceCode" rel="noopener">{{ data.ui.sourceCode }}</a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <main>
+        <cv-section [title]="data.ui.sections.experience" icon="/images/experience.png">
+          @for (entry of data.experience; track entry.id) {
+            <cv-experience-card [entry]="entry" [lang]="lang()" [ui]="data.ui" />
+          }
+        </cv-section>
+
+        <cv-section [title]="data.ui.sections.education" icon="/images/education.png">
+          @for (item of data.education; track item.id) {
+            <article class="education">
+              <header class="education__header">
+                <a class="education__link" [href]="item.url" rel="noopener">
+                  @if (item.logo; as logo) {
+                    <cv-logo [logo]="logo" />
+                  }
+                  <div class="education__identity">
+                    <h3 class="education__institution">{{ item.institution }}</h3>
+                    <p class="education__location">{{ item.location }}</p>
+                  </div>
+                </a>
+              </header>
+
+              <div class="degrees">
+                @for (degree of item.degrees; track degree.id) {
+                  <section class="degree">
+                    <div class="degree__row">
+                      <h4 class="degree__title">{{ degree.degree }}</h4>
+                      <p class="degree__years">{{ degree.start.slice(0, 4) }}–{{ degree.end.slice(0, 4) }}</p>
+                    </div>
+
+                    @if (degree.notes.length) {
+                      <ul class="degree__notes">
+                        @for (note of degree.notes; track note) {
+                          <li>{{ note }}</li>
+                        }
+                      </ul>
+                    }
+                  </section>
+                }
+              </div>
+            </article>
+          }
+        </cv-section>
+
+        <cv-section [title]="data.ui.sections.spokenLanguages" icon="/images/language.png">
+          <ul class="spoken">
+            @for (spoken of data.profile.spokenLanguages; track spoken.code) {
+              <li class="spoken__item">
+                @if (spoken.flag; as flag) {
+                  <img
+                    class="spoken__flag"
+                    [src]="flag.src"
+                    [width]="flag.width"
+                    [height]="flag.height"
+                    [alt]="flag.alt"
+                  />
+                }
+                <span class="spoken__name">{{ spoken.name }}</span>
+                <span class="spoken__level">{{ spoken.level }}</span>
+              </li>
+            }
+          </ul>
+        </cv-section>
+      </main>
+    </article>
+  </div>
+} @else {
+  <p class="load-error">CV data could not be loaded.</p>
+}

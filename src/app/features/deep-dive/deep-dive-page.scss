@@ -1,0 +1,117 @@
+.page {
+  max-inline-size: var(--sheet-width);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+/* Matching the story page: a chevron drawn from two borders rather than an
+   arrow character, so it takes the link's colour and can nudge on hover. */
+.sheet {
+  --sheet-pad-x: 1.4cm;
+
+  display: block;
+  background: var(--colour-sheet);
+  border-radius: 2px;
+  /* No padding of its own: the header runs full-bleed so it can carry the
+     steel band, the same way the CV masthead does. */
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24),
+    0 14px 30px rgba(0, 0, 0, 0.34),
+    0 44px 80px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 40rem) {
+  .sheet {
+    --sheet-pad-x: 1.1rem;
+  }
+
+  .page {
+    padding-inline: 0.6rem;
+  }
+}
+
+/* The same band as the story page and the CV masthead, so the three read as
+   one document rather than three. */
+.deep-dive__header {
+  padding: 1.9rem var(--sheet-pad-x) 1.8rem;
+  background: linear-gradient(135deg, var(--steel-700), var(--steel-800));
+  color: #fff;
+}
+
+main {
+  display: block;
+  padding: 1.7rem var(--sheet-pad-x) 1.9rem;
+}
+
+.fallback-notice {
+  margin: 0 0 1.8rem;
+  padding: 0.7rem 1rem;
+  border-inline-start: 3px solid var(--colour-accent);
+  background: var(--colour-chip);
+  font-size: 0.9rem;
+  color: var(--colour-muted);
+}
+
+.deep-dive__title {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.deep-dive__question {
+  margin: 0 0 1rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  color: #dfe4e9;
+}
+
+.deep-dive__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #eef2f6;
+  }
+}
+
+/* Question and answer rather than a heading and a body: the point of this
+   block is that these are the questions themselves, phrased the way they get
+   asked. */
+.follow-ups {
+  margin: 0;
+}
+
+.follow-up + .follow-up {
+  margin-block-start: 1.2rem;
+}
+
+.follow-up__question {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  color: var(--steel-800);
+}
+
+.follow-up__answer {
+  margin: 0;
+
+  p {
+    margin: 0 0 0.7rem;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}

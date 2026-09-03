@@ -1,0 +1,80 @@
+<article class="company">
+  <header class="company__header">
+    <a class="company__link" [href]="entry().url" rel="noopener">
+      @if (entry().logo; as logo) {
+        <cv-logo [logo]="logo" />
+      }
+      <div class="company__identity">
+        <h3 class="company__name">{{ entry().company }}</h3>
+        <p class="company__location">{{ entry().location }}</p>
+      </div>
+    </a>
+  </header>
+
+  <!-- Only the roles carry the rule: the employer heading and the skills panel
+       sit outside it, so the line marks what belongs to the roles themselves. -->
+  <div class="roles">
+    @for (role of entry().roles; track role.id) {
+      <section class="role">
+        <header class="role__header">
+          <h4 class="role__title">{{ role.role }}</h4>
+          <p class="role__dates">
+            <time [attr.datetime]="role.start">{{ role.start | monthYear: lang() }}</time>
+            —
+            <time [attr.datetime]="role.end">{{ role.end | monthYear: lang() : ui().present }}</time>
+          </p>
+        </header>
+
+        <p class="role__summary">{{ role.summary }}</p>
+
+        @if (role.highlights.length) {
+          <ul class="role__highlights">
+            @for (highlight of role.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+        }
+
+        <!-- The behavioural answers for this role. A role with none renders
+             nothing rather than an empty list. -->
+        @if (role.deepDives.length) {
+          <div class="role__more">
+            <span class="role__more-lead">{{ ui().deepDiveCta }}</span>
+
+            <ul class="role__more-list">
+              @for (link of role.deepDives; track link.slug) {
+                <li>
+                  <a
+                    class="read-more read-more--opens"
+                    [routerLink]="['/', lang(), 'deep-dive', link.slug]"
+                  >
+                    {{ link.label }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </section>
+    }
+  </div>
+
+  <!-- One panel per employer: the stack belongs to the company, and repeating
+       it under each role padded the page without adding information.
+       Items are separate elements rather than a joined string so a variant can
+       render them as chips; the separators between them are drawn in CSS. -->
+  @if (entry().skills.length) {
+    <dl class="skills">
+      @for (group of entry().skills; track group.category) {
+        <div class="skills__group">
+          <dt class="skills__category">{{ group.category }}</dt>
+          <dd class="skills__items">
+            @for (item of group.items; track item) {
+              <span class="skills__item">{{ item }}</span>
+            }
+          </dd>
+        </div>
+      }
+    </dl>
+  }
+</article>
