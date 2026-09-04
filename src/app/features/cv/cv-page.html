@@ -139,6 +139,10 @@
         </cv-section>
       </main>
     </article>
+
+    <!-- Outside the sheet, on the metal: the look of the site is not part of
+         the document it is showing. -->
+    <cv-theme-picker [label]="data.ui.styleSwitcher" />
   </div>
 } @else {
   <p class="load-error">CV data could not be loaded.</p>

@@ -74,5 +74,9 @@
         }
       </main>
     </article>
+
+    @if (cv(); as data) {
+      <cv-theme-picker [label]="data.ui.styleSwitcher" />
+    }
   </div>
 }

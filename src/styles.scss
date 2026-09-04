@@ -1,3 +1,14 @@
+/* The alternate looks, each switched on with `?theme=<name>` and each scoped
+   to a single `theme-<name>` class that `ThemeService` sets on the root element
+   only when the query param is present. Loaded here rather than added to
+   angular.json so the stylesheet stays a single entry point.
+
+   Order does not decide the cascade here: a theme's selector carries a class
+   more than the `:root` block and the component rules it overrides. */
+@use 'styles/theme-nature';
+@use 'styles/theme-medieval';
+@use 'styles/theme-miami';
+
 /* Design tokens.
    The site deliberately commits to one look — a white A4 sheet lifted off a
    dark brushed-metal ground — rather than following the OS theme, so the CV
@@ -125,7 +136,7 @@ h3 {
   align-items: center;
   gap: 0.4rem;
   color: var(--read-more-colour, var(--steel-600));
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
   /* Atomic: the label and its chevron never split across a line. */
@@ -134,8 +145,8 @@ h3 {
 
 .read-more::after {
   content: '';
-  inline-size: 0.4rem;
-  block-size: 0.4rem;
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
   border-block-start: 1.5px solid currentColor;
   border-inline-end: 1.5px solid currentColor;
   transform: rotate(45deg);
@@ -162,15 +173,15 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   margin-block-end: 1.1rem;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--colour-on-metal-muted);
   text-decoration: none;
 }
 
 .back-link::before {
   content: '';
-  inline-size: 0.4rem;
-  block-size: 0.4rem;
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
   border-block-start: 1.5px solid currentColor;
   border-inline-end: 1.5px solid currentColor;
   transform: rotate(-135deg);
@@ -191,8 +202,8 @@ h3 {
    ever points at an edge — so this swaps in a proper diagonal arrow, drawn as
    an SVG mask over currentColor so it still takes the link's colour. */
 .read-more--opens::after {
-  inline-size: 0.62rem;
-  block-size: 0.62rem;
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
   border: 0;
   transform: none;
   background-color: currentColor;

@@ -1,0 +1,307 @@
+/* Medieval — `?theme=medieval`.
+
+   Same shape as the other themes: a token swap first, then a list of rules that
+   reach into component class names. See `_theme-nature.scss` for why the
+   coupling is deliberate.
+
+   The idea is an illuminated manuscript that has been read for six hundred
+   years: parchment gone foxed and stained inside a tooled gilt binding, edges
+   darkened where it was handled, iron-gall ink, the rubric red scribes reserved
+   for headings, and gold lozenge diapering across the header the way a
+   decorated ground is painted. The page has been near a flame at some point:
+   the edges are scorched, unevenly, and charred almost black in the last
+   millimetre. Every block on the page is ruled off from the
+   next, because parchment gives a layout none of the tonal separation white
+   paper does — margins alone leave the whole sheet reading as one column of tan. It stops short of blackletter — a CV that cannot be skimmed is a
+   worse CV, whatever it looks like — so the display face is Cinzel, the carved
+   Roman capital behind the same tradition, which stays legible at a glance. */
+
+:root.theme-medieval {
+  /* The largest step of the four, and the one with the strongest reason: EB
+     Garamond is a revival of a sixteenth-century face and has the small
+     x-height to prove it, so it sets visibly smaller than a sans at the same
+     nominal size. 19px here is roughly 16px of apparent size, plus the extra
+     the theme is asking for. */
+  font-size: 118.75%;
+
+  /* ---- Ground ----
+     Dark oak and stone, so the parchment reads as lying on a table. */
+  --metal-900: #140f09;
+  --metal-800: #241c14;
+  --metal-700: #33281c;
+  --metal-200: #d5c7ac;
+  --metal-100: #ece1c8;
+
+  /* ---- The steel scale becomes ink, rubric and oxblood ----
+     Direction unchanged: 800 is the strongest ink on the sheet, 200 the
+     lightest label on the band. 600 fills the contact strip under white text
+     and is the darkest step of all (11:1 against #fff); 400 is the gilt, and
+     doubles as the global focus ring. */
+  --steel-200: #e8d19b;
+  --steel-300: #c9a86a;
+  --steel-400: #a67c1f;
+  --steel-500: #8f2d1e;
+  --steel-600: #6d2318;
+  --steel-700: #7d2617;
+  --steel-800: #3f2a16;
+
+  /* ---- Parchment ----
+     Aged, not yellowed to the point of costume. Ink is a warm near-black —
+     iron gall browns as it ages, and a pure black on this ground reads as
+     printed rather than written. 12.6:1. The muted ink is two steps darker than
+     the hue alone would suggest: it has to clear AA against the *worst* the
+     ageing does to the sheet — every stain, foxing speck and darkened edge
+     overlapping at once — not against clean parchment. That composite is
+     #d5c5a8, where it measures 5.0:1; the lighter browns managed 4.4:1. */
+  --colour-sheet: #f2e8cf;
+  --colour-text: #2b2117;
+  --colour-muted: #5b4a32;
+  --colour-accent: #8f2d1e;
+  --colour-inverse: #ffffff;
+  /* Both a good deal stronger than the hues alone would suggest. On parchment
+     every block is a shade of the same tan, and at the values the other themes
+     use the skills panel measured 1.03:1 against the sheet behind it — which is
+     to say it was not there. The rule is 1.88:1 against the sheet now and the
+     panel 1.24:1, and the gold edges added below do the rest: on a ground this
+     low in contrast, an edge separates two blocks where a fill cannot. */
+  --colour-rule: #c2a874;
+  --colour-chip: #e2d1a2;
+
+  --colour-on-metal: var(--metal-100);
+  --colour-on-metal-muted: var(--metal-200);
+
+  /* The masthead band and the story/deep-dive headers: gold lozenge diapering
+     over oxblood into dark oak, the two colours a bound volume is made of.
+     Both stops measured against the white name and the light text on them. */
+  --masthead-bg:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"><path d="M22 1 43 22 22 43 1 22z" fill="none" stroke="%23e8d19b" stroke-opacity="0.17" stroke-width="1"/><circle cx="22" cy="22" r="1.7" fill="%23e8d19b" fill-opacity="0.2"/></svg>'),
+    linear-gradient(135deg, #5a1d14 0%, #2a1409 100%);
+
+  --photo-chip: #4a2f18;
+  --photo-frame: rgba(232, 209, 155, 0.9);
+  /* The band behind the header, so no parchment shows through its clipped
+     edge. The oxblood the header ramp starts on. */
+  --sheet-bleed: #5a1d14;
+
+  /* ---- Type ----
+     Cinzel supplies the inscriptional capitals for anything that names
+     something; Garamond carries everywhere the reader actually reads. */
+  --font-body: 'EB Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-heading: 'Cinzel', 'Trajan Pro', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  /* Stone rather than brushed metal: a coarse grain crossed both ways, with a
+     vignette pulling the corners down. */
+  body {
+    background-image:
+      radial-gradient(80rem 60rem at 50% 0%, rgba(255, 226, 173, 0.09) 0%, rgba(0, 0, 0, 0) 65%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 45%),
+      repeating-linear-gradient(
+        64deg,
+        rgba(255, 255, 255, 0.03) 0 2px,
+        rgba(0, 0, 0, 0.05) 2px 5px
+      ),
+      repeating-linear-gradient(
+        154deg,
+        rgba(255, 255, 255, 0.022) 0 3px,
+        rgba(0, 0, 0, 0.035) 3px 6px
+      );
+  }
+
+  /* Square, mottled, and bound: gold hairline, a dark gap, gold hairline —
+     the edge of a tooled cover. The mottling is four soft pools of the same
+     brown, which is what parchment does where the skin was thinner. */
+  /* The ageing, outermost layer first: the char at the very edge, then the
+     scorch working inwards, then foxing — the rust-coloured specks an old page
+     grows where the paper spotted — then the tide lines of two spills, then the
+     broad mottling.
+
+     The burn is the part that has to be drawn rather than merely tinted. Real
+     scorching is not a vignette: it bites unevenly, deepest at a few points
+     along an edge and barely there between them, and it browns towards black
+     only in the last millimetre. So it is built as a hard char line at the
+     extreme edge plus eight bites of different sizes scattered round the
+     perimeter, none of them centred and none the same strength. All of it is
+     held to the margins — the sheet's own side padding is wider than the point
+     where the bites still have any weight, which is what keeps the text on
+     clean parchment. Verified against the rendered pixels, not assumed. */
+  --sheet-texture:
+    linear-gradient(
+      90deg,
+      rgba(48, 26, 8, 0.6) 0%,
+      rgba(104, 60, 18, 0.26) 0.9%,
+      rgba(0, 0, 0, 0) 4.5%,
+      rgba(0, 0, 0, 0) 95.5%,
+      rgba(104, 60, 18, 0.28) 99.1%,
+      rgba(48, 26, 8, 0.64) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(48, 26, 8, 0.5) 0%,
+      rgba(104, 60, 18, 0.2) 0.5%,
+      rgba(0, 0, 0, 0) 2.5%,
+      rgba(0, 0, 0, 0) 97.5%,
+      rgba(104, 60, 18, 0.3) 99.5%,
+      rgba(48, 26, 8, 0.66) 100%
+    ),
+    radial-gradient(13rem 6rem at 23% 0%, rgba(112, 64, 18, 0.3) 0%, rgba(0, 0, 0, 0) 68%),
+    radial-gradient(8rem 4.5rem at 67% 0%, rgba(112, 64, 18, 0.22) 0%, rgba(0, 0, 0, 0) 70%),
+    radial-gradient(6rem 9rem at 100% 27%, rgba(112, 64, 18, 0.3) 0%, rgba(0, 0, 0, 0) 68%),
+    radial-gradient(4.5rem 7rem at 100% 73%, rgba(112, 64, 18, 0.22) 0%, rgba(0, 0, 0, 0) 70%),
+    radial-gradient(12rem 6rem at 76% 100%, rgba(112, 64, 18, 0.32) 0%, rgba(0, 0, 0, 0) 68%),
+    radial-gradient(9rem 4.5rem at 33% 100%, rgba(112, 64, 18, 0.24) 0%, rgba(0, 0, 0, 0) 70%),
+    radial-gradient(5rem 8rem at 0% 56%, rgba(112, 64, 18, 0.28) 0%, rgba(0, 0, 0, 0) 68%),
+    radial-gradient(4rem 6rem at 0% 14%, rgba(112, 64, 18, 0.2) 0%, rgba(0, 0, 0, 0) 70%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220"><g fill="%236e4a1e" fill-opacity="0.07"><circle cx="24" cy="38" r="2.4"/><circle cx="31" cy="44" r="1.3"/><circle cx="96" cy="17" r="1.8"/><circle cx="147" cy="61" r="2.7"/><circle cx="152" cy="68" r="1.2"/><circle cx="63" cy="103" r="1.6"/><circle cx="199" cy="119" r="2.2"/><circle cx="118" cy="147" r="1.4"/><circle cx="42" cy="171" r="2.5"/><circle cx="48" cy="177" r="1.1"/><circle cx="177" cy="192" r="1.9"/><circle cx="88" cy="209" r="1.5"/></g></svg>'),
+    radial-gradient(9rem 7rem at 71% 34%, rgba(140, 100, 46, 0.08) 55%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(7rem 6rem at 21% 78%, rgba(140, 100, 46, 0.07) 58%, rgba(0, 0, 0, 0) 74%),
+    radial-gradient(28rem 20rem at 12% 8%, rgba(150, 115, 60, 0.07) 0%, rgba(0, 0, 0, 0) 62%),
+    radial-gradient(24rem 18rem at 88% 26%, rgba(120, 88, 45, 0.055) 0%, rgba(0, 0, 0, 0) 62%),
+    radial-gradient(30rem 22rem at 38% 70%, rgba(150, 115, 60, 0.05) 0%, rgba(0, 0, 0, 0) 64%),
+    radial-gradient(20rem 16rem at 80% 94%, rgba(110, 80, 40, 0.05) 0%, rgba(0, 0, 0, 0) 60%);
+
+  /* The burn does not stop at the links band. The strip is opaque and spans the
+     full width of the sheet, so without this the scorch runs down both edges of
+     the parchment and then breaks cleanly around a strip of untouched oxblood.
+     The side profile is the same one the sheet uses, at the same percentages, so
+     the char lines up across the join; the colours are darker rather than
+     lighter because on a dark band a burn reads as charring, and a pale scorch
+     would read as a spill instead. Pushing it this far is safe in a way the
+     parchment's burn is not: the strip carries white text, and every layer here
+     only darkens what is behind it, so the scorch can run under "GitHub"
+     without costing any contrast — it gains some. */
+  --strip-texture:
+    linear-gradient(
+      90deg,
+      rgba(22, 9, 3, 0.88) 0%,
+      rgba(48, 22, 6, 0.62) 1.1%,
+      rgba(66, 33, 10, 0.3) 3.4%,
+      rgba(0, 0, 0, 0) 8%,
+      rgba(0, 0, 0, 0) 92%,
+      rgba(66, 33, 10, 0.32) 96.6%,
+      rgba(48, 22, 6, 0.64) 98.9%,
+      rgba(22, 9, 3, 0.9) 100%
+    ),
+    radial-gradient(7rem 3.2rem at 0% 64%, rgba(34, 16, 4, 0.6) 0%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(5rem 2.4rem at 0% 8%, rgba(34, 16, 4, 0.42) 0%, rgba(0, 0, 0, 0) 74%),
+    radial-gradient(8rem 3.6rem at 100% 32%, rgba(34, 16, 4, 0.62) 0%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(5rem 2.4rem at 100% 88%, rgba(34, 16, 4, 0.4) 0%, rgba(0, 0, 0, 0) 74%);
+
+  .sheet {
+    border-radius: 0;
+    box-shadow:
+      0 0 0 1px rgba(166, 124, 31, 0.6),
+      0 0 0 5px rgba(36, 28, 20, 0.92),
+      0 0 0 6px rgba(166, 124, 31, 0.32),
+      0 18px 40px rgba(0, 0, 0, 0.5),
+      0 48px 88px rgba(0, 0, 0, 0.4);
+  }
+
+  /* A portrait miniature: square, in a gold frame. */
+  .masthead__photo,
+  .masthead__photo-placeholder {
+    border-radius: 0;
+  }
+
+  /* ---- Type assignments ----
+     Capitals on the names, Garamond everywhere the reader actually reads.
+     Cinzel has no lower case worth the name, so it is kept to short lines. */
+  .masthead__name,
+  .story__title,
+  .deep-dive__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.005em;
+  }
+
+  .section__title,
+  .story__journey,
+  .company__name,
+  .education__institution,
+  .chapter__company {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.09em;
+  }
+
+  /* Cinzel is all-caps by design, so the size has to come up a step for the
+     employer and institution names to read as headings rather than as tags. */
+  .company__name,
+  .education__institution {
+    font-size: 1.1rem;
+  }
+
+  /* Rubric under a gilt double rule: the red the scribes reserved for headings,
+     and where the name of the practice comes from. */
+  .section__title,
+  .story__journey {
+    color: var(--steel-500);
+    border-block-end: 3px double var(--steel-400);
+    padding-block-end: 0.5rem;
+  }
+
+  /* Small caps on the roles and degrees — the hand a scribe changes to for a
+     subheading, and something Garamond actually has the glyphs for. */
+  .role__title,
+  .degree__title,
+  .chapter__role {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+  }
+
+  .role__dates,
+  .degree__years {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Gilt-edged tablets rather than white pills — gold is where an illuminator
+     would have put the highlight, and the corners come off to match the page. */
+  /* The panel is a tablet laid on the page, so it gets an edge of its own
+     rather than floating as a slightly darker patch. */
+  .skills {
+    box-shadow: inset 0 0 0 1px rgba(166, 124, 31, 0.42);
+  }
+
+  .skills__item {
+    border-radius: 2px;
+    background: #fdf9ec;
+    box-shadow: inset 0 0 0 1px rgba(166, 124, 31, 0.55);
+  }
+
+  /* One employer or institution from the next. The components space themselves
+     with margins alone, which reads on white paper and disappears on this one,
+     so each block gets a ruled line beneath it — the same device the scribe
+     used between entries. */
+  cv-experience-card:not(:last-of-type),
+  .education:not(:last-child) {
+    display: block;
+    padding-block-end: 1.5rem;
+    border-block-end: 1px solid var(--colour-rule);
+  }
+
+  /* The employer heading is the top of a block, so it carries the weight: a
+     hairline under the name separates it from the roles hanging below it. */
+  .company__header,
+  .education__header {
+    padding-block-end: 0.6rem;
+    border-block-end: 1px solid rgba(194, 168, 116, 0.5);
+  }
+
+  /* The rule beside the roles thickens to match the ones now crossing the page,
+     so the grid of ruled lines reads as one system rather than three weights. */
+  .roles,
+  .degrees {
+    border-inline-start-width: 3px;
+  }
+
+  /* The rule beside the roles and degrees stands in for the ruled margin a
+     scribe would have pricked out before writing. */
+  .roles,
+  .degrees {
+    border-inline-start-color: var(--steel-400);
+  }
+
+  .spoken__flag {
+    box-shadow: 0 0 0 1px rgba(63, 42, 22, 0.3);
+  }
+}

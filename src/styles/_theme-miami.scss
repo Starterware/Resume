@@ -1,0 +1,338 @@
+/* Miami — `?theme=miami`.
+
+   Same shape as the other themes: a token swap first, then a list of rules that
+   reach into component class names. See `_theme-nature.scss` for why the
+   coupling is deliberate.
+
+   This is the Vice City read of Miami rather than the daylight deco one: a
+   night sheet, a sun setting into banded stripes behind the masthead, palms in
+   silhouette at the edge of it, and hot magenta and cyan doing all the work the
+   steel used to. It is the one theme where the sheet itself goes dark, so the
+   scale inverts rather than shifting hue — on a dark sheet the strongest ink is
+   the lightest one.
+
+   The ground stays out of the way. Neon over a neon ground is noise, and the
+   sheet has to remain the thing you look at. */
+
+:root.theme-miami {
+  /* ---- Ground ----
+     Night, with a trace of violet in it so the sheet's magenta rim has
+     something to sit against rather than a hole. */
+  --metal-900: #0b0713;
+  --metal-800: #150e22;
+  --metal-700: #221634;
+  --metal-200: #c6bcd6;
+  --metal-100: #e9e3f2;
+
+  /* ---- The steel scale becomes neon ----
+     The names stay put. Components ask for `--steel-800` where they want the
+     strongest ink on the sheet, and on a dark sheet that is the lightest
+     colour — so the scale inverts. 600 is the exception: it fills the contact
+     strip under white text, so it is the one step that has to stay dark
+     (7.75:1 against #fff). 400 is the focus ring, and cyan clears 3:1 against
+     the sheet and the ground by a wide margin. */
+  --steel-200: #ffd0e4;
+  --steel-300: #ff8fc0;
+  --steel-400: #35e3ff;
+  --steel-500: #ff2e88;
+  --steel-600: #a01352;
+  --steel-700: #ffd0e4;
+  --steel-800: #f4eef6;
+
+  /* ---- The sheet, at night ----
+     Not black: an indigo with the violet of the ground still in it keeps the
+     sheet reading as a surface rather than a hole, and gives the magenta rim
+     something to glow against. Text is warm off-white at 16:1. */
+  --colour-sheet: #17131f;
+  --colour-text: #f4eff7;
+  --colour-muted: #a99cb8;
+  --colour-accent: #35e3ff;
+  --colour-inverse: #17131f;
+  --colour-rule: rgba(255, 122, 190, 0.26);
+  --colour-chip: #1e1a29;
+
+  /* The `.read-more` links take their colour from these. `--steel-600` is the
+     contact-strip fill in this theme and far too dark for a link on a night
+     sheet, so the theme sets them rather than letting the fallbacks apply. */
+  --read-more-colour: #35e3ff;
+  --read-more-hover: #b9f4ff;
+
+  --colour-on-metal: var(--metal-100);
+  --colour-on-metal-muted: var(--metal-200);
+
+  /* The masthead band and the story/deep-dive headers: palms against a sun
+     going down into the water, the sun cut by the horizontal bands that are the
+     whole look's signature. The bands are drawn dark rather than light — they
+     read the same way and they push the average value *down*, which is what
+     lets white text sit on the magenta end at 7:1. Every stop was measured
+     against the name, the profile text and the kicker that land on it. */
+  --masthead-bg:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200"><g fill="none" stroke="%2306020c" stroke-opacity="0.52" stroke-linecap="round"><path d="M204 200 C198 164 200 128 208 100" stroke-width="9"/><g stroke-width="7"><path d="M208 98 C180 94 154 104 138 126"/><path d="M208 98 C184 78 156 72 132 82"/><path d="M208 98 C206 70 220 48 244 38"/><path d="M208 98 C236 82 266 86 284 106"/><path d="M208 98 C234 104 254 122 262 146"/><path d="M208 98 C192 74 172 58 148 54"/></g><circle cx="208" cy="98" r="5" fill="%2306020c" stroke="none"/></g><g fill="none" stroke="%2306020c" stroke-opacity="0.34" stroke-linecap="round"><path d="M270 200 C266 176 268 152 274 132" stroke-width="6"/><g stroke-width="4.6"><path d="M274 130 C256 128 240 136 230 150"/><path d="M274 130 C258 116 240 112 224 118"/><path d="M274 130 C273 112 282 98 297 92"/><path d="M274 130 C292 120 308 124 318 136"/><path d="M274 130 C290 136 302 148 306 164"/></g><circle cx="274" cy="130" r="3.4" fill="%2306020c" stroke="none"/></g></svg>')
+      right bottom / auto 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(8, 3, 15, 0.34) 0 3px, rgba(0, 0, 0, 0) 3px 13px),
+    linear-gradient(150deg, #150e26 0%, #3d1354 38%, #7a1a53 70%, #a8253f 100%);
+
+  --photo-chip: #2a1140;
+  --photo-frame: rgba(255, 46, 136, 0.75);
+  /* The band behind the header. Its ramp starts here. */
+  --sheet-bleed: #150e26;
+
+  /* ---- Type ----
+     Anton is a condensed grotesque with no italic of its own, which is why the
+     slant below is applied by hand — the same trick the arcade logotype it
+     stands in for uses. Kanit's italic carries the headings, Share Tech Mono
+     everything that is a reading on a dial, and Barlow the prose. */
+  --font-body: 'Barlow', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Anton', 'Haettenschweiler', 'Arial Narrow', Impact, sans-serif;
+  --font-heading: 'Kanit', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-data: 'Share Tech Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Two glows on a near-black ground, one at each end of the palette, and no
+     grain at all — the night is the only theme's ground with nothing in it. */
+  body {
+    background-image:
+      radial-gradient(64rem 40rem at 82% 4%, rgba(255, 46, 136, 0.16) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(56rem 40rem at 6% 92%, rgba(53, 227, 255, 0.11) 0%, rgba(0, 0, 0, 0) 58%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 42%);
+  }
+
+  /* Lit rather than shadowed: a black drop shadow does nothing on a near-black
+     ground, so the sheet's edge is a magenta rim with the depth underneath it. */
+  .sheet {
+    border-radius: 0;
+    box-shadow:
+      0 0 0 1px rgba(255, 46, 136, 0.32),
+      0 0 30px rgba(255, 46, 136, 0.14),
+      0 30px 70px rgba(0, 0, 0, 0.72);
+  }
+
+  .masthead__photo,
+  .masthead__photo-placeholder {
+    border-radius: 0;
+  }
+
+  /* ---- Type assignments ----
+     The name is the one piece of real display type, and the only place the
+     theme spends a glow on something that is already the largest thing on the
+     page. */
+  .masthead__name,
+  .story__title,
+  .deep-dive__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    transform: skewX(-7deg);
+    transform-origin: left bottom;
+    text-shadow:
+      0 0 20px rgba(255, 46, 136, 0.55),
+      0 0 44px rgba(53, 227, 255, 0.22);
+  }
+
+  .section__title,
+  .story__journey,
+  .company__name,
+  .education__institution,
+  .chapter__company,
+  .deep-dive__question,
+  .role__title,
+  .degree__title,
+  .chapter__role,
+  .follow-up__question {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 800;
+  }
+
+  .section__title,
+  .story__journey {
+    letter-spacing: 0.14em;
+    border-block-end: 2px solid rgba(255, 46, 136, 0.5);
+    padding-block-end: 0.5rem;
+    text-shadow: 0 0 22px rgba(53, 227, 255, 0.4);
+  }
+
+  /* Company and institution names carry the sheet's headings, so they get the
+     size the italic needs to read as display type rather than as emphasis. */
+  .company__name,
+  .education__institution {
+    font-size: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+
+  .role__title,
+  .degree__title {
+    color: var(--colour-accent);
+  }
+
+  /* Anything that is a reading rather than a name goes to the mono, which is
+     the other half of the dashboard the look is quoting. */
+  .masthead__kicker,
+  .story__kicker,
+  .chapter__meta,
+  .masthead__location,
+  .role__dates,
+  .degree__years,
+  .spoken__level,
+  .company__location,
+  .education__location {
+    font-family: var(--font-data);
+  }
+
+  .masthead__kicker {
+    letter-spacing: 0.2em;
+  }
+
+  .role__dates,
+  .degree__years {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Same story as the chips: a bordered button set in an uppercase italic needs
+     more room inside its edge than the default pill-shaped one did. */
+  .masthead__pdf {
+    padding: 0.5rem 1.05rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+      background-color 140ms ease,
+      box-shadow 140ms ease;
+  }
+
+  .masthead__pdf:hover {
+    box-shadow: 0 0 16px rgba(255, 46, 136, 0.45);
+  }
+
+  /* The deep-dive tags are the same object as a skill chip, one page over. */
+  .deep-dive__tags li {
+    padding: 0.28rem 0.62rem;
+    border-radius: 2px;
+    font-family: var(--font-data);
+  }
+
+  /* HUD tags: a magenta wash rather than the white pill, which would be the
+     brightest thing on the sheet by a distance.
+
+     The padding is the theme's own, not the component's. A pill has no visible
+     edge, so 0.14rem of space above the glyphs is invisible and fine; the moment
+     a border is drawn round it that same gap reads as type jammed against a box,
+     and Share Tech Mono's tall caps make it worse. The chips also sit further
+     apart than the pills did — an outlined tag needs air around it or the row
+     reads as one fence. */
+  .skills__item {
+    border-radius: 2px;
+    padding: 0.32rem 0.7rem;
+    background: rgba(255, 46, 136, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 46, 136, 0.38);
+    font-family: var(--font-data);
+    font-weight: 400;
+    transition:
+      background-color 140ms ease,
+      box-shadow 140ms ease,
+      color 140ms ease;
+  }
+
+  /* Lighting up under the pointer is the whole idea of the look: the tag is the
+     one element on the sheet drawn as a piece of interface, so it behaves like
+     one even though there is nothing behind it to open. */
+  .skills__item:hover {
+    background: rgba(255, 46, 136, 0.26);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 46, 136, 0.85),
+      0 0 14px rgba(255, 46, 136, 0.4);
+    color: #fff;
+  }
+
+  .skills__items {
+    gap: 0.45rem 0.45rem;
+  }
+
+  .skills__group {
+    padding-block: 0.5rem;
+  }
+
+  .skills__category {
+    font-family: var(--font-data);
+    font-weight: 400;
+  }
+
+  /* The one piece of ambient glow on the sheet: a magenta bar running down
+     beside the roles and degrees.
+
+     It needs padding on all four sides, which the grey hairline it replaces did
+     not. The component sets no block padding, so the rule starts exactly at the
+     first line's cap-height and stops at the last descender — invisible when the
+     rule is a faint grey line, but once it is a lit bar the text reads as jammed
+     against the edge of a box. The block padding lets the bar overrun the text
+     at both ends, and the inline padding is split between here and the roles
+     themselves so the hover wash below has somewhere to sit. */
+  .roles,
+  .degrees {
+    border-inline-start-color: var(--steel-500);
+    box-shadow: -2px 0 12px -2px rgba(255, 46, 136, 0.45);
+    padding-block: 0.6rem;
+    padding-inline-start: 0.7rem;
+  }
+
+  /* Each role is its own object now rather than a run of paragraphs, so it can
+     take a hover of its own. Padding first — a wash with no room inside it just
+     smears the text. */
+  .role,
+  .degree {
+    padding: 0.5rem 0.7rem;
+    border-radius: 3px;
+    transition:
+      background-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  /* The component's own top padding is more specific than nothing but less
+     specific than this rule, so the gap after the divider has to be restated or
+     consecutive roles close up. */
+  .role + .role,
+  .degree + .degree {
+    padding-block-start: 1.15rem;
+  }
+
+  /* Picking one out under the pointer: the same magenta wash the employer
+     header uses, an edge to close the shape, and the title lifting on its own
+     glow so the eye lands on the name of the job rather than the block. */
+  .role:hover,
+  .degree:hover {
+    background: rgba(255, 46, 136, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 46, 136, 0.34);
+  }
+
+  .role:hover .role__title,
+  .degree:hover .degree__title {
+    text-shadow: 0 0 14px rgba(53, 227, 255, 0.55);
+  }
+
+  /* The employer hover tint is a wash rather than the pale chip, which on a
+     night sheet would flash. */
+  .company__link,
+  .education__link {
+    transition: background-color 140ms ease;
+  }
+
+  .company__link:hover,
+  .education__link:hover {
+    background: rgba(255, 46, 136, 0.12);
+  }
+
+  /* The contact strip's underline is hard to see against its own fill, so the
+     links lift to white as well. */
+  .contact a:hover {
+    color: #fff;
+  }
+
+  /* The flags are the only thing on the page that was drawn for paper. A
+     hairline in the theme's own pink stops them floating. */
+  .spoken__flag {
+    border-radius: 0;
+    box-shadow: 0 0 0 1px rgba(255, 122, 190, 0.5);
+  }
+}

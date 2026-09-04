@@ -5,10 +5,11 @@ import { RouterLink } from '@angular/router';
 import { Cv, Lang } from '../../core/models/cv.model';
 import { LoadedDeepDive } from '../../core/models/deep-dive.model';
 import { Section } from '../../shared/components/section/section';
+import { ThemePicker } from '../../shared/components/theme-picker/theme-picker';
 
 @Component({
   selector: 'cv-deep-dive-page',
-  imports: [RouterLink, Section],
+  imports: [RouterLink, Section, ThemePicker],
   templateUrl: './deep-dive-page.html',
   styleUrl: './deep-dive-page.scss',
 })

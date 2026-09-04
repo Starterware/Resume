@@ -110,6 +110,11 @@ export interface UiStrings {
   pdfFileName: string;
   /** Label on the link to this site's own source. */
   sourceCode: string;
+  /**
+   * Accessible name for the row of style names below the sheet. The style
+   * names themselves are proper nouns of the designs and stay in English.
+   */
+  styleSwitcher: string;
   backToCv: string;
   /** Lead-in above the row of deep-dive links on a role. */
   deepDiveCta: string;

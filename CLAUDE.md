@@ -122,6 +122,29 @@ A trilingual CV site, statically pre-rendered and deployed to GitHub Pages. See
   first in the build and fails on mismatched ids, mismatched `ui` keys, or a
   deep-dive slug with no English file. Adding an entry means adding it to all
   three CV files.
+- **The website has four looks, chosen by `?theme=`.** `ThemeService` puts
+  `theme-nature`, `theme-medieval` or `theme-miami` on the **root element** when
+  the query param names one, and nothing at all for `default`;
+  `src/styles/_theme-*.scss` is the whole repaint, one file each. It is `<html>`
+  rather than `<body>` because a theme sets its own root font size and `rem`
+  resolves against the root — a class on the body could not scale the type the
+  components are written in. A rule meant for the ground therefore has to be
+  nested under `body` inside the theme block, or the body's own opaque
+  background paints over it. It is a query param rather than a stored
+  preference so the URL remains the entire state, and it is browser-only — no
+  prerendered page and no PDF ever carries the class, which is why the router
+  is configured with `defaultQueryParamsHandling: 'preserve'` so an in-site link
+  does not silently drop the chosen look. Where a theme could not reach a colour
+  through an existing token, the component gained one with today's value as its
+  fallback (`--masthead-bg`, `--photo-chip`); prefer adding another such hook
+  over writing a `theme-*` branch inside a component. Each theme's web fonts are
+  requested only when it is switched on, so an ordinary visitor asks Google for
+  nothing. Theme names are proper nouns and stay in English in every locale.
+  `miami` is the one theme whose **sheet goes dark**, so the steel scale inverts
+  there rather than shifting hue — on a dark sheet the strongest ink is the
+  lightest colour. Anything a component hardcodes as white (the skill chips, the
+  hover tint on an employer) has to be restated by that theme, and a new
+  hardcoded light value anywhere will show up there first.
 - **Interface strings live in `public/data/ui.<lang>.json`**, one file per
   locale, joined onto the CV by `CvDataService` so templates still read
   `data.ui.…`. There is no translation library; adding user-visible text means

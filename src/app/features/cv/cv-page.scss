@@ -13,7 +13,20 @@
   --sheet-pad-x: 2.25rem;
 
   display: block;
-  background: var(--colour-sheet);
+  /* The sheet clips the header to its rounded corners, and at that clip the
+     sheet's own pale background composites through the antialiased edge —
+     a light hairline along the top border and round the curve, worse the larger
+     the radius. Nothing above it in the tree causes it and no compositing hint
+     removes it; the only cure is to leave nothing pale underneath. So the
+     sheet's background carries a band of the header's own colour across the
+     top, hidden under the opaque header everywhere except in those fringe
+     pixels. Themes point `--sheet-bleed` at their own header colour, and hang
+     any paper texture off `--sheet-texture` so it layers over the band rather
+     than replacing it. */
+  background-color: var(--colour-sheet);
+  background-image:
+    var(--sheet-texture, none),
+    linear-gradient(var(--sheet-bleed, var(--steel-700)) 0 1.6rem, rgba(0, 0, 0, 0) 1.6rem);
   border-radius: 2px;
   /* No padding: the masthead and contact strip run full-bleed so they can
      carry their own background. Body padding lives on `main`. */
@@ -55,8 +68,10 @@
   overflow: hidden;
   /* Opaque, so the band it floats over does not show through the translucent
      placeholder and cut a seam across it. A real photo is opaque anyway; this
-     only matters while the slot is empty. */
-  background: #33587a;
+     only matters while the slot is empty. Tokenised because it is the one
+     colour in the masthead that is neither steel nor white, so a theme has
+     nowhere else to reach it. */
+  background: var(--photo-chip, #33587a);
 }
 
 .masthead__identity {
@@ -166,7 +181,7 @@
 }
 
 .masthead__pdf {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   padding: 0.38rem 0.85rem;
   border-radius: 6px;
   border: 1px solid;
@@ -193,7 +208,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.88rem;
+  font-size: 0.96rem;
 }
 
 .contact__item {
@@ -262,12 +277,14 @@ main {
 
 .sheet {
   .masthead {
-    background: linear-gradient(135deg, var(--steel-700), var(--steel-800));
+    background: var(--masthead-bg, linear-gradient(135deg, var(--steel-700), var(--steel-800)));
   }
 
   .masthead__photo-placeholder {
     background: rgba(255, 255, 255, 0.12);
-    border: 3px solid rgba(255, 255, 255, 0.85);
+    /* Tokenised for the same reason as --photo-chip: the frame is the only
+       other colour in the masthead a theme has nowhere else to reach. */
+    border: 3px solid var(--photo-frame, rgba(255, 255, 255, 0.85));
     color: var(--steel-300);
   }
 
@@ -311,9 +328,13 @@ main {
     --switcher-separator: rgba(255, 255, 255, 0.32);
   }
 
-  /* steel-600 rather than 500: white on 500 measures 4.11:1, below AA. */
+  /* steel-600 rather than 500: white on 500 measures 4.11:1, below AA.
+     The strip paints an opaque band right across the sheet, so anything a theme
+     does to the paper stops at its edges unless the strip is given a texture of
+     its own — hence the hook, the same one `--sheet-texture` provides above. */
   .contact-strip {
-    background: var(--steel-600);
+    background-color: var(--steel-600);
+    background-image: var(--strip-texture, none);
     color: #fff;
   }
 }

@@ -1,0 +1,207 @@
+/* Nature — `?theme=nature`.
+
+   Almost all of it is a token swap: the components already read their colours
+   from the custom properties in `styles.scss`, so re-pointing those repaints
+   the whole site. The rules underneath the token block reach into component
+   class names, which the components' own encapsulated styles cannot stop. That
+   coupling is deliberate — a theme kept in one file is easier to drop than a
+   `theme-nature` branch threaded through eight stylesheets — but it only ever
+   targets a single class, so the specificity stays predictable
+   (`:root.theme-nature .x` beats `.x`, and never fights a nested rule).
+
+   The idea is a field notebook lying open on forest floor: pressed paper with
+   the fibres still showing, ink the colour of a conifer, and dappled light
+   falling across the ground beneath it. The shapes soften to match — rounded
+   sheet, round portrait — because nothing in the theme's subject has a corner
+   on it, and the skills lose their chips entirely: they sit in bark ink
+   straight on a birch panel, the one piece of timber on the page. */
+
+:root.theme-nature {
+  /* A step up from the site's 16px. Source Sans has a generous x-height, so
+     this is a nudge rather than the jump the manuscript theme needs. */
+  font-size: 106.25%;
+
+  /* ---- Ground ----
+     Bark and moss, with the brushed-metal grain replaced by dappled canopy
+     light in the `body` rule below. */
+  --metal-900: #131a11;
+  --metal-800: #26301f;
+  --metal-700: #33402a;
+  --metal-200: #c3ccb9;
+  --metal-100: #e2e8da;
+
+  /* ---- The steel scale becomes a green one ----
+     The names stay put. Components ask for `--steel-800` where they want the
+     strongest ink on the sheet and `--steel-200` for the lightest label on the
+     masthead band, so the scale keeps its direction and only changes hue.
+     600 fills the contact strip under white text, so it is the step held
+     darkest of all (6.98:1 against #fff); 400 is the global focus ring and
+     clears 3:1 against both the sheet and the ground. */
+  --steel-200: #cfe0c8;
+  --steel-300: #a8c39e;
+  --steel-400: #6f9366;
+  --steel-500: #4a7a50;
+  --steel-600: #35633f;
+  --steel-700: #2f5c3a;
+  --steel-800: #21402a;
+
+  /* ---- Paper ----
+     Warm, faintly green and slightly toothy rather than white: bleached paper
+     under a green masthead reads as cold. Ink is 13.7:1 on it. */
+  --colour-sheet: #f8faf1;
+  --colour-text: #1f2b21;
+  --colour-muted: #5b6b58;
+  --colour-accent: #37613f;
+  --colour-inverse: #ffffff;
+  --colour-rule: #d9e3d0;
+  /* The skills panel, and the only wooden surface on the sheet: pale birch
+     rather than the green wash it was, so the one place the CV groups loose
+     words reads as a board they are burnt into. */
+  --colour-chip: #e9dcc4;
+
+  --colour-on-metal: var(--metal-100);
+  --colour-on-metal-muted: var(--metal-200);
+
+  /* The masthead band and the story/deep-dive headers: canopy to undergrowth,
+     and nothing printed over it — the band's job is to carry the name, and a
+     pattern behind display type is one thing too many. The white name and the
+     light profile text sit on this, so both stops are held down in value and
+     measured against the text that lands on them, not the darkest corner. */
+  --masthead-bg: linear-gradient(135deg, #2b4a30 0%, #16301d 100%);
+
+  /* The empty portrait slot is the one element in the masthead with a colour
+     of its own, so it takes the colour of the band it sits on. */
+  --photo-chip: #3b6b45;
+  --photo-frame: rgba(226, 232, 218, 0.85);
+  /* The band the sheet paints behind the header, so no paper shows through the
+     antialiased corner. The header ramp's own first stop. */
+  --sheet-bleed: #2b4a30;
+
+  /* ---- Type ----
+     Loaded by ThemeService when the theme is switched on. Fraunces is a soft
+     serif with real optical sizing, which is what gives the headings their
+     grown rather than drawn feel; Source Sans carries the prose. */
+  --font-body:
+    'Source Sans 3', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Fraunces', Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+
+  /* Dappled light rather than brushed metal: two broad, soft pools and a fine
+     grain running with them, all low-contrast so it reads as ground and not as
+     pattern. Nested so it lands on `body`, which paints over the root. */
+  body {
+    background-image:
+      radial-gradient(60rem 40rem at 18% 12%, rgba(174, 214, 150, 0.16) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(48rem 34rem at 82% 78%, rgba(120, 175, 110, 0.13) 0%, rgba(0, 0, 0, 0) 62%),
+      linear-gradient(196deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 55%),
+      repeating-linear-gradient(
+        84deg,
+        rgba(255, 255, 255, 0.025) 0 3px,
+        rgba(0, 0, 0, 0.03) 3px 7px
+      );
+  }
+
+  /* The paper's own fibres, layered over the sheet's background rather than
+     replacing it. */
+  --sheet-texture:
+    repeating-linear-gradient(0deg, rgba(33, 64, 42, 0.016) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
+    repeating-linear-gradient(90deg, rgba(33, 64, 42, 0.014) 0 1px, rgba(0, 0, 0, 0) 1px 4px);
+
+  /* Rounded. Nothing in a wood has a square corner, and the radius is the
+     fastest way to read the difference from across the room. */
+  .sheet {
+    border-radius: 16px;
+    box-shadow:
+      0 0 0 1px rgba(33, 64, 42, 0.16),
+      0 2px 4px rgba(0, 0, 0, 0.22),
+      0 16px 34px rgba(0, 0, 0, 0.34),
+      0 46px 84px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Round portrait, to match the sheet. */
+  .masthead__photo,
+  .masthead__photo-placeholder {
+    border-radius: 50%;
+  }
+
+  /* ---- Type assignments ----
+     The serif carries anything that names something — the person, a section, an
+     employer, a degree. Everything measured or dated stays in the sans, where
+     the figures line up. */
+  .masthead__name,
+  .story__title,
+  .deep-dive__title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  .section__title,
+  .story__journey,
+  .company__name,
+  .education__institution,
+  .chapter__company,
+  .follow-up__question,
+  .deep-dive__question {
+    font-family: var(--font-heading);
+  }
+
+  .section__title,
+  .story__journey {
+    letter-spacing: 0.1em;
+    border-block-end: 2px solid #bfd5b4;
+  }
+
+  /* Dates and years line up in columns down the sheet. */
+  .role__dates,
+  .degree__years {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Grain across the panel, with the boards' long direction running with the
+     rows of skills rather than against them. */
+  .skills {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(92, 69, 38, 0.05) 0 1px,
+        rgba(0, 0, 0, 0) 1px 4px,
+        rgba(92, 69, 38, 0.028) 4px 5px,
+        rgba(0, 0, 0, 0) 5px 11px
+      ),
+      linear-gradient(180deg, rgba(255, 244, 219, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  /* No chip at all. A pill is a manufactured shape and the wrong one here: the
+     skills sit straight on the board in bark ink, spaced far enough apart that
+     the gaps do the separating a border used to. */
+  .skills__item {
+    padding: 0.14rem 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #4a3826;
+    font-weight: 600;
+  }
+
+  .skills__items {
+    gap: 0.2rem 1.25rem;
+  }
+
+  /* Bark rather than the sheet's grey-green: the label has to hold AA against
+     the wood, which is warmer and darker than the paper around it. */
+  .skills__category {
+    color: #4f4029;
+  }
+
+  /* The rule beside the roles and degrees is the one place the theme lets a
+     saturated green run down the sheet. */
+  .roles,
+  .degrees {
+    border-inline-start-color: #b0a077;
+  }
+
+  /* The flags were drawn for paper and float on a warm sheet without one. */
+  .spoken__flag {
+    box-shadow: 0 0 0 1px rgba(33, 64, 42, 0.28);
+  }
+}

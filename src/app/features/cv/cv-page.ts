@@ -7,10 +7,11 @@ import { ExperienceCard } from '../../shared/components/experience-card/experien
 import { LanguageSwitcher } from '../../shared/components/language-switcher/language-switcher';
 import { LogoChip } from '../../shared/components/logo/logo';
 import { Section } from '../../shared/components/section/section';
+import { ThemePicker } from '../../shared/components/theme-picker/theme-picker';
 
 @Component({
   selector: 'cv-page',
-  imports: [ExperienceCard, LanguageSwitcher, LogoChip, RouterLink, Section],
+  imports: [ExperienceCard, LanguageSwitcher, LogoChip, RouterLink, Section, ThemePicker],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.scss',
 })

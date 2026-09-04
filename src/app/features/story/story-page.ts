@@ -2,6 +2,7 @@ import { Component, effect, inject, input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { Cv, Lang } from '../../core/models/cv.model';
+import { ThemePicker } from '../../shared/components/theme-picker/theme-picker';
 
 /**
  * The career narrative, on a page of its own so it has a URL worth sending.
@@ -15,7 +16,7 @@ import { Cv, Lang } from '../../core/models/cv.model';
  */
 @Component({
   selector: 'cv-story-page',
-  imports: [RouterLink],
+  imports: [RouterLink, ThemePicker],
   templateUrl: './story-page.html',
   styleUrl: './story-page.scss',
 })

@@ -120,6 +120,46 @@ and `situation` sections are drawn from the CV; the `task`, `action` and
 `reflection` sections are marked `TODO` because they are yours to write — an
 invented story is one you would have to defend in an interview.
 
+## Alternate looks
+
+The website ships four designs, picked from the barely-visible row of names
+below the sheet — `default · nature · medieval · miami` — and carried in the
+URL as `?theme=nature` and so on. The picker sits on the background rather than
+on the page because the look of the site is not part of the document it is
+showing; it comes up to full strength on hover, on keyboard focus, and from the
+start for anyone whose system asks for more contrast or less transparency.
+
+The query string is the whole state: the link is shareable, dropping the param
+restores the ordinary steel look, and nothing is stored in a visitor's browser.
+Every in-site link carries it forward, so the chosen look survives following a
+deep dive or switching language.
+
+The PDFs are deliberately untouched by all of this. They are printed from
+`/:lang/print`, prerendered URLs carry no query string, and no theme class ever
+reaches that route — the copy a recruiter gets stays plain.
+
+Each design is one file under `src/styles/`, scoped to a single
+`theme-<name>` class on the root element, and is mostly a re-pointing of the
+custom properties in `styles.scss` — plus a sheet, portrait and chip shape of
+its own, a motif printed across the header, and its own root font size, which
+carries every `rem` in the app with it. Nature sets 17px and medieval 19px,
+the latter because EB Garamond's small x-height sets visibly smaller than a sans
+at the same nominal size.
+
+`miami` is the one that turns the sheet itself dark, so its scale inverts —
+on a night sheet the strongest ink is the lightest colour — and anything the
+components hardcode as white has to be restated there.
+
+Every colour was measured against the text that actually lands on it, including
+the composites — the aged parchment under the worst overlap of every stain,
+foxing speck and darkened edge at once, the grained wood panel, and each stop of
+the header gradients rather than a computed `background-color`, which a gradient
+reports as transparent. All four pass WCAG AA.
+
+Adding a fifth means adding its name to `THEMES` in
+`src/app/core/models/theme.model.ts`, its fonts to `THEME_FONTS`, and a
+`_theme-<name>.scss` beside the others.
+
 ## Deploying
 
 Push to `main`. The workflow in `.github/workflows/deploy.yml` runs the tests,

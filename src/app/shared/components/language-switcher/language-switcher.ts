@@ -43,7 +43,7 @@ const ENDONYMS: Record<Lang, string> = {
        encapsulation boundary; ordinary parent selectors would not. */
     .languages__item {
       font: inherit;
-      font-size: 0.72rem;
+      font-size: 0.79rem;
       letter-spacing: 0.1em;
       padding: 0.1rem 0.45rem;
       border: 0;

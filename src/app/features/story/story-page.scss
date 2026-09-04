@@ -8,7 +8,20 @@
   --sheet-pad-x: 2.25rem;
 
   display: block;
-  background: var(--colour-sheet);
+  /* The sheet clips the header to its rounded corners, and at that clip the
+     sheet's own pale background composites through the antialiased edge —
+     a light hairline along the top border and round the curve, worse the larger
+     the radius. Nothing above it in the tree causes it and no compositing hint
+     removes it; the only cure is to leave nothing pale underneath. So the
+     sheet's background carries a band of the header's own colour across the
+     top, hidden under the opaque header everywhere except in those fringe
+     pixels. Themes point `--sheet-bleed` at their own header colour, and hang
+     any paper texture off `--sheet-texture` so it layers over the band rather
+     than replacing it. */
+  background-color: var(--colour-sheet);
+  background-image:
+    var(--sheet-texture, none),
+    linear-gradient(var(--sheet-bleed, var(--steel-700)) 0 1.6rem, rgba(0, 0, 0, 0) 1.6rem);
   border-radius: 2px;
   overflow: hidden;
   box-shadow:
@@ -20,7 +33,7 @@
 
 .story__header {
   padding: 1.9rem var(--sheet-pad-x) 1.8rem;
-  background: linear-gradient(135deg, var(--steel-700), var(--steel-800));
+  background: var(--masthead-bg, linear-gradient(135deg, var(--steel-700), var(--steel-800)));
   color: #fff;
 }
 
