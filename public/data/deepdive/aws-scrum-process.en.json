@@ -4,12 +4,7 @@
   "title": "Rebuilding the team's Scrum rituals around continuous delivery",
   "question": "Tell me about a time you changed a process people were used to.",
   "experienceId": "aws-sde",
-  "tags": [
-    "agile",
-    "process",
-    "team culture",
-    "initiative"
-  ],
+  "tags": ["agile", "process", "team culture", "initiative"],
   "star": {
     "situation": [
       "When I joined my team at AWS the Scrum process was inefficient and hard for newcomers to navigate. Standups regularly ran to 30 minutes with little engagement, estimation points went unused, velocity was untracked, and the traditional sprint format clashed with a delivery model that shipped several deployments a day."
@@ -18,9 +13,9 @@
       "I took on the Scrum Master responsibilities to rework our rituals, stop wasting developer hours, and get genuine engagement back."
     ],
     "action": [
-      "Board and sprint restructuring: I replaced the static sprint boards with quarterly boards organised by feature lane, and moved from two-week sprints to focused weekly tracking. Daily standups were structured around the feature lanes, so engineers could opt into the parts that concerned them and skip the rest rather than context switch through all of it.",
+      "Board and sprint restructuring: I replaced the static sprint boards with quarterly boards organised by feature lane, and moved from two-week sprints to focused weekly tracking. Daily standups were structured around the feature lanes, so a given feature was only discussed once a week, during its dedicated standup slot, and engineers could opt into the parts that concerned them and skip the rest rather than context switch through all of it.",
       "Streamlined rituals: I dropped the dedicated sprint planning meeting and moved task refinement to the end of the relevant feature standup.",
-      "Actionable retrospectives: I replaced the passive retro with a structured format — a project recap, live demos, and anonymous ticket voting — which produced concrete action items someone actually owned."
+      "Actionable retrospectives: I replaced the passive retro with a structured format: a project recap, live demos, and ticket voting, which produced concrete action items someone actually owned. To push for engagement, I had engineers present their own tickets rather than just vote on them."
     ],
     "result": [
       "Meeting overhead fell sharply and focus improved, and the team settled into an open communication culture where engineers talked to each other continuously instead of saving discussions for a formal sprint boundary."
@@ -28,7 +23,7 @@
   },
   "reflection": [],
   "challenge": [
-    "Getting buy-in for non-traditional agile practices from a team used to the status quo. I met the scepticism by framing every adjustment as an experiment and using the retrospectives as a safe feedback loop to evaluate each change and iterate on how the team felt about it."
+    "Getting buy-in for non-traditional agile practices from a team used to the status quo. I met the scepticism by proposing to use the retrospectives as a safe feedback loop to evaluate each change and iterate on how the team felt about it."
   ],
   "hardestBug": [
     "The process roadblock rather than a defect: cutting low-value meeting noise without losing operational visibility. Re-architecting the daily standups around feature lanes took careful balancing so engineers stayed informed about critical cross-service dependencies while no longer sitting through updates that did not concern them."

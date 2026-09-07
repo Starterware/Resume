@@ -30,6 +30,14 @@
             }
           </section>
         }
+
+        @if (data.profile.narrative.closing.length) {
+          <div class="story__closing">
+            @for (paragraph of data.profile.narrative.closing; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </div>
+        }
       </div>
     </article>
 

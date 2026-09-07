@@ -67,6 +67,12 @@ export interface Narrative {
   /** Where the interest started, before the first job. */
   intro: string[];
   chapters: NarrativeChapter[];
+  /**
+   * Where things stand now, after the last employer. It is the author speaking
+   * again rather than another chapter, so the story page sets it off with a
+   * rule instead of a heading.
+   */
+  closing: string[];
 }
 
 export interface Profile {

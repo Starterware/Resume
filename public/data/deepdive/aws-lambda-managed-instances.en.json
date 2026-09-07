@@ -2,25 +2,20 @@
   "slug": "aws-lambda-managed-instances",
   "lang": "en",
   "title": "Taking Managed Instances through design, security and rollout",
-  "question": "Tell me about a time you drove a technical initiative that spanned multiple teams.",
+  "question": "Tell me about a time you drove a technical initiative",
   "experienceId": "aws-sde",
-  "tags": [
-    "technical leadership",
-    "system design",
-    "cross-team",
-    "security",
-    "control plane"
-  ],
+  "tags": ["technical leadership", "system design", "cross-team", "security", "control plane"],
   "star": {
     "situation": [
       "AWS launched Managed Instances for Lambda so customers could run functions on EC2 infrastructure with native scaling and cost efficiency. As part of the Code Management & Optimization team, our service had to support function packaging, artifact storage and optimisation for this new execution tier."
     ],
     "task": [
-      "I took ownership of my team's initiative: leading the high-level design and the operational readiness review, driving the multi-service deployment, and acting as the primary technical contact for the control plane and data plane partner teams."
+      "I took ownership of my team's initiative: leading the high-level design and the operational readiness review, driving the multi-service deployment, and acting as a technical point of contact for the control plane and data plane partner teams."
     ],
     "action": [
-      "Architectural steering and pivot: when the security requirements shifted mid-project from S3 KMS encryption to dedicated artifact encryption at rest, I identified early that full alignment with Lambda On-Demand was no longer possible. I re-architected the design and rewrote the core components before our team could become a blocker.",
-      "Cross-service delivery: I orchestrated end-to-end integration and a zero-customer-impact deployment across several control plane and data plane dependencies, establishing rigorous validation pipelines along the way."
+      "High-level design ownership: with limited input from the global tech lead, I was effectively the source for our team's high-level design, shaping the initial architecture.",
+      "Architectural steering and pivot: my first design aimed to stay as closely aligned with Lambda On-Demand as possible, ideally allowing an easy switch between the two. About two months in, with roughly 75% of the work done, I started questioning that direction, and following the best security recommendations for artifact movement, identified that dedicated artifact encryption at rest was the stronger long-term solution, even though it meant giving up that alignment. I drove the shift, re-architected the design, and rewrote the core components before it could become a blocker.",
+      "Cross-service delivery: I guided integration of our team's piece with several control plane and data plane dependencies, driving a zero-customer-impact deployment on our side and establishing rigorous validation pipelines along the way."
     ],
     "result": [
       "All of the team's code changes and operational readiness requirements landed on schedule with zero customer impact, giving Lambda Managed Instances seamless support from our service."
@@ -28,7 +23,7 @@
   },
   "reflection": [],
   "challenge": [
-    "Adapting to a major architectural shift mid-development. Realising we could not fully mirror Lambda On-Demand, because of the new mandatory artifact encryption-at-rest requirement, meant revisiting our fundamental data flows and rewriting a large part of the codebase under a tight timeline."
+    "Pivoting a design that was already 75% built. Recognising on my own initiative that dedicated artifact encryption at rest was the stronger long-term choice, even though it meant giving up full Lambda On-Demand alignment, meant revisiting our fundamental data flows and rewriting a large part of the codebase under a tight timeline, well after the original direction was largely in place."
   ],
   "hardestBug": [
     "Cross-service failure scenarios during joint testing. Our code interacted with several external control and data plane services, so I regularly had to run exhaustive isolation tests to pinpoint edge-case failures and demonstrate to partner teams that the fault lay in their service layer."
@@ -37,7 +32,7 @@
     "I would push for an explicit early audit of emerging security and compliance requirements, rather than assuming a new feature paradigm can align fully with legacy execution patterns like Lambda On-Demand."
   ],
   "aboutYourself": [
-    "I have the technical depth and the confidence to drive major architectural decisions across organisational boundaries. It showed me I can guide multi-team initiatives, challenge flawed assumptions and pivot a high-level design without giving up the timeline."
+    "I have the technical depth and confidence to drive my team's piece of a major initiative end to end, even when it meant influencing decisions beyond my own team's boundaries. It showed me I can challenge flawed assumptions and pivot a high-level design without giving up the timeline."
   ],
   "enjoyed": [
     "Mapping out the end-to-end system design, finding the subtle edge cases, and reasoning through complex multi-service interactions across the AWS control and data plane ecosystem."

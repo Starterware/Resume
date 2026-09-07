@@ -7,7 +7,7 @@
     "name": "Mikaël Lenaertz",
     "title": "Senior Software Engineer",
     "location": "Brussels, Belgium",
-    "summary": "Senior software engineer with 12+ years designing and operating distributed systems at scale, from mission-critical dispatch platforms for the Belgian Police to AWS Lambda's control plane, which orchestrates serverless functions globally. I gravitate toward ambiguous, high-stakes problems that others avoid, and I own them end to end: diagnosing the root cause, designing the fix, and staying with it through production rollout. Now looking for a new opportunity where my technical ownership can make a real impact.",
+    "summary": "Senior software engineer with 12+ years designing and operating distributed systems at scale, from mission-critical dispatch platforms for the Belgian Police to AWS Lambda's control plane, which orchestrates serverless functions globally. I gravitate toward ambiguous, high-stakes work and own it end to end, from diagnosing root causes to designing solutions and staying with them through production rollout. Now looking for a new opportunity where my technical ownership can make a real impact.",
     "narrative": {
       "intro": [
         "My fascination with software didn't start in a classroom; it began the moment my family got access to the internet. Wondering how programs worked under the hood, I wrote my first lines of C at fifteen. That first \"Hello, World!\" on the terminal sparked a lifelong drive for low-level performance and algorithmic efficiency.",

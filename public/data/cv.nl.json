@@ -47,6 +47,9 @@
             "Een groot deel van mijn werk draaide om het optimaliseren van klantcode: ik porteerde en herschreef de kernlogica naar Go om hoge concurrency te benutten, met een channel-gebaseerde pijplijn die de verwerkingslatentie halveerde. Daarnaast boekte ik operationele en financiële winst: ik trok een opslagoptimalisatie op gang die 200 PB aan S3-opslag vrijmaakte — 70% minder — en halveerde de artefactopslag via deduplicatie, waarmee wekelijkse fouten in achtergrondtaken verdwenen. Door grondig debuggen te combineren met systeemveerkracht vond en verhielp ik een bug die er vanaf dag één in zat en willekeurige fouten veroorzaakte bij ongeveer elke 10.000 functiecreaties, en herzag ik de integratietestframeworks waardoor wekelijkse rollbacks door flaky tests van meer dan 20 naar bijna nul gingen."
           ]
         }
+      ],
+      "closing": [
+        "Na iets meer dan drie jaar in Dublin besloten mijn vrouw en ik terug naar België te verhuizen: we wilden ons vestigen voordat ons kind ouder werd, in plaats van het later opnieuw te ontwortelen. Nu ben ik terug in Brussel, op zoek naar wat volgt."
       ]
     },
     "contact": {

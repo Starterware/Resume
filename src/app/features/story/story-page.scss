@@ -113,6 +113,14 @@
   color: var(--colour-muted);
 }
 
+/* The ending, set off from the last employer: it is the author speaking again
+   rather than another chapter, so it gets a rule the chapters never needed. */
+.story__closing {
+  margin-block-start: 2rem;
+  padding-block-start: 1.4rem;
+  border-block-start: 1px solid var(--colour-rule);
+}
+
 .load-error {
   max-inline-size: var(--sheet-width);
   margin: 4rem auto;

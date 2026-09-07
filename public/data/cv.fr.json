@@ -47,6 +47,9 @@
             "Une grande partie de mon travail a porté sur l'optimisation du code client : j'ai porté et refactorisé la logique centrale en Go pour tirer parti d'une forte concurrence, en concevant un pipeline à base de canaux qui a réduit la latence de traitement de 50 %. J'ai aussi mené des gains opérationnels et financiers : j'ai piloté un effort d'optimisation du stockage qui a récupéré 200 Po sur S3 — soit 70 % de moins — et réduit de moitié le stockage d'artefacts par déduplication, en résolvant des échecs hebdomadaires de traitements de fond. En combinant débogage approfondi et résilience système, j'ai découvert et corrigé un bug présent depuis le premier jour dans l'optimisation des fonctions, qui provoquait des échecs aléatoires toutes les ~10 000 créations, et refondu les frameworks de tests d'intégration pour faire passer les rollbacks hebdomadaires de plus de 20 à quasiment zéro."
           ]
         }
+      ],
+      "closing": [
+        "Après un peu plus de trois ans à Dublin, ma femme et moi avons décidé de rentrer en Belgique : nous voulions nous installer avant que notre enfant ne grandisse, plutôt que de le déraciner plus tard. Je suis de retour à Bruxelles, à la recherche de la suite."
       ]
     },
     "contact": {

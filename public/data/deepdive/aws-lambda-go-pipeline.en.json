@@ -1,38 +1,31 @@
 {
   "slug": "aws-lambda-go-pipeline",
   "lang": "en",
-  "title": "Rewriting the Lambda package pipeline in Go",
-  "question": "Tell me about a time you replaced a critical system running at scale.",
+  "title": "Learning Go, and someone else's codebase, under pressure",
+  "question": "Tell me about a time you were pushed outside your comfort zone",
   "experienceId": "aws-sde",
-  "tags": [
-    "Go",
-    "concurrency",
-    "pipeline architecture",
-    "control plane",
-    "integration testing"
-  ],
+  "tags": ["Go", "concurrency", "pipeline architecture", "control plane", "integration testing"],
   "star": {
     "situation": [
-      "The existing Java pipeline that optimised AWS Lambda function ZIP packages, with and without layers, and ingested them into the data plane format was hard to maintain, short on throughput, and dependent on legacy S3 notifications."
+      "The existing Java code that optimised AWS Lambda function ZIP packages, with and without layers, and transformed them into the data plane format, ran in some cases synchronously and had no concept of state, something we needed to introduce to move the code to an asynchronous model. The async path relied on S3 notifications, which wasn't optimal: it triggered Lambda functions multiple times and required workarounds to skip the redundant invocations. I hadn't been part of the initiative from the start, and Go, the language chosen for the rewrite, was new to me."
     ],
     "task": [
-      "I was put in charge of designing and implementing a high-performance replacement service in Go supporting both SQS-driven and direct HTTP invocation, and of refactoring the control plane orchestration so it handled function layer edge cases cleanly."
+      "I was put in charge of designing and implementing a high-performance replacement service in Go supporting both SQS-driven and direct HTTP invocation, and of refactoring the control plane orchestration so it handled function layer edge cases cleanly, all while ramping up on a language and a codebase that weren't mine to begin with."
     ],
     "action": [
       "Pipeline engineering in Go: I designed a concurrent, channel-based pipeline with adaptive interfaces for dual SQS and HTTP handling, replacing the legacy Java version and cutting processing latency by 50%.",
-      "Control plane refactoring: I joined an away team to refactor the orchestration service that fetches layers and organises storage. I ended up rewriting most of the component to cover missing edge cases such as Lambda@Edge, and built a rapid integration testing framework around it.",
-      "Production crisis recovery: when a legacy background job concept scaled poorly in a major AWS region and started impacting control plane operations, I designed and deployed a deduplicated database concept within a week, eliminating redundant function copies and letting global rollouts resume safely."
+      "Control plane refactoring: the Go pipeline work was well received, and on the strength of it I was asked to join an away team to refactor the orchestration service that fetches layers and organises storage. I ended up rewriting most of the component, with layers support as the biggest piece I added, alongside other edge cases, and built a rapid integration testing framework around it."
     ],
     "result": [
-      "End-to-end package processing time halved, automated test coverage held across the edge cases, and regional scaling was restored during a high-severity control plane bottleneck."
+      "End-to-end package processing time halved, and automated test coverage held across the edge cases."
     ]
   },
   "reflection": [],
   "challenge": [
-    "Safely executing the multi-phase migration from the legacy path to the new Go engine, particularly managing new state concepts such as function activation status. The hardest operational hurdle was the legacy background job model for ZIP functions failing to scale in a massive region, which meant re-architecting the database data model under pressure to eliminate data copying and unblock global deployment."
+    "Safely executing the multi-phase migration from the legacy path to the new flow while the old code was still running, rolling out over days."
   ],
   "hardestBug": [
-    "Subtle architectural edge cases across the different Lambda variants — Lambda@Edge in particular — which needed specialised processing paths that were poorly documented in the legacy codebase and only surfaced during deep scenario testing."
+    "The team had decided to reuse the image function polling mechanism to handle copying function artifacts for new versions, without realising it wouldn't scale to the new load. In our biggest region, this caused failures that impacted not just ZIP functions but image functions as well, threatening control plane operations and blocking global rollouts. I designed a deduplication concept, along with all the required updates to the background jobs to handle it, within a week, eliminating the redundant function copies and getting rollouts moving again safely."
   ],
   "differently": [
     "I would push for end-to-end stress and performance testing under synthetic noisy-neighbour conditions early in the design phase. Our functional integration testing was exhaustive, but validating control plane behaviour under heavy concurrent load would have exposed the regional background job scaling limits before production did."
