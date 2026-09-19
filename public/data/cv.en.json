@@ -7,7 +7,7 @@
     "name": "Mikaël Lenaertz",
     "title": "Senior Software Engineer",
     "location": "Brussels, Belgium",
-    "summary": "Senior software engineer with 12+ years designing and operating distributed systems at scale, from mission-critical dispatch platforms for the Belgian Police to AWS Lambda's control plane, which orchestrates serverless functions globally. I gravitate toward ambiguous, high-stakes work and own it end to end, from diagnosing root causes to designing solutions and staying with them through production rollout. Now looking for a new opportunity where my technical ownership can make a real impact.",
+    "summary": "Senior software engineer with 12+ years experience designing and operating distributed systems at scale, from mission-critical dispatch platforms to AWS Lambda's control plane. I enjoy ambiguous, high-stakes problems and owning solutions from root cause to production.",
     "narrative": {
       "intro": [
         "My fascination with software didn't start in a classroom; it began the moment my family got access to the internet. Wondering how programs worked under the hood, I wrote my first lines of C at fifteen. That first \"Hello, World!\" on the terminal sparked a lifelong drive for low-level performance and algorithmic efficiency.",
@@ -102,7 +102,12 @@
         }
       }
     ],
-    "photo": null
+    "photo": {
+      "src": "images/profile.webp",
+      "width": 640,
+      "height": 716,
+      "alt": "Portrait of Mikaël Lenaertz"
+    }
   },
   "experience": [
     {
@@ -122,10 +127,10 @@
           "role": "Software Development Engineer",
           "start": "2022-12",
           "end": "2026-06",
-          "summary": "Worked on AWS Lambda's control plane, responsible for orchestrating, storing, and optimizing the creation and updates of serverless functions at scale, contributing across multiple internal services spanning code management, code optimization, and runtimes management. Drove cross-team technical initiatives, operational excellence, and engineering mentorship throughout the role.",
+          "summary": "Worked on AWS Lambda's control plane, responsible for orchestrating, storing, and optimizing the creation and updates of serverless functions at scale, allowing customers to run them without having to provision or manage servers. Drove cross-team technical initiatives, operational excellence, and engineering mentorship throughout the role.",
           "highlights": [
-            "Took a leading technical role in delivering my team's contribution to three major Lambda control plane initiatives, including Lambda Managed Instances, a runtime flexibility initiative, and a code deletion workflow overhaul, owning each piece end to end: shaping the design, acting as point of contact, driving implementation, and readiness for launch, while providing cross-team architectural guidance to engineers across the broader organization.",
-            "Designed and implemented a channel-based pipeline architecture in Go enabling flexible parallel processing, reducing end-to-end processing time by 50%.",
+            "Led the technical delivery of my team's contribution to three major Lambda control plane initiatives, including Lambda Managed Instances, a runtime flexibility initiative, and a code deletion workflow overhaul, owning each end to end from design through deployment and operational readiness.",
+            "Designed and implemented a channel-based pipeline architecture in Go enabling flexible parallel processing of function optimizations, reducing end-to-end processing time by 50%",
             "Resolved recurring background job failures affecting thousands of functions, work that also deduplicated code artifacts, cutting artifact storage nearly 50%, and drove a broader S3 storage reduction of 70% (200PB).",
             "Rewrote the team's integration testing frameworks to enable independent execution, broaden business-critical coverage and eliminate security liabilities, reducing weekly rollbacks from 20+ to near-zero.",
             "Built multiple AI agents and skills for automated report generation and operational investigation, built on Kiro, AWS's AI-powered development environment.",
@@ -217,7 +222,7 @@
           "end": "2019-10",
           "summary": "Part of the back-end team building the cross-platform messaging interface for secure financial information exchange between banking organisations and corporate customers, deployable on Windows, Red Hat, SunOS and AIX.",
           "highlights": [
-            "Developed a cloud-based microservice to manage relationships between financial institutions, enabling secure and reliable financial information exchange across banking organisations and corporate customers.",
+            "Developed a cloud-based microservice to manage relationships between financial institutions, enabling secure and reliable financial information exchange.",
             "Built a Named-Entity Recognition (NER) system as part of an NLP proof-of-concept, extracting structured address data from unstructured, free-field text.",
             "Replaced Oracle-specific backup and restore tooling with a unified, application-driven migration framework, refactoring complex legacy C++98 functions to decouple database logic without disrupting backup operations on a mission-critical financial messaging system."
           ],

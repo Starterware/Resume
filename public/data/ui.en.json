@@ -1,6 +1,6 @@
 {
   "pdfFileName": "Curriculum vitae",
-  "downloadPdf": "PDF version",
+  "downloadPdf": "Download PDF",
   "sourceCode": "Resume Code",
   "styleSwitcher": "Style",
   "backToCv": "Back to CV",
@@ -8,7 +8,8 @@
   "narrative": {
     "cta": "Read my full story",
     "title": "My story",
-    "journey": "Career journey"
+    "journey": "Career journey",
+    "translationNotice": ""
   },
   "translationFallback": "This page has not been translated yet and is shown in English.",
   "present": "Present",

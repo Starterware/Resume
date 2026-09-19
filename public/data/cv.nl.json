@@ -7,7 +7,7 @@
     "name": "Mikaël Lenaertz",
     "title": "Senior software engineer",
     "location": "Brussel, België",
-    "summary": "Ervaren software engineer met meer dan 12 jaar ervaring in het ontwerpen en beheren van gedistribueerde systemen op grote schaal. Ik heb aangetoond complexe, slecht afgebakende problemen naar me toe te trekken en tot in productie te brengen, met meetbare impact en aandacht voor operationele kwaliteit. Ik zoek nu een rol als System/Software Engineer om complexe systeem- en infrastructuurvraagstukken aan te pakken.",
+    "summary": "Senior software engineer met meer dan 12 jaar ervaring in het ontwerpen en beheren van grootschalige gedistribueerde systemen, van kritische dispatching platformen tot de control plane van AWS Lambda. Ik hou van ambigue, impactvolle problemen en neem oplossingen in handen, van oorzaak tot productie.",
     "narrative": {
       "intro": [
         "Mijn fascinatie voor software begon niet in een klaslokaal, maar op het moment dat mijn gezin internet kreeg. Uit nieuwsgierigheid naar wat er onder de motorkap gebeurde, schreef ik mijn eerste regels C op mijn vijftiende. Die eerste \"Hello, World!\" in de terminal legde de basis voor een blijvende interesse in low-level prestaties en algoritmische efficiëntie.",
@@ -95,7 +95,12 @@
         }
       }
     ],
-    "photo": null
+    "photo": {
+      "src": "images/profile.webp",
+      "width": 640,
+      "height": 716,
+      "alt": "Portret van Mikaël Lenaertz"
+    }
   },
   "experience": [
     {
