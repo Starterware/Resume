@@ -47,13 +47,115 @@
   --colour-rule: #dde3e9;
   --colour-chip: #eef2f6;
 
+  /* The hero.
+     The header is one composition — a cutout portrait standing in a banner
+     photograph, with the name and the introduction beside it — and these are
+     the handful of values a theme has to restate to relight it. Geometry stays
+     in `cv-page.scss`: a theme changes the colour of the light, never where the
+     portrait stands.
+
+     `--hero-glow-*` is the ambient light behind the portrait, `--hero-accent`
+     the one saturated mark in the header (the rule beside the kicker, the
+     location pin), `--portrait-shadow` what the cutout drops onto the banner,
+     `--hero-glass` the tint both pieces of glass in the header are cut from —
+     the links band across the foot and the PDF button in the corner — with
+     `--hero-rule` the hairline along the band's top edge, and `--content-wash`
+     the tint that carries the hero into the paper below it. */
+  /* Nothing is laid over the banner photograph. The header carried a texture
+     of diagonal planes here, and before that a per-theme tint and a darkening
+     ramp; between them the picture was a backdrop rather than a photograph.
+     What holds the hero's type up is `--hero-type-shadow` below, which darkens
+     behind the glyphs and leaves the picture alone. */
+
+  /* A right-pointing arrow, drawn once and used by everything in the header
+     that leads somewhere: the call to action and the source-code link. As a
+     mask over `currentColor` it takes each one's own colour. */
+  --icon-arrow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg>');
+  /* A filled map pin rather than an outlined one: it is used small, where an
+     outline reads as an empty box and a fill reads as the thing it depicts. */
+  --icon-pin: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></svg>');
+
+  --hero-glow-core: rgba(96, 190, 220, 0.22);
+  --hero-glow-edge: rgba(96, 190, 220, 0.06);
+  --hero-accent: #4f9fe0;
+  /* The theme's light on everything in the header that is not the name or the
+     prose: the role above the name, the link that ends the introduction, and
+     the edge drawn round the PDF button. One colour across the three ties the
+     label a reader starts on to the two places they can go next, which is why
+     the link no longer carries a tint of its own.
+
+     The location keeps its own, a shade quieter: it sits closer to the prose it
+     introduces and is a fact rather than something to act on. */
+  --hero-kicker: #94cbf0;
+  --hero-location: #a6caea;
+  /* The edge drawn round the PDF button, and what it becomes under the pointer.
+     It rests well below the role's light tint: on a daylight banner a pale
+     outline dissolves into the picture behind it, and a deep one is what gives
+     the control an edge to read against. The three other themes restate it —
+     nature at its own saturated mark, and the two dark-ground themes at the
+     role colour, where the lighter tint is the one that holds.
+
+     Lighting the edge to white on hover is the loudest half of the state
+     change: the fill thins at the same time, so the control goes from a solid
+     chip with a dark outline to a pane of glass with a lit rim. */
+  --hero-control-edge: #235682;
+  --hero-control-edge-hover: #fff;
+  --portrait-shadow: drop-shadow(0 2px 4px rgba(4, 12, 20, 0.45))
+    drop-shadow(0 18px 30px rgba(4, 12, 20, 0.55));
+  /* The glass in the header. The links band and the PDF button are cut from
+     one colour, stated as channels so a theme restates the tint once and both
+     pieces follow. It is a tint of the theme's own dark rather than plain
+     black: black over a photograph reads as a grey wash, while a deep navy
+     over the default banner reads as belonging to the same picture.
+     The two carry different alphas. The band at the foot is nearly solid: it
+     is where the picture ends, and letting the photograph read through it left
+     the links sitting in whatever the banner happened to be doing behind them.
+     The button in the corner stays properly translucent, because there the
+     picture is meant to carry on behind the control. Neither goes below what
+     white text needs over the brightest thing any of the four photographs puts
+     behind it. */
+  /* What carries the hero's type over an undarkened photograph. A shadow is the
+     only device that separates text from a picture without touching the picture
+     — it darkens the few pixels around each glyph and nothing else — which is
+     why it is here rather than a wash over the banner.
+
+     Two stops on purpose: a tight one that gives every letterform its own edge,
+     and a wide soft one that puts a pool of shade under a whole word so it does
+     not have to fight a bright window or a lit skyline behind it. */
+  --hero-type-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 22px rgba(0, 0, 0, 0.75);
+
+  --hero-glass: 2, 49, 95;
+  --hero-strip: linear-gradient(
+    180deg,
+    rgba(var(--hero-glass), 0.82) 0%,
+    rgba(var(--hero-glass), 0.93) 100%
+  );
+  /* The button sits in the corner the banner puts a lit window or a diagonal
+     highlight in, so it is the heavier cut of the glass — nearly solid, which
+     leaves the label at its strongest in the state a reader spends most time
+     looking at. */
+  --hero-glass-button: rgba(var(--hero-glass), 0.85);
+  /* The same glass at the same weight, mixed a fifth of the way to white. The
+     hover lightens rather than thins: dropping the alpha let the banner through
+     instead, which on a photograph reads as the control losing its footing
+     rather than lighting up. Mixed rather than stated per theme so each one's
+     own glass whitens toward its own colour. */
+  --hero-glass-button-hover: color-mix(
+    in srgb,
+    rgba(var(--hero-glass), 0.95) 80%,
+    rgba(255, 255, 255, 0.75) 20%
+  );
+  --hero-rule: rgba(255, 255, 255, 0.14);
+  --content-wash: rgba(45, 86, 120, 0.055);
+
   /* Chrome that sits on the metal rather than on the paper. */
   --colour-on-metal: var(--metal-100);
   --colour-on-metal-muted: var(--metal-200);
   --colour-metal-rule: rgba(255, 255, 255, 0.18);
 
   --font-body:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   /* An A4 width scaled up: the printed PDF is still A4, but the screen has
      room to spare, and the wider sheet lets the two-column rows in the header
@@ -85,11 +187,7 @@ body {
   background-image:
     linear-gradient(158deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0) 42%),
     linear-gradient(22deg, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0) 62%),
-    repeating-linear-gradient(
-      104deg,
-      rgba(255, 255, 255, 0.03) 0 2px,
-      rgba(0, 0, 0, 0.03) 2px 4px
-    );
+    repeating-linear-gradient(104deg, rgba(255, 255, 255, 0.03) 0 2px, rgba(0, 0, 0, 0.03) 2px 4px);
   background-attachment: fixed;
 }
 
@@ -124,7 +222,6 @@ h3 {
     color: #000;
   }
 }
-
 
 /* A "read more" link: a short label followed by a chevron that nudges on
    hover. Global rather than per-component because the masthead and the
@@ -163,7 +260,6 @@ h3 {
   transform: translateX(0.15rem) rotate(45deg);
 }
 
-
 /* The back link on the secondary pages: it sits on the metal above the sheet,
    not inside it, so it reads as leaving the page rather than as part of the
    document. Global for the same reason as `.read-more` — two pages use it, and
@@ -196,7 +292,6 @@ h3 {
   transform: translateX(-0.15rem) rotate(-135deg);
 }
 
-
 /* A read-more link that opens a page of its own rather than continuing the
    sentence. Rotating the chevron is not enough — at 45° increments it only
    ever points at an edge — so this swaps in a proper diagonal arrow, drawn as
@@ -207,8 +302,10 @@ h3 {
   border: 0;
   transform: none;
   background-color: currentColor;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>') center / contain no-repeat;
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>') center / contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>')
+    center / contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg>')
+    center / contain no-repeat;
   transition: transform 150ms ease;
 }
 

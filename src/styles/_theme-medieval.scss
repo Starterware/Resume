@@ -74,11 +74,49 @@
      over oxblood into dark oak, the two colours a bound volume is made of.
      Both stops measured against the white name and the light text on them. */
   --masthead-bg:
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"><path d="M22 1 43 22 22 43 1 22z" fill="none" stroke="%23e8d19b" stroke-opacity="0.17" stroke-width="1"/><circle cx="22" cy="22" r="1.7" fill="%23e8d19b" fill-opacity="0.2"/></svg>'),
-    linear-gradient(135deg, #5a1d14 0%, #2a1409 100%);
+    /* The language switcher and PDF link sit in this corner, and on a
+       photograph that corner is wherever the picture happens to be brightest.
+       A local darkening holds those controls up without weighing down the
+       rest of the image. */
+    radial-gradient(58% 130% at 100% 0%, rgba(26, 9, 4, 0.5) 0%, rgba(0, 0, 0, 0) 72%),
+    /* The foot of the banner, where the profile band sits: the photographs all
+       carry something bright along the bottom — water, reflections, a lit floor
+       — and letting it run up under the prose made the band read as a lighter
+       strip than the header above it. This settles the bottom edge down. */
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(26, 9, 4, 0.42) 100%),
+    linear-gradient(
+      103deg,
+      rgba(46, 16, 8, 0.76) 0%,
+      rgba(46, 16, 8, 0.68) 52%,
+      rgba(46, 16, 8, 0.46) 100%
+    );
+  --masthead-image: url('images/banner-medieval.jpg');
 
-  --photo-chip: #4a2f18;
-  --photo-frame: rgba(232, 209, 155, 0.9);
+  /* ---- The hero ----
+     The portrait is a cutout standing in the header rather than a miniature in
+     a gilt frame, so what the theme supplies is the light on it: torchlight,
+     warm and low, falling from where the figure stands. The gilt has not gone
+     anywhere — it is still round the sheet and along the top of the banner —
+     but a frame drawn round a figure with no edges would only cut it out
+     again. */
+  --hero-glow-core: rgba(214, 150, 58, 0.22);
+  --hero-glow-edge: rgba(166, 100, 30, 0.07);
+  --hero-accent: #c9a86a;
+  --hero-kicker: #eed6a4;
+  /* Gilt on a dark ground: the role's own tint is the one that reads here, not
+     a step darker. */
+  --hero-control-edge: var(--hero-kicker);
+  --hero-location: #d5c0a0;
+  --portrait-shadow: drop-shadow(0 2px 4px rgba(12, 5, 2, 0.5))
+    drop-shadow(0 18px 30px rgba(12, 5, 2, 0.55));
+  /* The glass over the banner: the scorched oxblood the header itself sits on,
+     deep enough to carry white text wherever the photograph is brightest. */
+  --hero-glass: 42, 16, 12;
+  --hero-rule: rgba(232, 209, 155, 0.2);
+  --content-wash: rgba(109, 35, 24, 0.055);
+  /* Gilt along the top, as on the binding. */
+  --banner-edge: rgba(232, 209, 155, 0.34);
+  --banner-edge-foot: rgba(18, 7, 2, 0.46);
   /* The band behind the header, so no parchment shows through its clipped
      edge. The oxblood the header ramp starts on. */
   --sheet-bleed: #5a1d14;
@@ -169,22 +207,13 @@
      parchment's burn is not: the strip carries white text, and every layer here
      only darkens what is behind it, so the scorch can run under "GitHub"
      without costing any contrast — it gains some. */
-  --strip-texture:
-    linear-gradient(
-      90deg,
-      rgba(22, 9, 3, 0.88) 0%,
-      rgba(48, 22, 6, 0.62) 1.1%,
-      rgba(66, 33, 10, 0.3) 3.4%,
-      rgba(0, 0, 0, 0) 8%,
-      rgba(0, 0, 0, 0) 92%,
-      rgba(66, 33, 10, 0.32) 96.6%,
-      rgba(48, 22, 6, 0.64) 98.9%,
-      rgba(22, 9, 3, 0.9) 100%
-    ),
-    radial-gradient(7rem 3.2rem at 0% 64%, rgba(34, 16, 4, 0.6) 0%, rgba(0, 0, 0, 0) 72%),
-    radial-gradient(5rem 2.4rem at 0% 8%, rgba(34, 16, 4, 0.42) 0%, rgba(0, 0, 0, 0) 74%),
-    radial-gradient(8rem 3.6rem at 100% 32%, rgba(34, 16, 4, 0.62) 0%, rgba(0, 0, 0, 0) 72%),
-    radial-gradient(5rem 2.4rem at 100% 88%, rgba(34, 16, 4, 0.4) 0%, rgba(0, 0, 0, 0) 74%);
+
+  /* The colour the header sits on, above where the banner reaches. Sampled
+     from the top row of this theme's banner file, so the picture meets it
+     without a change of hue. */
+  .masthead {
+    background-color: #2a100b;
+  }
 
   .sheet {
     border-radius: 0;
@@ -196,12 +225,6 @@
       0 48px 88px rgba(0, 0, 0, 0.4);
   }
 
-  /* A portrait miniature: square, in a gold frame. */
-  .masthead__photo,
-  .masthead__photo-placeholder {
-    border-radius: 0;
-  }
-
   /* ---- Type assignments ----
      Capitals on the names, Garamond everywhere the reader actually reads.
      Cinzel has no lower case worth the name, so it is kept to short lines. */
@@ -211,6 +234,17 @@
     font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: 0.005em;
+  }
+
+  /* Cinzel is all capitals with a tall cap height, so it reads a good deal
+     larger than the sans the other themes set the name in — and this theme's
+     root size was already scaling it up on top of that. Taken below the size
+     the name takes elsewhere rather than level with it: parity by the numbers
+     still read as the loudest name of the four, which is what capitals at a
+     display size do. The stops keep the component's own proportions so the name
+     still grows and stops growing at the same widths. */
+  .masthead__name {
+    font-size: 2em;
   }
 
   .section__title,

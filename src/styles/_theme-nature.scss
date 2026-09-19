@@ -67,12 +67,47 @@
      pattern behind display type is one thing too many. The white name and the
      light profile text sit on this, so both stops are held down in value and
      measured against the text that lands on them, not the darkest corner. */
-  --masthead-bg: linear-gradient(135deg, #2b4a30 0%, #16301d 100%);
+  --masthead-bg:
+    /* The language switcher and PDF link sit in this corner, and on a
+       photograph that corner is wherever the picture happens to be brightest.
+       A local darkening holds those controls up without weighing down the
+       rest of the image. */
+    radial-gradient(58% 130% at 100% 0%, rgba(10, 26, 14, 0.5) 0%, rgba(0, 0, 0, 0) 72%),
+    /* The foot of the banner, where the profile band sits: the photographs all
+       carry something bright along the bottom — water, reflections, a lit floor
+       — and letting it run up under the prose made the band read as a lighter
+       strip than the header above it. This settles the bottom edge down. */
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(8, 22, 12, 0.42) 100%),
+    linear-gradient(
+      103deg,
+      rgba(20, 44, 26, 0.76) 0%,
+      rgba(20, 44, 26, 0.68) 52%,
+      rgba(20, 44, 26, 0.46) 100%
+    );
+  --masthead-image: url('images/banner-nature.jpg');
 
-  /* The empty portrait slot is the one element in the masthead with a colour
-     of its own, so it takes the colour of the band it sits on. */
-  --photo-chip: #3b6b45;
-  --photo-frame: rgba(226, 232, 218, 0.85);
+  /* ---- The hero ----
+     The portrait is a cutout standing in the header rather than a picture in a
+     frame, so what a theme supplies is the light behind it and the shadow it
+     drops, not a chip and a ring. Here the light is the same canopy green the
+     ground is lit with, and the shadow is the soft one of an overcast wood. */
+  --hero-glow-core: rgba(140, 205, 130, 0.2);
+  --hero-glow-edge: rgba(110, 175, 105, 0.06);
+  --hero-accent: #8fc98a;
+  --hero-kicker: #b6d9ac;
+  /* Undergrowth rather than the default's deep blue, a step below the role's
+     own tint for the same reason: this banner is lit too. */
+  --hero-control-edge: var(--hero-accent);
+  --hero-location: #b5c7b0;
+  --portrait-shadow: drop-shadow(0 2px 4px rgba(4, 14, 8, 0.42))
+    drop-shadow(0 18px 30px rgba(4, 14, 8, 0.5));
+  /* The glass over the banner: undergrowth dark enough to carry white text
+     whatever the photograph is doing behind it. */
+  --hero-glass: 8, 24, 13;
+  --hero-rule: rgba(207, 224, 200, 0.16);
+  --content-wash: rgba(53, 99, 63, 0.055);
+  --banner-edge: rgba(207, 224, 200, 0.22);
+  --banner-edge-foot: rgba(6, 18, 10, 0.4);
   /* The band the sheet paints behind the header, so no paper shows through the
      antialiased corner. The header ramp's own first stop. */
   --sheet-bleed: #2b4a30;
@@ -108,6 +143,13 @@
 
   /* Rounded. Nothing in a wood has a square corner, and the radius is the
      fastest way to read the difference from across the room. */
+  /* The colour the header sits on, above where the banner reaches. Sampled
+     from the top row of this theme's banner file, so the picture meets it
+     without a change of hue. */
+  .masthead {
+    background-color: #14251a;
+  }
+
   .sheet {
     border-radius: 16px;
     box-shadow:
@@ -115,12 +157,6 @@
       0 2px 4px rgba(0, 0, 0, 0.22),
       0 16px 34px rgba(0, 0, 0, 0.34),
       0 46px 84px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Round portrait, to match the sheet. */
-  .masthead__photo,
-  .masthead__photo-placeholder {
-    border-radius: 50%;
   }
 
   /* ---- Type assignments ----
@@ -187,9 +223,14 @@
     gap: 0.2rem 1.25rem;
   }
 
-  /* Bark rather than the sheet's grey-green: the label has to hold AA against
-     the wood, which is warmer and darker than the paper around it. */
-  .skills__category {
+  /* Bark rather than the sheet's grey-green: these sit on the wood, which is
+     warmer and darker than the paper around it, and the sheet's muted ink only
+     manages 3.9:1 on it. The two notices are here for the same reason — both
+     are drawn as a panel filled with `--colour-chip`, which in this theme is
+     the birch board rather than a pale tint. */
+  .skills__category,
+  .story__notice,
+  .fallback-notice {
     color: #4f4029;
   }
 

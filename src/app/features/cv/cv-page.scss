@@ -38,213 +38,461 @@
     0 44px 80px rgba(0, 0, 0, 0.28);
 }
 
-/* ---- Masthead ---- */
+/* ---- Hero masthead ---- */
 
+/*
+   One composition rather than a header with a bar bolted underneath it: the
+   portrait on the left, the name and the introduction on the right, the
+   controls in the top corner, and the links band across the foot — all of them
+   direct children of a single grid, because only direct children take part in
+   a grid's areas.
+
+   The links band cancels the side padding with a negative inset so it runs the
+   full width of the sheet, and it is translucent rather than opaque, so the
+   banner photograph and the foot of the portrait carry on behind it. That is
+   what stops the hero ending abruptly at a coloured bar.
+*/
 .masthead {
+  /* The portrait's column, and the number the rest of the header is
+     proportioned against: the glow behind it and how far it sinks into the
+     links band are both stated in terms of it. A share of the header rather
+     than a viewport measure, so it keeps the same proportion of the sheet at
+     every width, with a ceiling so it stops growing on a very wide screen.
+
+     It sizes the *column*; the portrait inside it is 100% of that. Putting the
+     percentage on both would resolve it twice — 28% of 28% — and is the one
+     way this is easy to get wrong. */
+  --portrait-size: min(31%, 21.5rem);
+
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  /* The profile runs on its own row beneath the name, spanning every column.
-     Keeping it out of the identity column stops it being squeezed into a
-     narrow measure beside the controls. */
+  /* Two columns, not three. The controls share the text column rather than
+     taking one of their own — a column of their own cost the introduction about
+     a sixth of its measure, which is the difference between prose that reads as
+     a paragraph and prose that reads as a stack of short lines. They are pinned
+     to the top corner of that column instead, and the name and kicker are
+     capped short of them so the two can never meet. */
+  grid-template-columns: var(--portrait-size) minmax(0, 1fr);
   grid-template-areas:
-    "photo   identity actions"
-    "summary summary  summary";
-  column-gap: 1.5rem;
+    'portrait identity'
+    'links    links';
+  grid-template-rows: 1fr auto;
+  /* Halved, so the introduction starts closer to the figure's shoulder. The
+     portrait is a cutout with no frame and a soft edge, so the gutter that
+     would separate two panels only reads as a hole here — the prose can sit
+     nearer to it than it could to a bordered picture. */
+  column-gap: clamp(0.6rem, 1.1vw, 0.9rem);
   align-items: start;
-  padding: 1.7rem var(--sheet-pad-x) 1.6rem;
+  /* No bottom padding: the links band is the foot of the header. */
+  padding: 3rem var(--sheet-pad-x) 0;
+
+  /* The banner photograph is the element's own background; everything laid
+     over it — the scrim, the depth that holds the typography up, the diagonal
+     facets — sits on `::before`, and the ambient glow behind the portrait on
+     `::after`.
+
+     That order matters and is easy to get backwards: within a stacking context
+     a negative-z-index child paints *after* the element's own background but
+     *before* its in-flow content, so both pseudo-elements are above the
+     photograph and below the text, and `::after` paints above `::before`.
+     Putting the photograph on `::before` instead buries the scrim beneath it,
+     and no amount of alpha does anything.
+
+     `isolation` keeps those negative layers inside this box rather than letting
+     them fall behind the sheet. Absolutely positioned on purpose: a static
+     `::before` on a grid container would become a grid item and claim a cell. */
+  position: relative;
+  isolation: isolate;
+  /* The figure is cut off by the bottom of its own frame, so the shadow it
+     drops is a hard-edged rectangle along that cut. Behind the links band that
+     is invisible; past the foot of the header it was smearing a grey block
+     across the top of the white page. Clipped to the header, which is exactly
+     where everything in here belongs. */
+  overflow: hidden;
+
+  /* No line along the top. The header used to carry a light hairline there, so
+     the photograph read as a panel set into the sheet; now that the picture runs
+     to the sheet's own edge the line only announced a seam that is not there.
+     The darker one along the foot stays — that edge is real, it is where the
+     links band begins. Drawn as an inset shadow rather than a border: a border
+     would sit inside the grid's padding box and shift every column by a pixel,
+     and this has to trace the same rounded corner the sheet clips to. */
+  box-shadow: inset 0 -1px 0 var(--banner-edge-foot, rgba(0, 0, 0, 0.3));
+  /* The colour the header sits on before the photograph has loaded, and
+     nowhere else: the picture now covers the element from edge to edge. Each
+     theme states its own, sampled from the top row of its banner file, so the
+     moment before the picture arrives is the right hue rather than a flash of
+     navy. */
+  background-color: #0e2438;
+
+  /* The photograph, filling the header and nothing laid over it.
+
+     It was anchored to the foot at its own 3:1 frame for a while, with the flat
+     colour above it and a fade across the join — which made the top of the
+     header a band of paint that turned into a picture partway down. The fade
+     was the giveaway: nothing in the composition is lit that way, so it read as
+     a header with an effect on it rather than as a photograph. Filling the
+     header costs the picture some of its width to the crop and buys one that is
+     simply there, the way the story and deep-dive headers already carry theirs.
+
+     On a layer of its own rather than as this element's background so the
+     element keeps a base colour underneath for the moment before it loads.
+     Negative z-index, which within this stacking context puts it above that
+     background and below the text; `isolation` on the host keeps it from
+     falling behind the sheet. Absolutely positioned on purpose: a static
+     pseudo-element on a grid container would become a grid item and claim a
+     cell. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--masthead-image, url('images/banner-default.jpg')) center / cover no-repeat;
+  }
 }
 
-/* Placed by line numbers rather than by area so it spans both rows and floats
-   over the profile band beneath it — grid items are allowed to share a cell,
-   and the z-index lifts it above the band. */
+/* ---- Portrait ---- */
+
+/* A figure standing in the hero, not a picture inside a card: no chip, no ring
+   and no rounded frame, because the source is a transparent PNG and any of
+   those would put it back in a box.
+
+   It runs off the left edge of the sheet rather than sitting inside the margin.
+   That is the difference between a portrait placed in a header and a person
+   standing in one: an element that stops short of the edge reads as an object
+   on the page, and one that runs past it reads as something the page is a
+   window onto. The sheet's own `overflow: hidden` does the cropping.
+
+   No crop and no fade: the picture stands at its own scale and the ground above
+   its head is the banner. An earlier pass cropped it to a standing figure, which
+   cost the space over the head that tells a reader the person is *in* the
+   photograph rather than laid on top of it — and cropping a cutout puts a
+   straight edge down the outside of a shoulder, which is the one thing a cutout
+   exists to avoid.
+
+   It spans both rows, so it carries on down past the links band instead of
+   stopping on top of it. Painted under the band rather than over it: the band is
+   translucent, so the shirt reads through the glass, and the links keep the dark
+   ground they need. The list beside it is indented clear of the figure so no
+   label ever sits on a shoulder. */
 .masthead__photo {
   grid-area: 1 / 1 / 3 / 2;
-  align-self: center;
+  align-self: end;
   position: relative;
-  z-index: 1;
-  inline-size: 8.5rem;
-  block-size: 8.5rem;
-  border-radius: 8px;
-  overflow: hidden;
-  /* Opaque, so the band it floats over does not show through the translucent
-     placeholder and cut a seam across it. A real photo is opaque anyway; this
-     only matters while the slot is empty. Tokenised because it is the one
-     colour in the masthead that is neither steel nor white, so a theme has
-     nowhere else to reach it. */
-  background: var(--photo-chip, #33587a);
+  z-index: 0;
+  /* Out through the header's side padding to the sheet's edge. */
+  inline-size: calc(100% + var(--sheet-pad-x));
+  margin-inline-start: calc(-1 * var(--sheet-pad-x));
+  padding-left: 15px;
+  padding-right: 20px;
 }
+
+/* The shadow follows the cutout's own alpha rather than a box, which is the
+   whole reason it is a filter and not a `box-shadow`: on a transparent PNG a
+   box shadow would draw the rectangle the picture was saved in. */
+.masthead__photo-image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  filter: var(--portrait-shadow);
+}
+
+/* Kept for the case the data carries no photo: the header must not collapse or
+   re-flow when one is added later. Squared off like the cutout it stands in
+   for, and faded the same way by the wrapper's mask. */
+.masthead__photo-placeholder {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  inline-size: 100%;
+  aspect-ratio: 1;
+
+  svg {
+    inline-size: 72%;
+    block-size: 72%;
+  }
+}
+
+/* ---- Identity ---- */
 
 .masthead__identity {
   grid-area: identity;
+  /* Clear of the controls above without needing a row gap that would also open
+     a hole beside the portrait. */
+  padding-block: 0 2.1rem;
 }
 
-.masthead__photo-image {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.masthead__photo-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 100%;
-  block-size: 100%;
-  border-radius: 8px;
-
-  svg {
-    inline-size: 58%;
-    block-size: 58%;
-  }
-}
-
+/* The role reads as a kicker above the name: it is what a reader is scanning
+   for, and it lets the name carry the size on its own. Capped for the same
+   reason the name below it is — the controls float over the top of this
+   column. */
 .masthead__kicker {
-  margin: 0 0 0.4rem;
-  font-size: 0.74rem;
+  margin: 0 0 0.3rem;
+  max-inline-size: calc(100% - 10.5rem);
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
 }
 
+/* The strongest typographic element on the page, and the only one that takes a
+   display size. The negative tracking is what keeps a name this large from
+   reading as a banner headline. */
 .masthead__name {
   margin: 0;
-  font-size: 2.5rem;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-size: 3rem;
+  /* Short of the controls pinned in the corner above it: they share this
+     column, so without a cap a longer name would run underneath the PDF link.
+     Stated in rem like everything else, which means it grows with a theme's own
+     root size at the same rate the controls beside it do. */
+  max-inline-size: calc(100% - 10.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   font-weight: 700;
+  text-wrap: balance;
 }
 
-/* Sits with the name rather than in the links strip: it is part of who he is,
-   not a way to reach him. The pin icon is the same mask trick as the strip. */
+/* Sits with the name rather than in the links band: it is part of who he is,
+   not a way to reach him. The pin is the same mask trick the links use. */
 .masthead__location {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  margin: 0.5rem 0 0;
-  font-size: 0.88rem;
+  gap: 0.5rem;
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.005em;
 
+  /* A solid pin rather than the outlined raster the contact strip used to
+     share. At this size an outline reads as a small empty shape; filled, it
+     reads as a marker at a glance, which is the whole job. */
   &::before {
     content: '';
-    inline-size: 0.95rem;
-    block-size: 0.95rem;
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
     flex-shrink: 0;
     background-color: currentColor;
-    mask: url('images/address.png') center / contain no-repeat;
-    -webkit-mask: url('images/address.png') center / contain no-repeat;
+    mask: var(--icon-pin) center / contain no-repeat;
+    -webkit-mask: var(--icon-pin) center / contain no-repeat;
   }
 }
 
-/* The band: negative insets cancel the masthead's padding so it runs edge to
-   edge, and the leading padding clears the photo floating over it (masthead
-   padding + photo + gap). */
-.masthead__summary {
-  grid-area: summary;
-  /* Bottom margin cancels the masthead's bottom padding; the leading padding
-     clears the photo floating over it (side margin + photo + column gap). */
-  margin: 1.4rem calc(-1 * var(--sheet-pad-x)) -1.6rem;
-  padding: 1.05rem var(--sheet-pad-x) 1.05rem calc(var(--sheet-pad-x) + 10rem);
-  background: rgba(0, 0, 0, 0.18);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  text-align: justify;
-  /* Justification without hyphenation opens rivers of white space at this
-     measure; `hyphens` lets the browser break long words instead. */
-  hyphens: auto;
+/* The introduction. Ranged left rather than justified, and capped well short of
+   the column it sits in: justification at this measure opened rivers of white
+   space, and the hyphenation that closed them left a paragraph that had to be
+   read rather than scanned. The same words, set to be taken in at a glance. */
+/* The rule is the separation, not the margin alone: above it is who he is,
+   below it what he does, and at this measure a gap on its own read as a
+   paragraph break rather than a change of subject. Short and in the theme's
+   accent — it is a mark, not a divider across the column. */
+.masthead__intro {
+  margin: 1rem 0 0;
+  padding-block-start: 1rem;
+  /* Wide enough that the two sentences settle into three or four lines and read
+     as one statement. Narrower, they broke into a stack that looked like two
+     separate claims. */
+  max-inline-size: 70ch;
+  font-size: 1rem;
+  /* 1.72 of 0.95rem is a line box a pixel shorter than 1.7 of 1rem was, which
+     is the point: the type came down a step and the leading came down with it
+     rather than opening up underneath it. */
+  line-height: 1.5;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 2.25rem;
+    block-size: 2px;
+    border-radius: 2px;
+    background: var(--hero-accent);
+  }
 }
 
-/* The band spans the sheet, but the text inside it should not: on the wide
-   sheet an uncapped measure runs past 100 characters a line. */
-.masthead__summary-text {
-  margin: 0;
-  max-inline-size: 84ch;
+/* The link at the end of the prose. It was a pill of its own underneath for a
+   while, which made it the loudest thing in the header and left the paragraph
+   ending in mid air; running on from the last sentence, it reads as the
+   sentence continuing — which is what it is.
+
+   Genuinely inline, with no box of its own: it takes the word space the markup
+   already puts before it and wraps at its own spaces like any other run of
+   words, so a narrow measure breaks it across a line instead of dropping the
+   whole phrase to the next one. It carries no margin in any direction — a
+   margin here is the paragraph ending and a control beginning, which is the
+   reading this link is meant to avoid. */
+.masthead__cta {
+  display: inline;
+  /* A couple of spaces on top of the word space the markup already puts here,
+     so the link separates from the sentence without detaching from it. In em
+     rather than rem so it stays the same number of spaces in a theme that sets
+     the prose at its own size. */
+  margin-inline-start: 0.5em;
+  font-weight: 600;
+  text-decoration: none;
+
+  /* Drawn rather than typed so it takes the link's own colour and can nudge on
+     hover without the label moving with it. Inline-block for a size to apply
+     to, and it can never be orphaned onto a line of its own: a break
+     opportunity needs a space before it, and there is none between the last
+     letter and a pseudo-element. */
+  &::after {
+    content: '';
+    display: inline-block;
+    inline-size: 0.72rem;
+    block-size: 0.72rem;
+    margin-inline-start: 0.35rem;
+    vertical-align: -0.02em;
+    background-color: currentColor;
+    mask: var(--icon-arrow) center / contain no-repeat;
+    -webkit-mask: var(--icon-arrow) center / contain no-repeat;
+    transition: transform 180ms ease;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  &:hover::after {
+    transform: translateX(0.15rem);
+  }
 }
 
-/* On the band the link has to be light, and it sits inside justified prose, so
-   it gets a little leading space that justification cannot swallow. */
-/* Pale steel rather than dimmed white: on a band of white prose, a link that
-   differs in hue is picked out faster than one that differs only in weight.
-   6.87:1 on the band. */
-.masthead__summary-text .read-more {
-  --read-more-colour: var(--steel-200);
-  --read-more-hover: #fff;
-
-  margin-inline-start: 0.4rem;
-}
+/* ---- Controls ---- */
 
 .masthead__actions {
-  grid-area: actions;
+  /* The identity's own cell, pinned to its top corner and lifted above it. */
+  grid-area: 1 / 2 / 2 / 3;
+  justify-self: end;
+  align-self: start;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  /* Centred rather than flushed right. The column is as wide as the widest
+     thing in it, which is always the PDF button, so this only moves the locale
+     codes — and centred on the button they read as the pair of controls they
+     are, instead of as a short line that happens to share a right edge. */
+  align-items: center;
   gap: 0.7rem;
 }
 
+/* "Download PDF" beside a download arrow. The label says what the control
+   does and the mark says it at a glance, which is what separates this one from
+   the locale codes above it: those switch the page a reader is on, this one
+   ends in a file on their disk. The arrow is the whole of the decoration — a
+   stroked glyph in the label's own colour, so it stays as quiet as the text. */
 .masthead__pdf {
-  font-size: 0.88rem;
-  padding: 0.38rem 0.85rem;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  padding: 0.3rem 1.15rem;
+  border-radius: 10px;
   border: 1px solid;
   text-decoration: none;
   white-space: nowrap;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
-/* ---- Contact strip ---- */
+/* Sized against the label rather than in rems, so it tracks the text through
+   the themes that reset the button's font. `currentColor` carries the theme's
+   own colour and its hover, which is why no theme has to restate the mark. */
+.masthead__pdf-icon {
+  inline-size: 1em;
+  block-size: 1em;
+  flex-shrink: 0;
+}
 
+/* ---- Links band ---- */
+
+/* The foot of the hero, not a section of its own: translucent, so the banner
+   and the sunken foot of the portrait show through it, and separated from the
+   header above by a hairline rather than by a change of colour. */
 .contact-strip {
+  grid-area: links;
+  position: relative;
+  /* Above the portrait, which carries on down behind this band. */
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem 1.5rem;
   align-items: center;
-  padding: 0.6rem var(--sheet-pad-x);
+  /* Cancels the header's side padding so the band runs edge to edge. */
+  margin-inline: calc(-1 * var(--sheet-pad-x));
+  padding: 0.85rem var(--sheet-pad-x);
 }
 
 .contact {
   display: flex;
   flex-wrap: wrap;
-  /* Fills the strip so the source-code link can be pushed to the far end. */
+  align-items: center;
+  /* Fills the band so the source-code link can be pushed to the far end. */
   flex: 1;
-  gap: 0.35rem 1.2rem;
+  gap: 0.35rem 1.35rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
 }
 
 .contact__item {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
+}
+
+/* A hairline between the two ways of reaching me, so `GitHub` and `LinkedIn`
+   read as a pair rather than as one run of words. The source-code link is not
+   one of them — it is pushed to the other end of the band — so it is excluded
+   rather than separated. */
+.contact__item + .contact__item:not(.contact__item--code) {
+  border-inline-start: 1px solid var(--hero-rule);
+  padding-inline-start: 1.35rem;
 }
 
 /* The source icons are flat grey rasters, which cannot be recoloured as
-   images. Using them as a mask over `currentColor` tints them with whatever
-   the strip's text colour is. */
+   images. Using them as a mask over `currentColor` puts them in the band's own
+   colour, which is white — the marks read as a set with the labels beside them
+   rather than as three tinted badges. */
 .contact__item::before {
   content: '';
   inline-size: 0.95rem;
   block-size: 0.95rem;
   flex-shrink: 0;
   background-color: currentColor;
-  opacity: 0.85;
   mask: var(--icon) center / contain no-repeat;
   -webkit-mask: var(--icon) center / contain no-repeat;
 }
 
-/* The site's own source: an aside rather than a way to reach me, so it sits
-   at the far end of the strip and is deliberately quieter than the contact
-   links it follows. No raster for this one either — the mark is the `</>`
-   glyph drawn as a stroked SVG, so it reads as code rather than as another
-   brand tile. */
+/* The site's own source. It sits at the far end of the band, and that position
+   is now the only thing marking it as an aside — it used to be dimmed as well,
+   which on a translucent band only made it hard to find. No raster for this one:
+   the mark is the `</>` glyph drawn as a stroked SVG, so it reads as code rather
+   than as another brand tile. */
 .contact__item--code {
   margin-inline-start: auto;
-  opacity: 0.55;
-
-  &:hover {
-    opacity: 0.85;
-  }
 
   --icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 17 3 11.5 8.5 6"/><path d="M15.5 6 21 11.5 15.5 17"/><path d="M13.5 4 10.5 19"/></svg>');
+
+  /* The arrow says this one leaves for a repository rather than sitting in the
+     band like the two beside it. */
+  &::after {
+    content: '';
+    inline-size: 0.72rem;
+    block-size: 0.72rem;
+    background-color: currentColor;
+    mask: var(--icon-arrow) center / contain no-repeat;
+    -webkit-mask: var(--icon-arrow) center / contain no-repeat;
+    transition: transform 180ms ease;
+  }
+
+  &:hover::after {
+    transform: translateX(0.2rem);
+  }
 }
 
 .contact__item--github {
@@ -265,123 +513,364 @@
 
   &:hover {
     text-decoration: underline;
+    text-underline-offset: 0.25em;
   }
 }
 
+/* ---- The content below the hero ---- */
+
+/* The wash across the top is what carries the hero into the paper: without it
+   the translucent links band meets the sheet on a hard line, and the two read
+   as two objects stacked rather than one page. It fades out well above the
+   first employer, so nothing is ever read against a tint. */
 main {
   display: block;
   padding: 1.7rem var(--sheet-pad-x) 1.9rem;
+  background-image: linear-gradient(180deg, var(--content-wash) 0, rgba(0, 0, 0, 0) 6rem);
+  background-repeat: no-repeat;
 }
 
 /* ---- Header colours ---- */
 
 .sheet {
-  .masthead {
-    background: var(--masthead-bg, linear-gradient(135deg, var(--steel-700), var(--steel-800)));
-  }
-
   .masthead__photo-placeholder {
-    background: rgba(255, 255, 255, 0.12);
-    /* Tokenised for the same reason as --photo-chip: the frame is the only
-       other colour in the masthead a theme has nowhere else to reach. */
-    border: 3px solid var(--photo-frame, rgba(255, 255, 255, 0.85));
-    color: var(--steel-300);
+    color: rgba(255, 255, 255, 0.35);
   }
 
-  /* steel-300 measured 3.94:1 against the lighter end of the gradient. */
+  /* steel-200 measured against the lighter end of the scrim, which the depth
+     ramp above only darkens further. */
+  /* Every run of type in the header carries its own shade. Nothing darkens the
+     photograph now, so each of these has to bring its own ground with it — see
+     `--hero-type-shadow` in `styles.scss` for why it is a shadow and not a
+     wash. Applied to the block rather than to each rule so a theme restating
+     one of these colours does not have to restate the shadow too. */
+  .masthead__kicker,
+  .masthead__name,
+  .masthead__location,
+  .masthead__intro,
+  .masthead__cta,
+  .masthead__actions {
+    text-shadow: var(--hero-type-shadow);
+  }
+
   .masthead__kicker {
-    color: var(--steel-200);
+    color: var(--hero-kicker);
   }
 
   .masthead__name {
     color: #fff;
   }
 
-  /* Without this the location inherits the body's near-black, which is what
-     it would be on paper — on the gradient it has to be light. */
+  /* Without these the header inherits the body's near-black, which is what it
+     would be on paper — on the banner it has to be light. Explicit values
+     rather than `opacity`, so a contrast check can read them. */
   .masthead__location {
-    color: #dfe4e9;
+    color: var(--hero-location);
   }
 
-  .masthead__summary {
-    color: #dfe4e9;
+  /* One step lighter than it would read on paper. On the brightest of the four
+     banners — miami's lit skyline — the step below measured 4.36:1 under this
+     text, just short of AA, and darkening the scrim far enough to fix it would
+     have buried the picture the header is built around. Lightening the ink was
+     the cheaper half of the same trade. */
+  .masthead__intro {
+    color: #d7e2eb;
   }
 
+  /* Tinted rather than dimmed white: inside a run of light prose, a link that
+     differs in hue is picked out faster than one that differs only in weight.
+     It takes the role's colour, so the label at the top of the header and the
+     link at the foot of the prose read as the theme's one accent rather than as
+     two different lights. */
+  .masthead__cta {
+    color: var(--hero-kicker);
+  }
+
+  /* The fill darkens rather than lightens, for the same reason the links band
+     does: a translucent white panel takes its ground from whatever is behind
+     it, and this one sits in the corner where the banner puts a lit window or a
+     diagonal highlight. Over the default banner white text on it measured
+     1.65:1. It is the same glass the band is cut from — `--hero-glass`, the
+     theme's own dark rather than plain black — so the two controls in the
+     header and the strip at its foot read as one material. */
   .masthead__pdf {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: rgba(255, 255, 255, 0.1);
-    color: #eef2f6;
+    /* The role's colour again, which is what makes this read as a control the
+       theme owns rather than a white outline laid on top of it. It holds
+       through the hover: the fill deepening and the label going to white are
+       the state change, so the edge does not have to move as well. */
+    border-color: var(--hero-kicker);
+    background: var(--hero-glass-button);
+    color: var(--hero-kicker);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--hero-glass-button-hover);
+      box-shadow:
+        0 0 16px rgba(255, 255, 255, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
       color: #fff;
+      border-color: #fff;
     }
   }
 
   /* Quiet: bare text, no chrome at all — the switcher should be findable, not
-     prominent. The idle codes stop at 75% white because dimming further drops
-     them below AA on the gradient (60% measures 3.87:1). */
+     prominent, which is also why the codes are set smaller here than the
+     component's own default. Three uppercase locale codes are a shape a reader
+     recognises before reading, so they survive the size; the PDF link beside
+     them is a phrase, and keeps its own. The idle codes stop at 75% white
+     because dimming further drops them below AA. */
   .masthead__actions {
-    --switcher-text: rgba(255, 255, 255, 0.75);
+    --switcher-size: 0.69rem;
+    --switcher-text: rgba(255, 255, 255, 0.72);
     --switcher-hover-text: #fff;
     --switcher-active-text: #fff;
     --switcher-separator: rgba(255, 255, 255, 0.32);
   }
 
-  /* steel-600 rather than 500: white on 500 measures 4.11:1, below AA.
-     The strip paints an opaque band right across the sheet, so anything a theme
-     does to the paper stops at its edges unless the strip is given a texture of
-     its own — hence the hook, the same one `--sheet-texture` provides above. */
+  /* The band is translucent, so its fill is stated as two stops of the same
+     tint rather than as a solid colour: whatever the banner and the figure
+     behind it are doing, the composite lands dark enough to carry white text.
+     Themes re-point it through `--hero-glass`, and nothing is drawn over it —
+     the motif that used to run across the band is gone, along with the texture
+     that used to sit over the banner. */
   .contact-strip {
-    background-color: var(--steel-600);
-    background-image: var(--strip-texture, none);
+    background-image: var(--hero-strip);
+    box-shadow: inset 0 1px 0 var(--hero-rule);
     color: #fff;
   }
+
+  /* The source link is no quieter than the two beside it. It used to be dimmed
+     because it sat on an opaque bar where it could afford to recede; on a band
+     this translucent, dimming it only made it hard to find. Its position at the
+     far end of the band is what marks it as an aside now. */
 }
 
-@media (max-width: 44rem) {
-  .sheet {
-    --sheet-pad-x: 1.1rem;
+/* ---- Movement ---- */
+
+/*
+   Everything here is opt-in: the rules live inside `no-preference`, so a
+   visitor who has asked for less motion is not served a header that starts
+   invisible and depends on an animation to appear. Nothing moves more than a
+   few pixels, and the only thing that keeps moving is the glow behind the
+   portrait, slowly enough that it reads as light rather than as animation.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.8rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
-  .masthead {
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "photo   identity"
-      "summary summary"
-      "actions actions";
-    column-gap: 1rem;
-    padding: 1.2rem var(--sheet-pad-x);
+  @keyframes hero-portrait-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.4rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
-  /* No overlap on narrow screens: the photo returns to its own cell and the
-     profile reclaims the full width. */
+  @keyframes hero-glow-drift {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  .masthead__photo::before {
+    animation: hero-glow-drift 26s ease-in-out infinite;
+  }
+
   .masthead__photo {
-    grid-area: photo;
-    inline-size: 6rem;
-    block-size: 6rem;
+    animation: hero-portrait-in 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .masthead__kicker,
+  .masthead__name,
+  .masthead__location,
+  .masthead__intro,
+  .masthead__cta,
+  .contact-strip {
+    animation: hero-rise 620ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .masthead__kicker {
+    animation-delay: 60ms;
   }
 
   .masthead__name {
-    font-size: 1.9rem;
+    animation-delay: 120ms;
   }
 
-  .masthead__summary {
-    margin: 1.2rem calc(-1 * var(--sheet-pad-x)) 0;
-    padding: 1rem var(--sheet-pad-x);
+  .masthead__location {
+    animation-delay: 200ms;
   }
 
+  .masthead__intro {
+    animation-delay: 280ms;
+  }
+
+  .masthead__cta {
+    animation-delay: 360ms;
+  }
+
+  .contact-strip {
+    animation-delay: 440ms;
+  }
+}
+
+/* ---- Narrower screens ---- */
+
+/* Tablet: the composition holds — portrait left, name and introduction right —
+   but the portrait gives up width first, because it is the element that can
+   lose the most before the hierarchy has to change. The measure comes in with
+   it: at this width 52ch would be wider than the column it sits in, and a
+   `max-inline-size` that is never reached is not a measure. */
+@media (max-width: 64rem) {
+  .masthead {
+    --portrait-size: min(28%, 13rem);
+
+    padding-block-start: 2.5rem;
+  }
+
+  .masthead__identity {
+    padding-block-end: 1.8rem;
+  }
+
+  .masthead__intro {
+    margin-block-start: 1rem;
+    padding-block-start: 1rem;
+  }
+
+  .masthead__intro-text--lead {
+    font-size: 1.02rem;
+  }
+}
+
+/* Mobile: stacked rather than shrunk. The controls stay at the top where they
+   were, the portrait becomes the first thing on the page, and the name and
+   introduction run the full width beneath it — the same order as the desktop
+   composition read top to bottom, not the desktop composition made small. */
+@media (max-width: 48rem) {
+  .sheet {
+    --sheet-pad-x: 1.25rem;
+  }
+
+  .masthead {
+    --portrait-size: clamp(9rem, 46vw, 13rem);
+
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'actions'
+      'portrait'
+      'identity'
+      'links';
+    grid-template-rows: auto auto auto auto;
+    padding: 1.6rem var(--sheet-pad-x) 0;
+  }
+
+  /* The one place the banner still sits low behind a fade. Stacked, the header
+     is taller than it is wide, so filling it crops the picture to a slice and
+     lifts a lit sky or a neon skyline directly behind the kicker and the
+     location — measured at 2.62:1 under nature and 1.88:1 under miami, both
+     well short of AA. Anchored to the foot at the picture's own 3:1 frame, the
+     type sits on the flat ground instead. The fade is what stops that ground
+     meeting the picture on a line, and it is stated as a fraction of the
+     *picture* rather than of the header: the top edge lands at a different
+     fraction of the header at every width, and a header-relative fade would
+     drift away from it. */
+  .masthead::before {
+    inset-block-start: auto;
+    aspect-ratio: 3 / 1;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%);
+    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%);
+  }
+
+  /* One column now, so the portrait is placed by area again and needs a width
+     of its own rather than taking its column's. */
+  .masthead__photo {
+    grid-area: portrait;
+    inline-size: var(--portrait-size);
+    justify-self: center;
+    margin-block-start: 0.6rem;
+    margin-inline-start: 0;
+
+    /* Stacked, the picture no longer stands on the links band — it ends in mid
+       air, and a flat horizontal cut across a shirt reads as a photograph with
+       its bottom missing. The fade gives it somewhere to go. */
+    mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 24%);
+    -webkit-mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 24%);
+  }
+
+  /* One column here, so the controls are placed by area again: the explicit
+     line numbers they carry on the wide layout would put them in a second
+     column that does not exist at this width, and the grid would grow one.
+
+     Side by side, too — stacked, the two of them cost a row of their own above
+     a portrait that is already the first thing on the page. */
   .masthead__actions {
+    grid-area: actions;
+    justify-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin-block-start: 1.2rem;
+    inline-size: 100%;
   }
 
-  .contact-strip,
+  .masthead__identity {
+    padding-block: 0.6rem 1.9rem;
+  }
+
+  .masthead__name,
+  .masthead__kicker {
+    max-inline-size: none;
+  }
+
+  .masthead__kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  .masthead__intro {
+    margin-block-start: 1.4rem;
+  }
+
+  .masthead__intro-text--lead {
+    font-size: 1.02rem;
+  }
+
+  .contact-strip {
+    padding-block: 0.75rem;
+  }
+
+  .contact {
+    font-size: 0.84rem;
+    gap: 0.35rem 1rem;
+  }
+
+  /* At this width the band wraps, and a vertical hairline between two items on
+     different lines points at nothing. */
+  .contact__item + .contact__item:not(.contact__item--code) {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
   main {
-    padding-inline: var(--sheet-pad-x);
+    padding: 1.5rem var(--sheet-pad-x) 1.6rem;
   }
 }
 
@@ -430,7 +919,6 @@ main {
 
 .education__location {
   margin: 0.1rem 0 0;
-  font-size: 0.85rem;
   color: var(--colour-muted);
 }
 

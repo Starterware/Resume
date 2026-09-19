@@ -60,20 +60,68 @@
   --colour-on-metal: var(--metal-100);
   --colour-on-metal-muted: var(--metal-200);
 
-  /* The masthead band and the story/deep-dive headers: palms against a sun
-     going down into the water, the sun cut by the horizontal bands that are the
-     whole look's signature. The bands are drawn dark rather than light — they
+  /* The masthead band and the story/deep-dive headers: the photograph's own
+     skyline and palms. The drawn palm silhouettes this used to carry are gone —
+     the banner supplies real ones, and two sets read as a mistake — and so are
+     the scan bands, which have moved down to the links strip where they have a
+     flat surface to run across instead of fighting a photograph. The bands are drawn dark rather than light — they
      read the same way and they push the average value *down*, which is what
      lets white text sit on the magenta end at 7:1. Every stop was measured
      against the name, the profile text and the kicker that land on it. */
   --masthead-bg:
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200"><g fill="none" stroke="%2306020c" stroke-opacity="0.52" stroke-linecap="round"><path d="M204 200 C198 164 200 128 208 100" stroke-width="9"/><g stroke-width="7"><path d="M208 98 C180 94 154 104 138 126"/><path d="M208 98 C184 78 156 72 132 82"/><path d="M208 98 C206 70 220 48 244 38"/><path d="M208 98 C236 82 266 86 284 106"/><path d="M208 98 C234 104 254 122 262 146"/><path d="M208 98 C192 74 172 58 148 54"/></g><circle cx="208" cy="98" r="5" fill="%2306020c" stroke="none"/></g><g fill="none" stroke="%2306020c" stroke-opacity="0.34" stroke-linecap="round"><path d="M270 200 C266 176 268 152 274 132" stroke-width="6"/><g stroke-width="4.6"><path d="M274 130 C256 128 240 136 230 150"/><path d="M274 130 C258 116 240 112 224 118"/><path d="M274 130 C273 112 282 98 297 92"/><path d="M274 130 C292 120 308 124 318 136"/><path d="M274 130 C290 136 302 148 306 164"/></g><circle cx="274" cy="130" r="3.4" fill="%2306020c" stroke="none"/></g></svg>')
-      right bottom / auto 100% no-repeat,
-    repeating-linear-gradient(180deg, rgba(8, 3, 15, 0.34) 0 3px, rgba(0, 0, 0, 0) 3px 13px),
-    linear-gradient(150deg, #150e26 0%, #3d1354 38%, #7a1a53 70%, #a8253f 100%);
+    /* The language switcher and PDF link sit in this corner, and on a
+       photograph that corner is wherever the picture happens to be brightest.
+       A local darkening holds those controls up without weighing down the
+       rest of the image. */
+    radial-gradient(58% 130% at 100% 0%, rgba(14, 5, 24, 0.5) 0%, rgba(0, 0, 0, 0) 72%),
+    /* The foot of the banner, where the profile band sits: the photographs all
+       carry something bright along the bottom — water, reflections, a lit floor
+       — and letting it run up under the prose made the band read as a lighter
+       strip than the header above it. This settles the bottom edge down. */
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(10, 3, 20, 0.42) 100%),
+    linear-gradient(
+      103deg,
+      rgba(26, 10, 40, 0.74) 0%,
+      rgba(40, 12, 52, 0.66) 52%,
+      rgba(70, 16, 60, 0.46) 100%
+    );
+  --masthead-image: url('images/banner-miami.jpg');
 
-  --photo-chip: #2a1140;
-  --photo-frame: rgba(255, 46, 136, 0.75);
+  /* ---- The hero ----
+     The portrait is a cutout standing in the header rather than a picture in a
+     neon frame, so the rim and bloom that used to trace its box become the
+     light behind the figure instead: magenta, as if it were standing in front
+     of a sign. The lift underneath stays black, because even on a night
+     skyline something this close to the viewer needs a contact shadow to sit
+     above the picture rather than in it. */
+  --hero-glow-core: rgba(255, 46, 136, 0.26);
+  --hero-glow-edge: rgba(53, 227, 255, 0.07);
+  --hero-accent: #35e3ff;
+  --hero-kicker: #f7bbdb;
+  /* Neon on a night ground: the role's own tint is the one that reads here, not
+     a step darker. */
+  --hero-control-edge: var(--hero-kicker);
+  --hero-location: #c9b3d9;
+  --portrait-shadow: drop-shadow(0 2px 5px rgba(4, 1, 10, 0.55))
+    drop-shadow(0 18px 32px rgba(4, 1, 10, 0.6));
+  /* The glass over the skyline: the magenta bar the band used to be is now the
+     rim above it, so the glass itself can stay a deep night violet, dark enough
+     to carry white text over a photograph. */
+  --hero-glass: 24, 8, 68;
+  --hero-rule: rgba(255, 46, 136, 0.4);
+  /* Heavier than the shared one. This is the brightest of the four banners by a
+     distance — a lit skyline with its own reflection under it — and the runs of
+     type that sit lowest in the header land straight on the water. The extra
+     stop is a wide, soft pool that puts shade under a whole line rather than
+     round each letter, so the picture is untouched anywhere the text is not.
+     The name keeps its neon instead: it is large, white and bold enough not to
+     need this, and a dark shadow under the glow would only muddy it. */
+  --hero-type-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.75), 0 2px 8px rgba(0, 0, 0, 0.72), 0 4px 26px rgba(0, 0, 0, 0.9),
+    0 0 48px rgba(0, 0, 0, 0.75);
+  --content-wash: rgba(255, 46, 136, 0.05);
+  --banner-edge: rgba(255, 46, 136, 0.42);
+  --banner-edge-foot: rgba(6, 2, 14, 0.5);
   /* The band behind the header. Its ramp starts here. */
   --sheet-bleed: #150e26;
 
@@ -98,17 +146,37 @@
 
   /* Lit rather than shadowed: a black drop shadow does nothing on a near-black
      ground, so the sheet's edge is a magenta rim with the depth underneath it. */
+  /* The colour the header sits on, above where the banner reaches. Sampled
+     from the top row of this theme's banner file, so the picture meets it
+     without a change of hue. */
+  .masthead {
+    background-color: #1a1040;
+  }
+
+  /* The banner, taken down a stop. This is the brightest of the four pictures
+     — a lit skyline with its whole reflection under it — and at full value the
+     header reads lighter than the night sheet it introduces, which is backwards
+     for the one theme whose paper is dark. Everything set on it gains as well:
+     the share of the picture behind the profile paragraph that white type
+     cannot clear at AA falls by about half.
+
+     Applied to the photograph's own layer rather than as a wash over it, so it
+     is the picture that is darker and not the picture with something on top —
+     the distinction `styles.scss` draws, and the reason the old full-width
+     darkening ramp was dropped. The portrait is a separate element and keeps
+     its own exposure: the figure is meant to be the lit thing in the frame.
+     Saturation comes up a touch because dimming a neon photograph greys the
+     magentas first, and they are the theme. */
+  .masthead::before {
+    filter: brightness(0.5) saturate(1.05);
+  }
+
   .sheet {
     border-radius: 0;
     box-shadow:
       0 0 0 1px rgba(255, 46, 136, 0.32),
       0 0 30px rgba(255, 46, 136, 0.14),
       0 30px 70px rgba(0, 0, 0, 0.72);
-  }
-
-  .masthead__photo,
-  .masthead__photo-placeholder {
-    border-radius: 0;
   }
 
   /* ---- Type assignments ----
@@ -183,6 +251,24 @@
     letter-spacing: 0.2em;
   }
 
+  /* Heavier again than the theme's own, and only here. The introduction is the
+     longest run of type in the header and the one that sits lowest, which on
+     this banner means it lands across the water — the brightest thing in any of
+     the four pictures, and lit in the same magentas the type is read against.
+     The trailing link shares the paragraph and the same ground, so it takes the
+     same treatment. Stops rather than one big blur: the tight pair keeps each
+     letterform's edge, the wide pair puts a pool of shade under the whole line
+     without touching the picture between the lines. */
+  .masthead__intro,
+  .masthead__cta {
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 1),
+      0 2px 8px rgba(0, 0, 0, 1),
+      0 4px 20px rgba(0, 0, 0, 1),
+      0 0 34px rgba(0, 0, 0, 1),
+      0 0 64px rgba(0, 0, 0, 1);
+  }
+
   .role__dates,
   .degree__years {
     font-variant-numeric: tabular-nums;
@@ -191,7 +277,7 @@
   /* Same story as the chips: a bordered button set in an uppercase italic needs
      more room inside its edge than the default pill-shaped one did. */
   .masthead__pdf {
-    padding: 0.5rem 1.05rem;
+    padding: 0.3rem 1.05rem;
     font-family: var(--font-heading);
     font-style: italic;
     font-weight: 800;

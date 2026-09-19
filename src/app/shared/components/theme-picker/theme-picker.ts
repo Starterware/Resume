@@ -50,7 +50,7 @@ import { ThemeId, THEMES } from '../../../core/models/theme.model';
       justify-content: center;
       gap: 0.15rem 0.55rem;
       margin-block-start: 1.8rem;
-      font-size: 1.0625rem;
+      font-size: 0.9rem;
       letter-spacing: 0.16em;
       /* Barely there until looked for. Applied to the row rather than to each
          label so the dots fade with the names. */

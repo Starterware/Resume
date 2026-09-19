@@ -49,8 +49,57 @@
    one document rather than three. */
 .deep-dive__header {
   padding: 1.9rem var(--sheet-pad-x) 1.8rem;
-  background: var(--masthead-bg, linear-gradient(135deg, var(--steel-700), var(--steel-800)));
   color: #fff;
+
+  /* The banner photograph is the element's own background; the scrim — and the
+     repeating motif medieval and miami paint over it — sits on `::before`.
+
+     That order matters and is easy to get backwards: within a stacking context
+     a negative-z-index child paints *after* the element's own background but
+     *before* its in-flow content, so `::before` is above the photograph and
+     below the text. Putting the photograph on `::before` instead buries the
+     scrim beneath it, and no amount of alpha does anything.
+
+     `isolation` keeps that negative layer inside this box rather than letting
+     it fall behind the sheet. Absolutely positioned on purpose: a static
+     `::before` on a grid container would become a grid item and claim a cell. */
+  position: relative;
+  isolation: isolate;
+
+  /* A hairline around the banner, so the photograph reads as a panel set into
+     the sheet rather than as the sheet's top edge bleeding into a picture. Drawn
+     as an inset shadow rather than a border: a border would sit inside the
+     grid's padding box and shift every column by a pixel, and this has to trace
+     the same rounded corner the sheet clips to. The light line along the top and
+     the darker one along the foot are the two halves of an edge catching the
+     light — themes re-point both through `--banner-edge`. */
+  box-shadow:
+    inset 0 1px 0 var(--banner-edge, rgba(255, 255, 255, 0.16)),
+    inset 0 -1px 0 var(--banner-edge-foot, rgba(0, 0, 0, 0.3));
+  background: var(--masthead-image, url('images/banner-default.jpg')) center / cover no-repeat;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(
+      --masthead-bg,
+      /* The language switcher and PDF link sit in this corner, and on a
+         photograph that corner is wherever the picture happens to be brightest.
+         A local darkening holds those controls up without weighing down the
+         rest of the image. */
+      radial-gradient(58% 130% at 100% 0%, rgba(18, 38, 56, 0.5) 0%, rgba(0, 0, 0, 0) 72%),
+      /* The foot of the banner, where the profile band sits. */
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(16, 34, 50, 0.42) 100%),
+      linear-gradient(
+        103deg,
+        rgba(30, 58, 82, 0.76) 0%,
+        rgba(30, 58, 82, 0.68) 52%,
+        rgba(30, 58, 82, 0.46) 100%
+      )
+    );
+  }
 }
 
 main {
@@ -81,6 +130,7 @@ main {
   border-inline-start: 2px solid rgba(255, 255, 255, 0.3);
   font-style: italic;
   color: #dfe4e9;
+  text-shadow: var(--hero-type-shadow);
 }
 
 .deep-dive__tags {
@@ -95,8 +145,9 @@ main {
     font-size: 0.75rem;
     padding: 0.15rem 0.5rem;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.14);
+    background: var(--masthead-bg, linear-gradient(135deg, var(--steel-700), var(--steel-800)));
     color: #eef2f6;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
