@@ -2,39 +2,40 @@
   "slug": "aws-scrum-process",
   "lang": "en",
   "title": "Rebuilding the team's Scrum rituals around continuous delivery",
-  "question": "Tell me about a time you changed a process people were used to.",
+"question": "Tell me about a time you changed a process people were used to",
   "experienceId": "aws-sde",
   "tags": ["agile", "process", "team culture", "initiative"],
   "star": {
     "situation": [
-      "When I joined my team at AWS the Scrum process was inefficient and hard for newcomers to navigate. Standups regularly ran to 30 minutes with little engagement, estimation points went unused, velocity was untracked, and the traditional sprint format clashed with a delivery model that shipped several deployments a day."
+"When I joined the team at AWS, our Scrum process had become inefficient and difficult for newcomers to navigate. Standups regularly lasted around 30 minutes with limited engagement, estimation points were largely unused, velocity was not tracked meaningfully, and the traditional sprint structure did not fit a team that was deploying several times a day."
     ],
     "task": [
-      "I took on the Scrum Master responsibilities to rework our rituals, stop wasting developer hours, and get genuine engagement back."
+"I took on the Scrum Master responsibilities and set out to make the process better suited to how the team actually delivered software: reducing unnecessary meeting time while keeping the visibility and communication the team needed."
     ],
     "action": [
-      "Board and sprint restructuring: I replaced the static sprint boards with quarterly boards organised by feature lane, and moved from two-week sprints to focused weekly tracking. Daily standups were structured around the feature lanes, so a given feature was only discussed once a week, during its dedicated standup slot, and engineers could opt into the parts that concerned them and skip the rest rather than context switch through all of it.",
-      "Streamlined rituals: I dropped the dedicated sprint planning meeting and moved task refinement to the end of the relevant feature standup.",
-      "Actionable retrospectives: I replaced the passive retro with a structured format: a project recap, live demos, and ticket voting, which produced concrete action items someone actually owned. To push for engagement, I had engineers present their own tickets rather than just vote on them."
+"I started by looking at where the process was creating the most friction. The biggest problem was that everyone was expected to sit through updates about every feature, even when most of the discussion was irrelevant to their work.",
+"I reorganised the boards around feature lanes and moved from a traditional two-week sprint rhythm to focused weekly tracking. Each feature had a dedicated standup slot, so engineers could join the discussions relevant to them rather than spending time listening to unrelated updates.",
+"I also removed the dedicated sprint-planning meeting and moved task refinement into the relevant feature discussion. For retrospectives, I replaced a largely passive discussion with a structured format built around a project recap, live demos and ticket voting, with concrete actions assigned to owners.",
+"I expected some resistance because the team was used to the existing process, so I treated the changes as experiments rather than imposing a permanent new process. We used retrospectives as a feedback loop to assess what was working and adjust the approach."
     ],
     "result": [
-      "Meeting overhead fell sharply and focus improved, and the team settled into an open communication culture where engineers talked to each other continuously instead of saving discussions for a formal sprint boundary."
+"Meeting overhead fell significantly and engineers spent more time focused on work relevant to them. Communication also became more continuous: developers increasingly resolved technical questions directly with each other rather than waiting for the next formal Scrum ceremony.",
+"The team ended up with a process that better matched its continuous-delivery model instead of following a sprint structure simply because that was how the team had always worked."
     ]
   },
-  "reflection": [],
   "challenge": [
-    "Getting buy-in for non-traditional agile practices from a team used to the status quo. I met the scepticism by proposing to use the retrospectives as a safe feedback loop to evaluate each change and iterate on how the team felt about it."
+"The hardest part was changing habits rather than designing the new process. The team had become accustomed to the existing rituals, so I had to demonstrate that the changes were intended to solve real problems rather than simply replace one process with another."
   ],
   "hardestBug": [
-    "The process roadblock rather than a defect: cutting low-value meeting noise without losing operational visibility. Re-architecting the daily standups around feature lanes took careful balancing so engineers stayed informed about critical cross-service dependencies while no longer sitting through updates that did not concern them."
+"The main failure mode was losing visibility while reducing meeting overhead. Splitting discussions by feature made meetings more efficient, but I had to make sure important cross-feature dependencies were still visible. The process needed enough structure to surface those dependencies without recreating the meeting overload I was trying to remove."
   ],
   "differently": [
-    "I would propose and drive the changes faster. The organic pace let the team adjust comfortably, but pushing the high-impact simplifications earlier would have saved engineering hours sooner."
+"I would introduce the highest-impact changes earlier. The gradual approach made it easier for the team to adapt, but once the benefits became clear, I could have accelerated the changes and reduced unnecessary meeting time sooner."
   ],
   "aboutYourself": [
-    "Tenure is not what determines influence. I can shape team culture and drive real operational improvement quickly by taking the initiative and refusing to settle for an inefficient status quo."
+"I learned that I can influence how a team works without relying on seniority or formal authority. If I can clearly identify the problem, propose a practical experiment and give people a safe way to challenge it, I can get a team to change its habits."
   ],
   "enjoyed": [
-    "Watching communication rise organically outside the formal meetings. Once the rituals were lighter, developers started reaching out to resolve technical questions on the spot instead of waiting for the next standup or planning session."
+"The most satisfying part was seeing the change happen outside the formal process. Once the meetings became lighter, developers started reaching out directly to resolve technical questions instead of waiting for the next standup. The improvement became part of the team's natural communication rather than something enforced by the Scrum process."
   ]
 }

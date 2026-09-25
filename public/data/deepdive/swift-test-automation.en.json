@@ -4,43 +4,40 @@
   "title": "Rebuilding test automation and CI/CD after both QA engineers left",
   "question": "Tell me about a time you stepped up when your team lost capacity.",
   "experienceId": "swift-senior",
-  "tags": [
-    "testing",
-    "automation",
-    "CI/CD",
-    "Ansible",
-    "Jenkins"
-  ],
+"tags": ["testing", "automation", "CI/CD", "Ansible", "Jenkins"],
   "star": {
     "situation": [
-      "When I returned to SWIFT for an instant payment project, both QA engineers left the team at the same time, leaving the developers with no automated test execution and no centralised test environments."
+"When I returned to SWIFT for an instant-payment project, both QA engineers left the team at the same time. We were left with developers but no reliable automated test execution and no centralised environments for running the end-to-end suites.",
+"Without replacing that capability, releases would have depended increasingly on manual testing and individual developer environments, creating both a quality risk and a significant bottleneck for the team."
     ],
     "task": [
-      "I took the lead on consolidating, modernising and automating our end-to-end testing infrastructure, so release quality held while we waited for new QA people to join."
+"I stepped up to take ownership of the testing infrastructure and rebuild enough of the automation and environment management for the developers to maintain release quality while we waited for new QA engineers to join."
     ],
     "action": [
-      "Test suite standardisation: I gathered the Robot Framework test files scattered across several legacy VMs into a single repository, and refactored the messaging tests to handle message exchanges generically across IBM MQ, ActiveMQ and REST endpoints.",
-      "Infrastructure as code: I wrote the Ansible playbooks that provision and configure the multi-VM deployment environments — up to three nodes running Docker Compose — which made automated OS (RedHat) and software version compatibility matrices possible.",
-      "CI/CD modernisation: I built the Jenkins and CloudBees pipelines, migrating from imperative scripts to declarative pipelines and creating Jenkins shared libraries to modularise the pipeline logic."
+"I first consolidated the existing Robot Framework tests, which were scattered across several legacy virtual machines, into a single repository. I also refactored the messaging tests so the same framework could exercise exchanges across IBM MQ, ActiveMQ and REST endpoints rather than maintaining separate implementations.",
+"I then automated the test environments with Ansible. I wrote playbooks that provisioned and configured multi-VM environments of up to three nodes running Docker Compose, which made it practical to run operating-system and software-version compatibility matrices automatically.",
+"Finally, I rebuilt the CI/CD layer around Jenkins and CloudBees. I migrated the existing imperative scripts to declarative pipelines and extracted reusable logic into Jenkins shared libraries, making the pipelines easier to maintain and extend.",
+"I also built an SSH remote-testing utility that allowed developers to trigger and debug the automated suites from their own environments rather than having to work directly on the test infrastructure."
     ],
     "result": [
-      "The manual QA bottleneck disappeared, compatibility testing across complex multi-node setups became fast and automated, and the team gained a suite of developer tools — including an SSH remote-testing tunnel — that sped up their daily testing."
+"The team gained an automated end-to-end testing capability without waiting for the QA roles to be filled. Compatibility testing across multi-node environments became repeatable and automated, while the new developer tooling made testing and debugging faster during everyday development.",
+"The infrastructure also gave the incoming QA engineers a much more maintainable foundation to take over rather than requiring them to reconstruct the testing environment from scratch."
     ]
   },
   "reflection": [],
   "challenge": [
-    "The slow feedback loops that come with infrastructure-as-code and CI/CD work. Validating Ansible playbooks and Jenkins pipelines meant long end-to-end runs, so I established local testing practices and unit tested the pipeline code through the shared libraries."
+"The biggest challenge was working on infrastructure with inherently slow feedback loops. A change to an Ansible playbook or Jenkins pipeline could require a full deployment before I knew whether it worked, so I had to deliberately create faster local feedback and find ways to test the pipeline logic independently."
   ],
   "hardestBug": [
-    "Trying to write dynamic, highly generic logic directly inside Jenkins declarative pipelines. The strict declarative syntax made dynamic execution paths hard to maintain until I moved the complex logic out into reusable Jenkins shared library functions."
+"The biggest technical problem was trying to express increasingly dynamic execution logic directly inside Jenkins declarative pipelines. The declarative syntax became difficult to maintain as the number of execution paths grew. I eventually moved the complex behaviour into reusable Jenkins shared-library functions, leaving the pipeline itself responsible for orchestration rather than implementation."
   ],
   "differently": [
-    "I would adopt Jenkins shared libraries much earlier in the migration. Handling complex, dynamic pipeline logic inside native declarative scripts created friction that the refactor into structured Groovy library code removed."
+"I would introduce the Jenkins shared-library structure earlier. I initially tried to keep too much of the dynamic behaviour inside the declarative pipelines, which made them harder to reason about and slowed down development. Moving that logic into tested, reusable Groovy code was a much cleaner boundary."
   ],
   "aboutYourself": [
-    "I learned the value of patience on low-visibility, infrastructure-heavy problems. Waiting on slow deployment iterations taught me to plan changes methodically and invest in early feedback loops rather than rushing runs."
+"I learned that I am comfortable stepping outside my normal development responsibilities when the team needs it. I also learned to be more deliberate when working on slow infrastructure problems: when feedback is expensive, investing in small, fast feedback loops is often more valuable than simply iterating faster."
   ],
   "enjoyed": [
-    "Designing a custom SSH tunnelling utility early on that let developers trigger and debug the automated test suites remotely. Seeing the team adopt and rely on something I built to make their day easier was hugely satisfying."
+"I particularly enjoyed building the SSH remote-testing utility. It started as a small tool to make my own workflow easier, but seeing other developers adopt it and use it to trigger and debug tests made the impact of the work very tangible."
   ]
 }

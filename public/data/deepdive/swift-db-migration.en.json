@@ -4,39 +4,39 @@
   "title": "Moving backup and restore off Oracle's own tools",
   "question": "Tell me about a time you replaced a piece of working legacy infrastructure.",
   "experienceId": "swift-developer",
-  "tags": [
-    "data migration",
-    "Oracle",
-    "C++",
-    "cross-platform"
-  ],
+"tags": ["data migration", "Oracle", "C++", "cross-platform"],
   "star": {
     "situation": [
-      "I spent two years on a mission-critical, enterprise-scale SWIFT application used for routing international financial messages between global banking institutions. Its database backup and restore path ran on native, Oracle-specific tooling — which sat awkwardly inside an application that had to compile and behave identically across several operating systems, and which put a core piece of the data path outside the application's own control."
+"I spent two years working on a mission-critical SWIFT application used to route international financial messages between banking institutions worldwide. Its backup and restore process relied on Oracle's native tooling.",
+"Although the database tooling worked, it sat awkwardly inside a cross-platform application that had to behave consistently across several operating systems. It also meant that an important part of the application's data lifecycle was controlled outside the application itself."
     ],
     "task": [
-      "Move backup and restore off those native tools and onto a unified, application-driven migration framework, without interrupting a system handling international financial data. The codebase made that harder than the idea sounds: massive, legacy C++98, with a hybrid architecture of Java web services over a C++ core and an early, partially implemented multi-tenant model that had to be carried across carefully."
+"I was tasked with replacing the Oracle-specific backup and restore path with a unified, application-driven migration framework, while keeping the system available and meeting the reliability and compliance requirements of a financial system.",
+"The work had to fit into a large C++98 codebase with significant legacy complexity, alongside Java web services and an early multi-tenant architecture."
     ],
     "action": [
-      "Migration framework: I replaced the Oracle-specific backup and restore mechanisms with a single application-driven framework, so the migration path became something the application owned and could reason about rather than something delegated to the database vendor's tooling.",
-      "Legacy refactoring: getting there meant working through highly complex legacy functions running past a thousand lines, and decoupling database logic that had accumulated in them into migration code that could be maintained on its own terms.",
-      "Around it: to get high-throughput thread safety before the modern standard libraries existed, we engineered custom thread-safe string implementations and advanced entity-component concepts; and I spearheaded code security initiatives using Coverity and runtime code guards."
+"I designed and implemented an application-owned migration framework that replaced the Oracle-specific backup and restore mechanisms. This gave the application a consistent way to control and reason about its own migration lifecycle rather than delegating that behaviour to database-specific tooling.",
+"The main challenge was extracting the migration logic from a legacy codebase where database operations had accumulated inside highly complex functions, some exceeding a thousand lines. I separated that logic into dedicated migration components with clearer responsibilities and interfaces.",
+"Because the application had to behave consistently across multiple operating systems, I also had to account for platform-specific compilation and runtime behaviour throughout the migration path.",
+"I validated the new implementation through extensive integration testing across the supported platforms and worked through the migration scenarios without interrupting the running system."
     ],
     "result": [
-      "The application's data migration path was significantly modernised and brought under the application's own control, while the system maintained 100% uptime and the compliance standards required for international financial data processing."
+"We replaced the Oracle-specific backup and restore path with an application-controlled migration framework while maintaining 100% system uptime and the required compliance standards for international financial data."
     ]
   },
-  "reflection": [],
   "challenge": [
-    "Navigating the sheer scale and constraints of a cross-platform C++98 codebase while bridging synchronous C++ logic with asynchronous Java web services — and doing it to a mechanism that could not be allowed to fail."
+"The biggest challenge was making a fundamental change to a data path that could not afford to fail. The codebase was large, old and cross-platform, so even a seemingly isolated change could have unexpected consequences in another operating system or part of the application."
   ],
   "hardestBug": [
-    "Less a single bug than the friction around finding them: running fully manual integration tests in a complex, multi-OS financial environment, where verifying a migration meant exercising it by hand on every platform. That bottleneck is what motivated my interest in robust automation in the roles that followed."
+"The hardest part was not a single defect but validating the migration reliably across a complex multi-OS environment. Integration testing was largely manual, so verifying a migration meant exercising the complete flow on each supported platform. That experience made me realise how much confidence and engineering time could be gained by automating those scenarios."
   ],
-  "learned": [
-    "Deepened my expertise in enterprise software security with Coverity, in memory management, and in cross-platform compilation guards — the last of which is exactly what makes a database path portable or not."
+"differently": [
+"I would invest in automated cross-platform integration testing earlier. At the time, validating the migration required a significant amount of manual testing on each operating system, which made changes slower to verify and increased the cost of iteration."
+],
+"aboutYourself": [
+"I learned that I enjoy taking something that works but has accumulated too much complexity and understanding it deeply enough to separate the essential behaviour from the historical implementation. The work reinforced that I am most engaged when there is a difficult architectural problem hidden inside an apparently simple change."
   ],
   "enjoyed": [
-    "Decoupling complex legacy database functions into elegant, maintainable migration code, and the architectural problem-solving around it — including building the custom thread-safe components the core needed."
+"I enjoyed the process of taking large, tightly coupled legacy functions and gradually turning them into smaller, focused migration components. Seeing a difficult piece of infrastructure become something the application could own and reason about was particularly satisfying."
   ]
 }

@@ -12,33 +12,35 @@
   ],
   "star": {
     "situation": [
-      "The system relied on a legacy Soundex pipeline for processing street name data that already suffered from severe performance issues, taking up to eight hours to execute across millions of records."
+      "The system relied on a legacy Soundex pipeline for processing street name data across millions of records. The existing implementation was already suffering from severe performance problems, with a full run taking up to eight hours."
     ],
     "task": [
-      "My explicit task was simply to add a new set of prefixes and suffixes to the phonetic cleaning logic. But because the eight-hour execution time made local testing and database validation agonisingly slow, I took the initiative to optimise both the matching algorithm and the underlying database layer."
+      "My explicit task was to add a new set of prefixes and suffixes to the phonetic cleaning logic. However, the eight-hour execution time made local testing and database validation extremely slow, so I took the opportunity to investigate the broader performance problem and optimise both the matching algorithm and the database update path."
     ],
     "action": [
-      "Proactive algorithmic refactoring: to clean street names efficiently before Soundex encoding, I implemented a prefix trie in C#. A trie makes almost no difference for a single record, but scaling it across millions eliminated redundant lookups and cut the algorithmic execution time in half.",
-      "Database optimisation: lacking direct access to the legacy querying application's source, I reverse-engineered the query execution patterns. I turned individual sequential row updates into high-throughput batched multi-update queries to write the computed Soundex values back into the target database efficiently."
+      "I started by looking at the string-matching logic used to clean street names before Soundex encoding. I replaced repeated prefix and suffix lookups with a prefix trie in C#, eliminating almost all of the redundant matching work. At the scale of millions of records, the matching phase went from a significant runtime bottleneck to being almost negligible.",
+      "I then investigated the database side of the pipeline. I did not have direct access to the source code of the legacy querying application, so I reverse-engineered its query execution patterns and identified that computed Soundex values were being written back through individual sequential row updates.",
+      "I replaced that approach with high-throughput batched multi-row updates, allowing the computed values to be written back much more efficiently and removing a large amount of database round-trip overhead.",
+      "I also had to fix an issue that prevented the application from safely running an optimised Release build. Stepping through the execution revealed a hidden off-by-one index error that caused memory boundary exceptions in Release mode. Fixing it allowed us to run the optimised build reliably."
     ],
     "result": [
-      "Total processing time fell from eight hours to a few minutes, turning a painful testing bottleneck into a system-wide performance breakthrough across millions of records."
+      "The total processing time fell from around eight hours to a few minutes across millions of records.",
+      "The optimisation turned a major testing and operational bottleneck into a process that could be run quickly enough for practical development and validation."
     ]
   },
-  "reflection": [],
   "challenge": [
-    "Reverse-engineering the end-to-end data flow and diagnosing the database performance bottlenecks without direct visibility into the legacy application's source code."
+    "The hardest part was diagnosing the end-to-end bottleneck without direct visibility into the legacy application's source code. I had to reason from the observed database behaviour, reverse-engineer the query patterns and determine where the time was actually being spent before deciding what to optimise."
   ],
   "hardestBug": [
-    "Discovering why the legacy C# process was forced to run in Debug mode. Stepping through execution uncovered a hidden off-by-one index error that caused memory boundary exceptions in Release mode. Resolving it let us compile and run optimised Release builds safely."
+    "The most interesting bug was discovering why the legacy C# process was being forced to run in Debug mode. Stepping through the execution uncovered a hidden off-by-one index error that caused memory boundary exceptions in Release mode. Fixing it allowed us to compile and run an optimised Release build safely, which was important for accurately measuring the performance improvements."
   ],
   "differently": [
-    "I would build an automated comparison tool upfront to continuously validate parity between the old and new implementations. Early on I relied too heavily on testing against a local instance of the product. A standalone verification script from the start would have given immediate feedback and isolated algorithm correctness from local environment state."
+    "I would build an automated comparison tool upfront to continuously validate parity between the old and new implementations. Early on I relied too heavily on testing against a local instance of the database. A standalone verification script would have given immediate feedback."
   ],
   "aboutYourself": [
-    "This project reinforced that I excel at deep technical troubleshooting, and at applying theoretical computer science to practical, high-impact business problems. It showed me that I thrive on complex, low-visibility performance challenges where I can dig into the data structures and the query mechanics."
+    "This project reinforced that I enjoy deep technical troubleshooting and applying computer science concepts to practical performance problems. I particularly enjoy situations where the bottleneck is not immediately visible and requires understanding both the algorithms and the underlying system behaviour."
   ],
   "enjoyed": [
-    "Applying advanced data structures like tries to a real system bottleneck, and seeing an eight-hour process collapse into a matter of minutes."
+    "I enjoyed applying a data structure like a trie to a real production bottleneck and then following the problem further into the database layer. Seeing an eight-hour process collapse into a matter of minutes made the impact of the optimisation very tangible."
   ]
 }

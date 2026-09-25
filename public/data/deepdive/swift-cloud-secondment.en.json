@@ -2,33 +2,42 @@
   "slug": "swift-cloud-secondment",
   "lang": "en",
   "title": "Rebuilding a monolith segment as an event-driven microservice",
-  "question": "Tell me about a time you had to align conflicting stakeholders",
+  "question": "Tell me about a time you had to resolve conflicting requirements",
   "experienceId": "swift-developer",
   "tags": ["microservices", "Kafka", "stakeholder management", "Java"],
   "star": {
     "situation": [
-      "On the strength of my prior work, I was loaned for a year to a specialised cloud engineering team, tasked with moving a core segment of the on-premise C++ financial application into a cloud-native microservices architecture."
+      "Based on my previous work, I was loaned for a year to a specialised cloud engineering team to move a core segment of a tightly coupled on-premise C++ financial application into a cloud-native microservices architecture.",
+      "The existing behaviour was not fully captured in the documentation. We had to combine historical specifications, the behaviour of the C++ implementation, and new requirements for the cloud service to determine what the new system should actually do."
     ],
     "task": [
-      "The goal was to port the application's logic into a new stack: Java, Kafka, JPA, Docker. But the on-premise application was tightly coupled, so we had to re-architect the service from scratch, from a blend of historical specifications and entirely new cloud requirements."
+      "I was responsible for implementing the new service in Java using Kafka, JPA and Docker, while helping establish the correct behaviour where the existing documentation and new requirements did not completely agree.",
+      "In particular, I needed to work with UX and UI stakeholders to make sure the new APIs and business behaviour covered important edge cases from the existing system without simply carrying all of the legacy implementation into the new architecture."
     ],
     "action": [
-      "End-to-end implementation: I built the solution from the APIs, with proper error handling, through the domain logic to the database, using standard JPA data layers and event-driven communication with Apache Kafka. The domain itself centred on relationship management through InterAct messages, used for complex automated queries and structured XML messaging. I also introduced comprehensive automated unit and integration testing.",
-      "Pushback and alignment: some UX folks didn't fully grasp certain specific edge cases the feature needed to handle, so I had to push back on their specifications and help them align with the existing C++ implementation. I also helped the UI team work through integrating with the APIs."
+      "I first built up an understanding of the existing behaviour from the C++ implementation and the available documentation, then used that as a reference when reviewing the new requirements.",
+      "Some UX requirements did not account for specific edge cases that the existing application already handled. Rather than simply rejecting the specifications on technical grounds, I walked through the affected scenarios with the stakeholders, explained the behaviour and its consequences, and helped distinguish genuine business requirements from implementation details inherited from the old system.",
+      "I also worked directly with the UI team on the API contract, helping them understand how the new service would expose the required behaviour and resolving integration questions as the implementation progressed.",
+      "Alongside that stakeholder work, I owned the implementation end to end: API and error handling, domain logic, JPA persistence and event-driven communication through Kafka. I introduced comprehensive unit and integration testing to validate the behaviour as we moved away from the tightly coupled legacy implementation."
     ],
-    "result": ["Delivered the Java microservice on schedule."]
+    "result": [
+      "The Java microservice was delivered on schedule, with the relevant legacy edge cases preserved and the new API behaviour aligned between the backend, UX and UI teams.",
+      "The experience also gave us a clearer shared understanding of which behaviour was an actual business requirement and which parts of the legacy implementation were simply historical constraints."
+    ]
   },
-  "reflection": [],
   "challenge": [
-    "Managing fragmented documentation and conflicting stakeholder requirements, particularly where the official requirements lacked the historical and technical context behind them."
+    "The hardest part was that there was no single authoritative source of truth. The documentation, existing implementation and new requirements each captured only part of the intended behaviour, so aligning stakeholders required reconstructing the context before we could even disagree productively."
   ],
   "hardestBug": [
-    "An asynchronous data integrity issue during Kafka event replays. When certain business events were squashed by compaction during a replay, it triggered foreign key violations on linked entity deletions. I resolved it by refactoring the event-handling lifecycle and auditing data integrity at the application level during replays."
+    "I encountered an asynchronous data-integrity issue during Kafka event replays. When certain business events were removed through compaction, linked entity deletions could be processed in a way that triggered foreign-key violations. I resolved this by refactoring the event-handling lifecycle and adding application-level integrity checks during replays."
   ],
-  "learned": [
-    "Stakeholder management and conflict resolution, and how to communicate technical limitations to non-technical teams by aligning on shared project goals rather than on the constraint itself."
+  "differently": [
+    "I would bring the different stakeholders together around concrete scenarios earlier. Instead of discussing requirements at an abstract level, walking through representative edge cases from the beginning would have exposed the disagreements sooner and reduced the amount of back-and-forth later in the implementation."
+  ],
+  "aboutYourself": [
+    "I learned that resolving stakeholder conflict is often less about convincing someone that their requirement is wrong and more about creating enough shared context for everyone to understand the trade-offs. Once we focused on the behaviour we needed to achieve rather than on whose specification was correct, the disagreement became much easier to resolve."
   ],
   "enjoyed": [
-    "The move to modern practice: Docker, Kafka event streams, JPA, and the confidence that automated integration testing gives you."
+    "I enjoyed the combination of understanding a mature legacy system and turning that knowledge into a cleaner modern architecture. It was particularly satisfying to bridge the gap between the technical implementation and the UX/UI teams and see the different pieces converge into a working service."
   ]
 }

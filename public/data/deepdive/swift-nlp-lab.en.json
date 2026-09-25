@@ -4,42 +4,40 @@
   "title": "Teaching a model to read addresses out of free-form text",
   "question": "Tell me about a time you had to learn an entirely new domain.",
   "experienceId": "swift-developer",
-  "tags": [
-    "machine learning",
-    "NLP",
-    "spaCy",
-    "Python",
-    "research"
-  ],
+"tags": ["machine learning", "NLP", "spaCy", "Python", "research"],
   "star": {
     "situation": [
-      "I dedicated one day per week for a year to the company's R&D innovation lab, exploring how emerging technologies could automate and optimise manual, text-heavy operations."
+"I spent one day a week for a year working with the company's R&D innovation lab, exploring how emerging technologies could automate manual, text-heavy operations.",
+"I had little previous experience in machine learning or natural language processing, but one of the problems we wanted to explore was whether free-form operational text could be turned into structured data automatically."
     ],
     "task": [
-      "Build a machine learning model capable of parsing unstructured, free-form text fields to accurately extract structured physical address components."
+"I took ownership of building a prototype that could extract the individual components of physical addresses from unstructured text, including messy real-world inputs that did not follow a consistent format."
     ],
     "action": [
-      "Domain research and pipeline architecture: I consulted computer science professors from ULB to evaluate custom TensorFlow neural network implementations, before identifying and adopting spaCy in Python for a faster, pre-optimised neural network.",
-      "Data engineering and iteration: I curated the training datasets, ran extensive feature engineering using Bloom embeddings and residual CNNs, and trained the model iteratively so it could handle messy, real-world address inputs."
+"I started by learning the problem space rather than immediately choosing a technology. I spoke with computer science professors at ULB and investigated whether we should build a neural network ourselves using TensorFlow or use an existing NLP framework.",
+"Given that I only had one day a week for the project, I eventually chose spaCy in Python because it provided a strong pre-trained neural-network foundation and let me spend more of the available time on the actual data and problem rather than infrastructure.",
+"I then built the training pipeline, curated and cleaned the datasets, experimented with different features and model configurations, and iterated against real-world address examples.",
+"I also built a custom validation tool around the model. It generated interactive HTML reports showing accuracy, performance and failed cases, with misclassified fields highlighted so we could quickly distinguish problems in the source data from weaknesses in the model."
     ],
     "result": [
-      "I delivered a functional NLP prototype and a custom validation engine that proved machine learning could structure operational data with good accuracy. The project's success led to presenting our findings and methodology at the Swift Operations Forum in Amsterdam."
+"I delivered a working NLP prototype and validation framework that demonstrated that free-form operational text could be transformed into structured address data with useful accuracy.",
+"The work was selected for presentation at the Swift Operations Forum in Amsterdam, where we presented both the results and the methodology behind the prototype."
     ]
   },
   "reflection": [],
   "challenge": [
-    "Navigating the initial architectural uncertainty with limited time, at one day a week. I consulted computer science professors at ULB to explore building custom neural network architectures in TensorFlow, then pivoted to spaCy in Python once I recognised it offered a far more practical, pre-optimised neural network for our timeline."
+"The biggest challenge was making meaningful progress with only one day a week while starting from a relatively unfamiliar technical domain. I had to balance learning the underlying machine-learning concepts with making practical progress, which meant being willing to abandon a technically interesting approach when it was not the right fit for the available time."
   ],
   "hardestBug": [
-    "Programmatically determining whether consecutive lines in a free-form text block belonged to the same logical address line or required concatenation. I mitigated it by building structural pattern matchers against the expected output schemas, creating a feedback loop that guided model accuracy during preprocessing."
+"A surprisingly difficult preprocessing problem was deciding whether consecutive lines in a free-form text block represented separate address fields or were actually parts of the same logical field. I built structural pattern matching around the expected output schema and used the resulting validation feedback to improve the preprocessing and model behaviour."
   ],
   "differently": [
-    "I would take full public ownership of my contributions from the start. As the main contributor driving the research, the architecture and the validation tool, I initially undersold my role; owning that impact earlier would have positioned me more effectively as the core technical authority during presentations and internal evaluations."
+"I would establish clearer success criteria and a representative evaluation dataset earlier. That would have made it easier to compare approaches objectively and decide sooner which experiments were worth pursuing within the limited time available."
   ],
   "aboutYourself": [
-    "This R&D effort showed me that I am highly adaptable and capable of self-directed technical growth. Operating with high autonomy proved I can quickly translate unfamiliar academic concepts into practical, working software systems."
+"The project showed me that I am comfortable entering a domain where I am not yet an expert and becoming productive through self-directed learning. I also learned that I enjoy the combination of research and engineering: understanding a new concept, questioning the available approaches, and turning it into something practical."
   ],
   "enjoyed": [
-    "Building a custom Python validation tool that generated interactive HTML reports with accuracy summaries, performance graphs and failed case highlights. It made error analysis intuitive by visually highlighting misclassified fields, so we could instantly diagnose whether a failure came from corrupted source data or a model edge case."
+"I particularly enjoyed building the validation tool. Turning model output into an interactive report with accuracy summaries, graphs and highlighted failures made the experimentation much more tangible and gave us a fast way to understand why the model was getting cases wrong."
   ]
 }

@@ -4,37 +4,46 @@
   "title": "The background job that was starving the API",
   "question": "Tell me about the hardest issue you have debugged",
   "experienceId": "aws-sde",
-  "tags": ["debugging", "operational excellence", "reliability", "databases", "on-call"],
+  "tags": [
+    "debugging",
+    "operational excellence",
+    "reliability",
+    "databases",
+    "on-call"
+  ],
   "star": {
     "situation": [
-      "A service responsible for orchestrating and storing image functions was passed to our team, handed over by a team in the US. We then took on an ongoing project to extend it to also handle ZIP functions, after which the team started being paged 50 or more times a week, dozens of those in the middle of the night, because of API load shedding, even though our instances were heavily over-provisioned."
+      "A service responsible for orchestrating and storing Lambda function packages was handed over to our team from the US. Shortly afterwards, we extended it to support high-volume ZIP functions alongside the existing image-function workload.",
+      "After the rollout, our team started receiving 50+ operational pages a week, including dozens overnight, because the service was load-shedding API requests. This was particularly puzzling because the instances were heavily over-provisioned, so the problem did not initially look like a straightforward capacity issue."
     ],
     "task": [
-      "I took on finding the root cause of the resource exhaustion, stopping the pages for good, and re-architecting the system so the load shedding couldn't come back."
+      "I took ownership of finding the root cause, stopping the recurring pages, and changing the architecture so background processing could no longer starve the API path."
     ],
     "action": [
-      "Root cause analysis: I dug into the system and found that extending it to handle high-volume ZIP functions had broken the background job architecture, which had only ever been built for image functions. Once ZIP functions came online, image functions dropped to just 10% of the total load, and the background jobs, which only ever needed to run for image functions, couldn't keep up. They were scanning the whole database daily and filtering active records locally on the host nodes.",
-      "Query and architectural refactoring: I designed a simplified querying framework keyed on entity state and targeted timestamps, so a host only fetched the records that actually needed work. I deliberately capped per-host execution under a minute, to keep long-running background work from impacting other parts of the service, like the APIs.",
-      "State sharding and rate limiting: to stay under the database partition throughput limits and avoid throttling, I introduced state sharding and rate limiting, letting several concurrent background workers each process their own dedicated shard safely."
+      "The issue had already been investigated by several senior engineers, but it was difficult to pin down. The failures were intermittent, appeared mainly in larger regions, and the background jobs moved between hosts, making individual runs difficult to correlate with the API failures.",
+      "I started correlating the API load-shedding with individual background-job runs in the larger regions. One thing stood out: the jobs appeared to process surprisingly few items, yet the hosts were consuming significant CPU while they ran.",
+      "I dug into what the jobs were actually doing and found that most of the records they scanned were being filtered out locally because they did not require any work. The job was effectively scanning a large portion of the database every day, even though only a small fraction of the records were actionable.",
+      "The problem had become much worse after ZIP support was introduced. Image functions, which had originally represented almost the entire workload, had dropped to around 10% of the total volume. The background-job architecture had been designed around the old workload and was no longer scaling with the new one.",
+      "I redesigned the queries around entity state and timestamps so each host fetched only records that actually needed processing. I also deliberately bounded each execution to under a minute, preventing long-running background work from competing with the API.",
+      "Finally, I introduced state sharding and rate limiting so multiple workers could process the workload concurrently without exceeding database partition throughput limits."
     ],
     "result": [
-      "API load shedding and the operational pages disappeared entirely, and background job throughput went up tenfold with dynamic scaling built in."
+      "The API load shedding and operational pages disappeared entirely. Background-job throughput increased roughly tenfold, with dynamic scaling allowing the system to handle the new workload without starving the API."
     ]
   },
-  "reflection": [],
   "challenge": [
-    "Diagnosing why high-priority API calls were being dropped in production. The service had only recently moved from the US to Europe, so team knowledge was thin and the existing operational metrics were poorly understood, which made it hard to pin the cause on background scans starving the API threads."
+    "The hardest part was recognising that an apparently healthy, over-provisioned service could still be resource-starved. The system had enough overall capacity, but background work was consuming resources in a way that competed directly with latency-sensitive API traffic."
   ],
   "hardestBug": [
-    "Realising the background jobs were impacting the API was the hard part. Each run picked a random host from the fleet and moved to a different one next time. On top of that, the issue only showed up in a handful of regions, and even there, not every day, so there was no steady signal to chase, just a pattern that had to be pieced together from limited visibility into individual job runs."
+    "The signal was extremely noisy: jobs moved between hosts, the problem only appeared in a subset of regions, and even affected regions could go a day without reproducing it. There was no single failing component to follow, so I had to piece together the relationship between background-job execution and API load shedding from incomplete operational data."
   ],
   "differently": [
-    "I would master the service's existing telemetry and query metrics first, and build custom dashboards, before dropping into code-level debugging. Working on an inherited service without a solid grasp of its metric boundaries slowed the early diagnosis down. That's easier to say in hindsight than to do in the moment, though: with pages piling up, it takes real discipline to step back and invest in operational visibility instead of chasing the bug head-on."
+    "I would establish a clearer operational picture of the service earlier. Because it had recently been handed over from the US, I initially had to learn the meaning and limitations of existing metrics while simultaneously responding to pages. Building targeted dashboards around background-job execution and resource consumption earlier would have shortened the investigation."
   ],
   "aboutYourself": [
-    "During one especially intense on-call week, I learned that pride was part of what kept me pushing through alone rather than asking for help sooner. Running on too little sleep while trying to fight every fire at once just isn't sustainable, and I've since gotten better at recognising when I'm stretched too thin and need to bring someone else in, rather than letting pride get in the way."
+    "During one particularly intense on-call period, I realised that pride was making me try to solve too much on my own. I was running on too little sleep while trying to fight every fire myself. Since then, I've become much more conscious of recognising when I'm stretched too thin and bringing others in earlier."
   ],
   "enjoyed": [
-    "Watching the impact land on the CloudWatch dashboards: page volume dropping to zero, API drops flatlining, and background job throughput spiking tenfold."
+    "The most satisfying part was watching the operational metrics change after the fix: page volume dropping to zero, API load shedding disappearing, and background-job throughput increasing tenfold."
   ]
 }

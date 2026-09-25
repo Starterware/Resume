@@ -18,8 +18,6 @@ export interface DeepDive {
   experienceId: string;
   tags: string[];
   star: StarAnswer;
-  /** The key learnings — what the story taught, rather than what happened. */
-  reflection: string[];
   /**
    * Answers to the follow-ups interviewers ask by name once the STAR answer is
    * out. Optional: an older story may not have them.

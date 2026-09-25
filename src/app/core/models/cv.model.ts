@@ -129,16 +129,6 @@ export interface UiStrings {
     title: string;
     /** Heading above the employer-by-employer part of the story. */
     journey: string;
-    /**
-     * Warning that this locale's story is a quick, unreviewed translation.
-     *
-     * Empty means the story reads as written and no notice appears, which is
-     * how the locale it was authored in is marked — the presence of text is the
-     * switch, so retiring the warning is an edit to the data rather than to the
-     * template. The key still has to exist in all three files: the validator
-     * compares key sets, not values.
-     */
-    translationNotice: string;
   };
   translationFallback: string;
   present: string;
@@ -151,7 +141,6 @@ export interface UiStrings {
     task: string;
     action: string;
     result: string;
-    reflection: string;
     /** The questions an interviewer asks once the STAR answer is out. */
     followUps: {
       title: string;

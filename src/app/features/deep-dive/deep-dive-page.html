@@ -42,14 +42,6 @@
             }
           </cv-section>
 
-          @if (loaded.content.reflection.length) {
-            <cv-section [title]="data.ui.deepDive.reflection">
-              @for (paragraph of loaded.content.reflection; track paragraph) {
-                <p>{{ paragraph }}</p>
-              }
-            </cv-section>
-          }
-
           <!-- The questions an interviewer asks once the STAR answer is out.
                Each is optional: an older story may not answer all of them, and
                the section as a whole disappears if none are present. -->

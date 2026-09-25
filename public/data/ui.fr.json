@@ -8,8 +8,7 @@
   "narrative": {
     "cta": "Lire mon histoire complète",
     "title": "Mon histoire",
-    "journey": "Parcours professionnel",
-    "translationNotice": "Cette version française est une traduction rapide et non relue ; l'anglais reste la version d'origine."
+    "journey": "Parcours professionnel"
   },
   "translationFallback": "Cette page n'a pas encore été traduite et s'affiche en anglais.",
   "present": "Aujourd'hui",

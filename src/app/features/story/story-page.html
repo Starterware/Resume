@@ -11,12 +11,6 @@
       </header>
 
       <div class="story__body">
-        <!-- Above the prose rather than under it: it frames how the page should
-             be read, which is no use once it has been read. -->
-        @if (data.ui.narrative.translationNotice; as notice) {
-          <p class="story__notice" role="status">{{ notice }}</p>
-        }
-
         @for (paragraph of data.profile.narrative.intro; track paragraph) {
           <p>{{ paragraph }}</p>
         }

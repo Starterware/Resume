@@ -4,43 +4,39 @@
   "title": "Stepping into the analyst and lead role when the team thinned out",
   "question": "Tell me about a time you took on responsibility beyond your role.",
   "experienceId": "intergraph-system-engineer",
-  "tags": [
-    "requirements",
-    "business analyst",
-    "solution architecture",
-    "team leadership",
-    "mentorship",
-    "C#"
-  ],
+"tags": ["requirements", "business analyst", "solution architecture", "team leadership", "mentorship", "C#"],
   "star": {
     "situation": [
-      "Following the departure of several colleagues, a high-priority project faced a significant gap in technical leadership and business analysis capacity. The goal was to build a secure ingestion framework allowing clients to bulk-modify complex, mixed-entity database records using custom Excel file uploads."
+"Several colleagues left the team while we were working on a high-priority project, leaving a significant gap in both technical leadership and business-analysis capacity. The project was to build a secure ingestion framework allowing clients to bulk-modify complex, mixed-entity database records through custom Excel uploads."
     ],
     "task": [
-      "To keep the project moving forward, I stepped up to take on the Business Analyst and Lead Developer responsibilities that the project needed. I had to quickly master our entire database schema and application architecture, take over client-facing requirements gathering, design the core framework, and lead an offshore engineering team under a tight deadline."
+"I stepped beyond my normal engineering role to take on the Business Analyst and Lead Developer responsibilities the project needed. I had to understand the database schema and application architecture in depth, take ownership of client requirements, design the core framework, and eventually lead an offshore engineering team under a tight deadline."
     ],
     "action": [
-      "Consultative discovery: I led technical discovery meetings directly with client stakeholders. I focused on understanding their underlying business problems rather than letting them dictate technical specifications, bridging the gap between their business needs and our complex database structure.",
-      "Architecture and quality controls: I architected and coded the initial framework. When an offshore development team in India was onboarded to assist, I stepped into the team lead role. To manage code quality and address initial delivery errors under a tight schedule, I established a rigorous code review process paired with direct one-to-one mentorship."
+"I took over the client-facing discovery work and focused on understanding the underlying business problems rather than simply translating requested features into technical specifications. I then mapped those requirements onto our existing data model and application architecture.",
+"I designed and implemented the initial ingestion framework, including the controls needed to safely process complex changes across multiple entity types while protecting data integrity.",
+"When an offshore development team in India joined to increase delivery capacity, I took on the team-lead role as well. The team had varying levels of experience and some of the initial deliveries needed significant correction, so I introduced a structured code-review process and paired it with direct one-to-one mentoring rather than simply fixing the code myself.",
+"This allowed me to maintain the quality bar while gradually transferring the knowledge and decision-making needed for the team to work more independently."
     ],
     "result": [
-      "We delivered the data-ingestion engine on schedule without compromising data integrity. The client successfully adopted the pipeline, and the offshore team was upskilled to meet our engineering quality standards independently for future delivery cycles."
+"We delivered the ingestion engine on schedule without compromising data integrity, and the client successfully adopted the new pipeline.",
+"The offshore team also became capable of meeting our engineering standards independently, reducing the amount of hands-on oversight required for subsequent delivery cycles."
     ]
   },
-  "reflection": [],
   "challenge": [
-    "Managing and upskilling an offshore team with a wide spread of experience levels, under a tight timeline, without letting code quality slip to make the dates."
+"The biggest challenge was balancing delivery pressure with the need to develop the offshore team. It would have been faster in the short term to fix their work myself, but that would have left the same bottleneck in place. I had to invest time in reviews and mentoring while still keeping the project moving."
   ],
   "hardestBug": [
-    "Days lost to an application that silently failed to process certain Excel files. The root cause was Excel's Change Tracking feature: while Excel supports it fully when a workbook is handled by hand, the parsing library we used failed to process it programmatically even though the documented functionality existed. Nothing in our code was wrong, and the feature worked fine manually, it didn't through code."
+"We lost several days investigating Excel files that silently failed during automated processing. The files worked correctly when opened manually in Excel, but our parsing library could not handle workbooks using Excel's Change Tracking feature, despite the feature being supported by Excel itself and appearing in the library's documented functionality.",
+"The difficult part was realising that the problem was not in our application logic but in the difference between what the library supported in theory and what it could actually process programmatically."
   ],
   "differently": [
-    "I leaned hard on reflection and generalisation. Some of it hurt maintainability more than it helped: a duplicated block is often cheaper to live with than the abstraction that removes it, and I would draw that line differently now."
+"I would be more selective about abstraction. Early in my career I tended to generalise aggressively because eliminating duplication felt inherently like an improvement. I now recognise that an abstraction also has a maintenance cost, and sometimes a small amount of duplication is clearer and safer than introducing a more complex generalisation."
   ],
   "aboutYourself": [
-    "Stepping up to handle both the analyst and lead developer responsibilities at once taught me that I perform best in high-ambiguity environments. I do not need a rigid structure to operate effectively: I move toward operational gaps, translate messy business problems into actionable engineering systems, and anchor the team through uncertainty."
+"Taking on analysis, architecture and team leadership at the same time showed me that I am comfortable moving toward gaps in a team rather than waiting for someone to formally assign responsibility. I enjoy turning ambiguous business problems into concrete engineering work and giving a team enough structure to move forward."
   ],
   "enjoyed": [
-    "Talking to stakeholders directly about their business problems, and designing the core framework that answered them."
+"I particularly enjoyed the client-facing discovery work: understanding what people were actually trying to achieve, then turning those business problems into a technical framework that could handle the complexity underneath."
   ]
 }

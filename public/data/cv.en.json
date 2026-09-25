@@ -10,8 +10,8 @@
     "summary": "Senior software engineer with 12+ years experience designing and operating distributed systems at scale, from mission-critical dispatch platforms to AWS Lambda's control plane. I enjoy ambiguous, high-stakes problems and owning solutions from root cause to production.",
     "narrative": {
       "intro": [
-        "My fascination with software didn't start in a classroom; it began the moment my family got access to the internet. Wondering how programs worked under the hood, I wrote my first lines of C at fifteen. That first \"Hello, World!\" on the terminal sparked a lifelong drive for low-level performance and algorithmic efficiency.",
-        "At university, while earning my Master's in Computer Science with Great Distinction and a Master's in Computer Engineering, I thrived on hands-on implementation projects: multiplayer game tournament engines built over raw sockets, swarm intelligence algorithms like Ant Colony Optimization applied to shortest-path problems, and a soccer simulation where I replaced the default behaviours with machine learning decision models. That early passion for algorithms led me to competitive programming, where I learned to dissect complex performance bottlenecks under real time pressure. What stuck with me from those years wasn't the algorithms themselves, it was the habit of treating every inefficiency as a problem worth understanding all the way down. That habit has shaped how I've approached every system I've touched since."
+        "My fascination with software started before I really knew what software engineering was. When my family first got access to the internet, I became curious about what was happening underneath the interfaces I was using. At fifteen, that curiosity led me to write my first lines of C. Seeing \"Hello, World!\" appear in a terminal was a small moment, but it sparked a passion for software that has stayed with me ever since.",
+        "At university, I pursued that curiosity through a Master's in Computer Science with Great Distinction and a Master's in Computer Engineering. I gravitated toward hands-on projects, from multiplayer systems and swarm-intelligence algorithms to machine-learning models and competitive programming. What stayed with me was not so much the individual technologies, but the habit of understanding problems deeply and looking for what is really happening underneath."
       ],
       "chapters": [
         {
@@ -21,9 +21,8 @@
           "period": "April 2013 – April 2016",
           "location": "Brussels, Belgium",
           "paragraphs": [
-            "After graduating, I was looking for a first opportunity with real impact, and Intergraph's public safety systems offered exactly that. I started my professional career building emergency call-taking and dispatching platforms for the Belgian Police and Fire-Medical departments, working across C++, C# and Oracle DB in an environment where reliability and performance were core requirements.",
-            "A new requirement came in that needed a business analyst, so I stepped up to fill that gap myself. I built out the proof of concept, and based on that work I was asked to lead and onboard a team of three external developers to help bring the product to life, taking on the Tech Lead role for the combined effort while continuing to code alongside them.",
-            "One of the satellite applications had tightly coupled modules that made independent development difficult, so I designed a dynamic C# plugin framework using reflection to replace the fat-client codebase, cutting time-to-market significantly. I also solved a persistent database update bottleneck: refactoring the legacy Soundex phonetic algorithm with a trie data structure, reverse-engineering the un-indexed queries underneath it, and batching the updates brought an eight-hour process down to a few minutes. Alongside that, I helped the team build our Jenkins CI/CD pipeline from scratch, which ended the manual deployment errors we'd been living with."
+            "After graduating, I wanted to work on software with real-world impact. At Intergraph, I built emergency call-taking and dispatching platforms for the Belgian Police and Fire-Medical departments, working across C++, C# and Oracle in systems where reliability and performance were fundamental requirements.",
+            "Early on, I began taking on responsibilities beyond development. I stepped into a business analysis gap, built a proof of concept and went on to lead and onboard three external developers while continuing to code myself. I also started tackling architectural and performance problems: I built a dynamic C# plugin framework to replace a tightly coupled module structure, and reduced an eight-hour Soundex database process to a few minutes. These experiences taught me that I enjoyed not just solving individual problems, but improving the systems and structures around them."
           ]
         },
         {
@@ -33,11 +32,9 @@
           "period": "April 2016 – November 2022",
           "location": "La Hulpe, Belgium",
           "paragraphs": [
-            "I joined SWIFT wanting to deepen my C++ expertise, aiming to eventually work on problems closer to the machine. My early years there were spent maintaining a cross-platform C++98 messaging engine running across Linux, Windows, AIX and SunOS: refactoring 1000-line legacy functions into something maintainable, consolidating a scattering of database tools into a single migration framework, and building custom thread-safe components to keep the system stable under high throughput.",
-            "My role expanded when my team, seeing that the cloud engineering group was short on resources, put me forward as a candidate to help transition our core messaging platform into an event-driven microservices architecture using Java, Apache Kafka, JPA and Docker. That move ended up shifting me away from the C++ specialization path I'd originally set out on, toward broader distributed systems work instead. I found myself working closely with product and UX to make sure the new architecture actually matched how the system was used, while building out automated testing to keep pace with the changes.",
-            "Driven by curiosity, in my second year I spent one day a week in SWIFT's R&D Lab engineering an NLP pipeline, using spaCy, CNNs and Bloom embeddings, to parse unstructured text into structured physical address data. That work matured enough to eventually be taken over by a dedicated product team.",
-            "After several years there, I took a break and left for Australia, spending three months visiting friends there and a month in Vietnam. The four months after I got back were spent job hunting, difficult going given COVID and how uncertain the market was at the time, until my previous Tech Lead vouched for me to rejoin SWIFT, this time on the instant payments connectivity team.",
-            "There, I worked on a Dockerized application built from multiple microservices in Java, using gRPC and queue adapters to connect them. My biggest impact came after our testers moved on to other roles: I automated deployment, integration testing, and performance testing to cover the gap they'd left behind, building a full end-to-end load-testing stack with Ansible to catch bottlenecks before they reached production."
+            "I joined SWIFT to deepen my C++ expertise, working on a cross-platform C++98 messaging engine running across Linux, Windows, AIX and SunOS. I spent my early years making a large legacy codebase more maintainable, while working on database tooling, concurrency and high-throughput components.",
+            "My role broadened when I joined a cloud engineering effort to move part of the messaging platform toward an event-driven, cloud-native architecture using Java, Kafka, JPA and Docker. That became a turning point: I had started out wanting to specialise further in C++, but found myself increasingly drawn to distributed systems, architecture and the challenges of modernising long-lived systems.",
+            "I continued to explore unfamiliar areas, including spending a year in SWIFT's R&D Lab building an NLP prototype for extracting structured addresses from unstructured text. Later, after a carreer break in Australia and Vietnam, I returned to SWIFT to join the instant payments team, where I took ownership of test automation, infrastructure and performance testing after the team lost its QA capacity. By then, I was increasingly interested not just in building software, but in improving how teams build and operate it."
           ]
         },
         {
@@ -47,16 +44,14 @@
           "period": "December 2022 – June 2026",
           "location": "Dublin, Ireland",
           "paragraphs": [
-            "Technology being the business itself was what pulled me toward AWS. I joined to work on the Lambda control plane, the low-level infrastructure responsible for orchestrating, storing, optimising and deploying serverless functions globally. There, I took a leading technical role in delivering my team's contribution to major initiatives, including Lambda Managed Instances, a runtime flexibility initiative, and an overhaul of the code deletion workflow.",
-            "One of the pieces I'm proudest of was rewriting the pipeline that packages and optimises Lambda functions, moving it from Java to a concurrent, channel-based design in Go that roughly halved processing latency.",
-            "Separately, another system hit real trouble when a legacy background job model started failing to scale in one of our largest regions, putting global rollouts at risk. I designed and shipped a deduplicated database model within a week to resolve it.",
-            "Not every problem I dealt with was a design choice, some just had to be found. After the service migrated from the US to Ireland, the team started getting paged constantly, sometimes over fifty times a week, dozens of those in the middle of the night, because of API load shedding despite our instances being heavily over-provisioned. Tracing it back took a while: high-volume workloads had quietly broken a background job architecture that was scanning the entire database daily. Fixing the query pattern and adding sharding ended the pages entirely. That stretch also taught me something about myself: running on too little sleep while trying to fight every fire at once just isn't sustainable, and I've since gotten better at recognising when I'm stretched too thin and need to step back or bring someone else in, rather than pushing through solo.",
-            "Beyond the code itself, I also took on reworking how the team ran day to day. Our Scrum process was clunky for a team shipping several times a day, standups dragged with little engagement, and planning didn't match how we actually worked. I restructured the rituals around the way the team actually shipped, and watched something I hadn't expected: once the formal meetings got lighter, people started resolving things with each other directly instead of saving every question for the next standup."
+            "AWS appealed to me because technology is the business itself. I joined the Lambda control plane, working on infrastructure responsible for orchestrating, storing, optimising and deploying serverless functions at global scale. The move felt like a natural progression: the same curiosity about how systems work, but now applied to distributed systems, reliability and large-scale operations.",
+            "I took technical ownership of several cross-team initiatives, including redesigning a Lambda optimisation pipeline in Go around concurrent processing, roughly halving end-to-end latency. I also investigated an intermittent operational problem that was causing frequent API load-shedding pages, eventually tracing it to a legacy background-job architecture that was scanning an entire database unnecessarily. Redesigning the query and execution model eliminated the pages entirely.",
+            "Beyond individual systems, I also worked on how the team operated, restructuring our Scrum process to better fit a team deploying several times a day. Across these experiences, I found myself increasingly drawn to problems that combined technical depth with broader system and team-level impact."
           ]
         }
       ],
       "closing": [
-        "After a bit over three years in Dublin, my wife and I decided to move back to Belgium, wanting to settle before our child got older rather than uproot them further down the line. I'm back in Brussels now, looking for what comes next."
+        "After a little over three years in Dublin, my wife and I decided to move back to Belgium. We wanted to settle before our child got older rather than make a bigger move later on. I'm back in Belgium now, looking for what comes next."
       ]
     },
     "contact": {
@@ -160,23 +155,49 @@
       "skills": [
         {
           "category": "Languages",
-          "items": ["Java", "Go", "Python", "Bash"]
+          "items": [
+            "Java",
+            "Go",
+            "Python",
+            "Bash"
+          ]
         },
         {
           "category": "Cloud & Infra",
-          "items": ["AWS", "EC2", "DynamoDB", "SQS", "ASG", "Lambda", "CloudWatch", "Serverless"]
+          "items": [
+            "AWS",
+            "EC2",
+            "DynamoDB",
+            "SQS",
+            "ASG",
+            "Lambda",
+            "CloudWatch",
+            "Serverless"
+          ]
         },
         {
           "category": "Frameworks",
-          "items": ["Guice", "JUnit", "AssertJ", "Lombok"]
+          "items": [
+            "Guice",
+            "JUnit",
+            "AssertJ",
+            "Lombok"
+          ]
         },
         {
           "category": "Soft Skills",
-          "items": ["Service Design", "Project Leadership", "Mentoring"]
+          "items": [
+            "Service Design",
+            "Project Leadership",
+            "Mentoring"
+          ]
         },
         {
           "category": "Other",
-          "items": ["GenAI", "Prompt Engineering"]
+          "items": [
+            "GenAI",
+            "Prompt Engineering"
+          ]
         }
       ]
     },
@@ -200,6 +221,7 @@
           "summary": "Joined the team building the instant payments connectivity solution on the Swift Network, receiving messages from financial institutions via REST APIs and message queue brokers and forwarding them securely to the network. Designed and delivered features that improved the reliability and scalability of the solution.",
           "highlights": [
             "Rebuilt end-to-end test automation after the team lost both QA engineers, consolidating scattered Robot Framework suites into one repository and generalising tests across IBM MQ, ActiveMQ and REST endpoints, with Ansible-provisioned multi-node environments for automated compatibility testing.",
+            "Built a custom Docker image integrity checker, parsing image manifests and layers and independently recomputing cryptographic digests to verify image integrity.",
             "Modernised Jenkins and CloudBees pipelines, migrating from imperative scripts to declarative pipelines with shared libraries to modularise logic across components.",
             "Automated performance testing by parameterising JMeter scripts and integrating load tests into the Jenkins pipeline, streaming live metrics into InfluxDB with Grafana dashboards for real-time regression visibility."
           ],
@@ -246,11 +268,23 @@
       "skills": [
         {
           "category": "Languages",
-          "items": ["Java", "C/C++", "Python", "Bash"]
+          "items": [
+            "Java",
+            "C/C++",
+            "Python",
+            "Bash"
+          ]
         },
         {
           "category": "Frameworks",
-          "items": ["Spring Boot", "gRPC", "JPA", "JUnit", "Mockito", "JMeter"]
+          "items": [
+            "Spring Boot",
+            "gRPC",
+            "JPA",
+            "JUnit",
+            "Mockito",
+            "JMeter"
+          ]
         },
         {
           "category": "Infra & Tools",
@@ -315,15 +349,26 @@
       "skills": [
         {
           "category": "Languages",
-          "items": ["C#", "C/C++", "Bash"]
+          "items": [
+            "C#",
+            "C/C++",
+            "Bash"
+          ]
         },
         {
           "category": "Infra & Tools",
-          "items": ["Oracle DB", "Jenkins", "SVN"]
+          "items": [
+            "Oracle DB",
+            "Jenkins",
+            "SVN"
+          ]
         },
         {
           "category": "Soft Skills",
-          "items": ["Requirements Analysis", "Project Leadership"]
+          "items": [
+            "Requirements Analysis",
+            "Project Leadership"
+          ]
         }
       ]
     }
@@ -346,7 +391,9 @@
           "degree": "Master in Computer Engineering",
           "start": "2012-09",
           "end": "2013-06",
-          "notes": ["Complementary Master"],
+          "notes": [
+            "Complementary Master"
+          ],
           "includeInPdf": true
         },
         {

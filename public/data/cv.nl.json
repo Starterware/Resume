@@ -1,55 +1,57 @@
 {
   "meta": {
     "lang": "nl",
-    "updated": "2026-08-27"
+    "updated": "2026-09-03"
   },
   "profile": {
     "name": "Mikaël Lenaertz",
-    "title": "Senior software engineer",
+    "title": "Senior Software Engineer",
     "location": "Brussel, België",
-    "summary": "Senior software engineer met meer dan 12 jaar ervaring in het ontwerpen en beheren van grootschalige gedistribueerde systemen, van kritische dispatching platformen tot de control plane van AWS Lambda. Ik hou van ambigue, impactvolle problemen en neem oplossingen in handen, van oorzaak tot productie.",
+    "summary": "Senior software engineer met meer dan 12 jaar ervaring in het ontwerpen en beheren van grootschalige gedistribueerde systemen, van kritische dispatching platformen tot de control plane van AWS Lambda. Ik hou van complexe problemen met veel onzekerheden en neem graag verantwoordelijkheid voor oplossingen van oorzaak tot productie.",
     "narrative": {
       "intro": [
-        "Mijn fascinatie voor software begon niet in een klaslokaal, maar op het moment dat mijn gezin internet kreeg. Uit nieuwsgierigheid naar wat er onder de motorkap gebeurde, schreef ik mijn eerste regels C op mijn vijftiende. Die eerste \"Hello, World!\" in de terminal legde de basis voor een blijvende interesse in low-level prestaties en algoritmische efficiëntie.",
-        "Aan de universiteit, tijdens mijn master in computerwetenschappen met grote onderscheiding en een master in computerwetenschappelijke ingenieurstechnieken, bloeide ik op bij implementatieprojecten. Ik bouwde toernooimotoren voor multiplayergames op rauwe sockets, implementeerde zwermintelligentie-algoritmen zoals Ant Colony Optimization voor kortstepadproblemen, ontwikkelde een voetbalsimulatie waarin ik standaardgedrag verving door beslissingsmodellen uit machinaal leren, en hielp mijn medestudenten voortdurend met debuggen. Die vroege passie voor algoritmen bracht me vanzelf bij competitief programmeren, waar ik leerde complexe knelpunten te ontleden onder strakke tijdsdruk. Die basis groeide uit tot een gedisciplineerde manier van werken, gericht op schone code en operationele uitmuntendheid."
+        "Mijn fascinatie voor software begon nog voordat ik echt wist wat software engineering was. Toen mijn familie voor het eerst toegang kreeg tot het internet, werd ik nieuwsgierig naar wat er onder de interfaces die ik gebruikte gebeurde. Op mijn vijftiende bracht die nieuwsgierigheid me ertoe mijn eerste regels C te schrijven. Toen \"Hello, World!\" in een terminal verscheen, was dat een klein moment, maar het wakkerde een passie voor software aan die me sindsdien is blijven volgen.",
+        "Aan de universiteit zette ik die nieuwsgierigheid verder met een Master in Computer Science met Grote onderscheidingn en een Master in Computer Engineering. Ik koos vooral voor praktijkgerichte projecten, van multiplayer-systemen en swarm-intelligence-algoritmes tot machine-learningmodellen en competitive programming. Wat me daarvan vooral is bijgebleven, zijn niet zozeer de afzonderlijke technologieën, maar de gewoonte om problemen grondig te begrijpen en te zoeken naar wat er werkelijk onder de oppervlakte gebeurt."
       ],
       "chapters": [
         {
           "id": "intergraph",
           "company": "Intergraph (Hexagon Safety & Infrastructure)",
           "role": "System Engineer",
-          "period": "April 2013 – april 2016",
+          "period": "April 2013 – April 2016",
           "location": "Brussel, België",
           "paragraphs": [
-            "Ik begon mijn loopbaan met het bouwen van bedrijfskritische platformen voor noodoproepen en dispatching voor de Belgische politie en de brandweer- en medische diensten, waar betrouwbaarheid en prestaties niet onderhandelbaar waren. In C++, C# en Oracle DB nam ik de rol op van business analist en technisch verantwoordelijke voor een team van vier. Naast het leiden van de klantanalyse, om bedrijfsproblemen te vertalen naar heldere architecturen, richtte ik me sterk op prestaties en onderhoudbaarheid.",
-            "Toen monolithische koppeling de releases vertraagde, ontwierp ik een dynamisch C#-pluginframework op basis van reflectie ter vervanging van de fat client, wat de doorlooptijd fors verkortte. Mijn grootste doorbraak kwam bij een knelpunt van acht uur in de database-updates: door het verouderde fonetische Soundex-algoritme te herschrijven rond een trie, niet-geïndexeerde queries te reverse-engineeren en updates te batchen, bracht ik de verwerkingstijd terug tot enkele minuten. Om onze releases betrouwbaar te houden bouwde ik samen met het team onze Jenkins-CI/CD-pijplijnen van nul op, wat handmatige deploymentfouten wegnam."
+            "Na mijn studies wilde ik werken aan software met een concrete impact op de echte wereld. Bij Intergraph bouwde ik systemen voor het aannemen en dispatchen van noodoproepen voor de Belgische Politie en de hulpverleningsdiensten, met C++, C# en Oracle in systemen waar betrouwbaarheid en performantie fundamentele vereisten waren.",
+            "Al snel nam ik ook verantwoordelijkheden buiten pure development op. Ik sprong in een businessanalysefunctie, bouwde een proof of concept en nam vervolgens de technische leiding over drie externe ontwikkelaars, terwijl ik zelf bleef programmeren. Daarnaast begon ik me meer bezig te houden met architectuur- en performantieproblemen: ik bouwde een dynamisch C#-pluginframework ter vervanging van een sterk gekoppelde modulestructuur en reduceerde een Soundex-databaseproces van acht uur tot enkele minuten. Die ervaringen leerden me dat ik niet alleen graag individuele problemen oplos, maar ook systemen en de structuren eromheen verbeter."
           ]
         },
         {
           "id": "swift",
           "company": "SWIFT",
           "role": "Senior Software Engineer & Systems Developer",
-          "period": "April 2016 – november 2022",
-          "location": "Terhulpen, België",
+          "period": "April 2016 – November 2022",
+          "location": "La Hulpe, België",
           "paragraphs": [
-            "Om me aan gedistribueerde architecturen op grote schaal te wagen, ging ik bij SWIFT aan de slag met financiële messagingsystemen. Mijn eerste jaren onderhield ik een platformoverschrijdende C++98-messagingengine op Linux, Windows, AIX en SunOS. Ik herschreef legacyfuncties van meer dan duizend regels, moderniseerde databasetools tot één migratieframework en ontwierp eigen thread-safe componenten voor stabiliteit bij hoge doorvoer.",
-            "Mijn rol groeide toen ik werd uitgeleend aan een cloudteam om onze legacykern om te bouwen naar een event-driven microservicearchitectuur met Java, Apache Kafka, JPA en Docker. Ik was de technische brug tussen product, UX en engineering en bouwde tegelijk robuuste geautomatiseerde testsuites. Later, op het platform voor instant payments, bouwde ik volledige geautomatiseerde load-teststacks met Ansible om knelpunten te vinden voordat ze de productie bereikten. Uit nieuwsgierigheid besteedde ik ook één dag per week aan het R&D-lab van SWIFT, waar ik een NLP-pijplijn ontwikkelde — spaCy, convolutionele netwerken en Bloom-embeddings — om ongestructureerde tekst om te zetten in gestructureerde adresgegevens."
+            "Ik ging bij SWIFT aan de slag om mijn C++-expertise verder uit te bouwen, op een cross-platform C++98 messaging engine die draaide op Linux, Windows, AIX en SunOS. In mijn eerste jaren maakte ik een grote legacy codebase beter onderhoudbaar en werkte ik onder meer aan database tooling, concurrency en high-throughput componenten.",
+            "Mijn rol verbreedde toen ik deel ging uitmaken van een cloud engineering-team dat een deel van het messagingplatform naar een event-driven, cloud-native architectuur bracht met Java, Kafka, JPA en Docker. Dat werd een belangrijk keerpunt: aanvankelijk wilde ik me verder specialiseren in C++, maar ik merkte dat mijn interesse steeds meer verschoof naar distributed systems, architectuur en de uitdagingen van het moderniseren van lang bestaande systemen.",
+            "Ik bleef mezelf ook uitdagen met nieuwe domeinen. Zo werkte ik gedurende een jaar één dag per week in het R&D Lab aan een NLP-prototype om gestructureerde adressen uit ongestructureerde tekst te halen. Later, na een carrièrepauze in Australië en Vietnam, keerde ik terug naar SWIFT voor het instant-payments-team. Daar nam ik de verantwoordelijkheid voor testautomatisatie, infrastructuur en performancetesting nadat het team zijn QA-capaciteit verloor. Tegen die tijd was mijn interesse steeds meer verschoven van alleen software bouwen naar het verbeteren van de manier waarop teams software bouwen en beheren."
           ]
         },
         {
           "id": "aws",
           "company": "Amazon Web Services",
           "role": "Software Development Engineer",
-          "period": "December 2022 – juni 2026",
+          "period": "December 2022 – June 2026",
           "location": "Dublin, Ierland",
           "paragraphs": [
-            "Het meest recent werkte ik bij AWS aan de control plane van Lambda — de low-level infrastructuur die serverless functies wereldwijd en op grote schaal orkestreert, opslaat, optimaliseert en uitrolt. Ik leidde technische implementaties van begin tot eind bij initiatieven over meerdere organisaties heen, waaronder Lambda Managed Instances en Customer Managed Runtimes.",
-            "Een groot deel van mijn werk draaide om het optimaliseren van klantcode: ik porteerde en herschreef de kernlogica naar Go om hoge concurrency te benutten, met een channel-gebaseerde pijplijn die de verwerkingslatentie halveerde. Daarnaast boekte ik operationele en financiële winst: ik trok een opslagoptimalisatie op gang die 200 PB aan S3-opslag vrijmaakte — 70% minder — en halveerde de artefactopslag via deduplicatie, waarmee wekelijkse fouten in achtergrondtaken verdwenen. Door grondig debuggen te combineren met systeemveerkracht vond en verhielp ik een bug die er vanaf dag één in zat en willekeurige fouten veroorzaakte bij ongeveer elke 10.000 functiecreaties, en herzag ik de integratietestframeworks waardoor wekelijkse rollbacks door flaky tests van meer dan 20 naar bijna nul gingen."
+            "AWS sprak me aan omdat technologie er het bedrijf zelf is. Ik kwam terecht in de Lambda control plane, waar ik werkte aan infrastructuur voor het orkestreren, opslaan, optimaliseren en deployen van serverless functies op wereldwijde schaal. De overstap voelde als een natuurlijke volgende stap: dezelfde nieuwsgierigheid naar hoe systemen werken, maar nu toegepast op distributed systems, reliability en operations op grote schaal.",
+            "Ik nam technische verantwoordelijkheid op voor verschillende cross-team initiatieven, waaronder het herontwerpen van een Lambda-optimalisatiepipeline in Go rond concurrent processing, waarmee de end-to-end verwerkingstijd ongeveer werd gehalveerd. Ik onderzocht ook een intermitterend operationeel probleem dat regelmatig API load-shedding veroorzaakte en traceerde dit uiteindelijk naar een legacy background-jobarchitectuur die onnodig een volledige database scande. Door het query- en executionmodel te herontwerpen, verdwenen de pages volledig.",
+            "Naast individuele systemen werkte ik ook aan de manier waarop het team opereerde. Zo herstructureerde ik ons Scrum-proces om beter aan te sluiten bij een team dat meerdere keren per dag deployde. Doorheen deze ervaringen merkte ik dat ik steeds meer aangetrokken werd tot problemen die technische diepgang combineren met een bredere impact op systemen en teams."
           ]
         }
       ],
       "closing": [
-        "Na iets meer dan drie jaar in Dublin besloten mijn vrouw en ik terug naar België te verhuizen: we wilden ons vestigen voordat ons kind ouder werd, in plaats van het later opnieuw te ontwortelen. Nu ben ik terug in Brussel, op zoek naar wat volgt."
+        "Na iets meer dan drie jaar in Dublin besloten mijn vrouw en ik terug naar België te verhuizen. We wilden ons vestigen voordat ons kind ouder werd, in plaats van later een nog grotere verhuis te moeten maken. Intussen ben ik terug in België en kijk ik uit naar wat de volgende stap wordt."
       ]
     },
     "contact": {
@@ -120,31 +122,32 @@
           "role": "Software Development Engineer",
           "start": "2022-12",
           "end": "2026-06",
-          "summary": "Werk aan de control plane van AWS Lambda, verantwoordelijk voor het orkestreren, opslaan en optimaliseren van het aanmaken en bijwerken van serverless functies op grote schaal. Bijgedragen aan meerdere interne services rond codebeheer, code-optimalisatie en deploy-infrastructuur — met teamoverschrijdende technische initiatieven, operationele kwaliteit en het begeleiden van collega's.",
+          "summary": "Werkte aan de AWS Lambda control plane, verantwoordelijk voor het orkestreren, opslaan en optimaliseren van het aanmaken en updaten van serverless functies op grote schaal, zodat klanten deze kunnen uitvoeren zonder zelf servers te moeten provisionen of beheren. Nam gedurende mijn rol technische verantwoordelijkheid op voor cross-team initiatieven, operational excellence en mentoring.",
           "highlights": [
-            "De technische uitvoering van drie grote control plane-initiatieven van Lambda van begin tot eind geleid, waaronder Lambda Managed Instances — met het uitwerken van de gedetailleerde ontwerpen en afstemming tussen meerdere engineeringorganisaties.",
-            "Een aanzienlijke verlaging van de S3-kosten gerealiseerd: 70% minder opslag (200 PB). Tegelijk een kritiek optimalisatiesysteem gestabiliseerd door deduplicatie van code-artefacten — bijna 50% minder artefactopslag — en achtergrondtaken verbeterd, waarmee wekelijks terugkerende problemen bij duizenden functies werden opgelost.",
-            "Een channel-gebaseerde pipelinearchitectuur in Go ontworpen en gebouwd voor flexibele parallelle verwerking, wat de doorlooptijd met 50% verkortte.",
-            "Een bug opgelost die er vanaf dag één in zat: bij ongeveer elke 10.000 aanmaak- of wijzigingsacties veroorzaakte hij sinds de lancering stilzwijgend willekeurige fouten.",
-            "De integratietestframeworks van het team herzien zodat tests onafhankelijk kunnen draaien, de dekking van bedrijfskritieke paden groter werd en beveiligingsrisico's verdwenen, waardoor het aantal wekelijkse rollbacks daalde van meer dan 20 naar vrijwel nul."
+            "Leidde de technische oplevering van de bijdrage van mijn team aan drie belangrijke Lambda control plane-initiatieven, waaronder Lambda Managed Instances, een initiatief rond runtime-flexibiliteit en een herontwerp van de code deletion workflow, waarbij ik elk initiatief end-to-end opvolgde van design tot deployment en operational readiness.",
+            "Ontwierp en implementeerde een channel-based pipelinearchitectuur in Go voor flexibele parallelle verwerking van functie optimalisaties, waardoor de end-to-end verwerkingstijd met 50% werd verminderd.",
+            "Lostte terugkerende problemen met background jobs op die duizenden functies beïnvloedden. Dit werk zorgde ook voor deduplicatie van code artifacts, waardoor de artifact storage met bijna 50% werd verminderd, en droeg bij aan een bredere reductie van de S3-storage met 70% (200 PB).",
+            "Herschreef de integration-testingframeworks van het team zodat tests onafhankelijk konden worden uitgevoerd, de dekking van businesskritische functionaliteit werd uitgebreid en securityrisico's werden geëlimineerd, waardoor het aantal wekelijkse rollbacks van meer dan 20 naar bijna nul daalde.",
+            "Bouwde meerdere AI-agents en skills voor het automatisch genereren van rapporten en het onderzoeken van operationele problemen, gebaseerd op Kiro, AWS' AI-powered development environment.",
+            "Lostte een bug op die op dag één al aanwezig was in function optimisations en die sinds de lancering van de service willekeurige fouten veroorzaakte bij ongeveer één op de 10.000 function creations of updates."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
               "slug": "aws-lambda-managed-instances",
-              "label": "De uitrol van Managed Instances leiden"
+              "label": "Een technisch initiatief leiden"
             },
             {
               "slug": "aws-background-job-load-shedding",
-              "label": "De lastigste bug die ik heb opgelost"
+              "label": "Diepgaande analyse van een probleem"
             },
             {
               "slug": "aws-lambda-go-pipeline",
-              "label": "Een pipeline herschrijven in Go"
+              "label": "Latency verbeteren"
             },
             {
               "slug": "aws-scrum-process",
-              "label": "De werkwijze van het team herzien"
+              "label": "Impact op de teamcultuur"
             }
           ]
         }
@@ -152,30 +155,56 @@
       "skills": [
         {
           "category": "Talen",
-          "items": ["Java", "Go", "Python", "Bash"]
+          "items": [
+            "Java",
+            "Go",
+            "Python",
+            "Bash"
+          ]
         },
         {
-          "category": "Cloud & infra",
-          "items": ["AWS", "EC2", "DynamoDB", "SQS", "ASG", "Lambda", "CloudWatch", "Serverless"]
+          "category": "Cloud & Infra",
+          "items": [
+            "AWS",
+            "EC2",
+            "DynamoDB",
+            "SQS",
+            "ASG",
+            "Lambda",
+            "CloudWatch",
+            "Serverless"
+          ]
         },
         {
           "category": "Frameworks",
-          "items": ["Guice", "JUnit", "AssertJ", "Lombok"]
+          "items": [
+            "Guice",
+            "JUnit",
+            "AssertJ",
+            "Lombok"
+          ]
         },
         {
-          "category": "Soft skills",
-          "items": ["Serviceontwerp", "Projectleiding", "Mentoring"]
+          "category": "Soft Skills",
+          "items": [
+            "Service Design",
+            "Project Leadership",
+            "Mentoring"
+          ]
         },
         {
-          "category": "Overig",
-          "items": ["Generatieve AI", "Prompt engineering"]
+          "category": "Overige",
+          "items": [
+            "GenAI",
+            "Prompt Engineering"
+          ]
         }
       ]
     },
     {
       "id": "swift",
       "company": "SWIFT – Society for Worldwide Interbank Financial Telecommunication",
-      "location": "Terhulpen, België",
+      "location": "La Hulpe, België",
       "url": "https://www.swift.com/",
       "logo": {
         "src": "images/swift.png",
@@ -186,50 +215,52 @@
       "roles": [
         {
           "id": "swift-senior",
-          "role": "Senior software engineer",
+          "role": "Senior Software Engineer",
           "start": "2020-08",
           "end": "2022-11",
-          "summary": "Toegetreden tot het team dat de instant messaging-connectiviteitsoplossing op het Swift-netwerk bouwt — berichten van financiële instellingen ontvangen via REST-API's en message queue brokers en die veilig doorsturen naar het netwerk. Functionaliteit ontworpen en opgeleverd die de betrouwbaarheid en schaalbaarheid van de oplossing verbeterde.",
+          "summary": "Ik vervoegde het team dat de instant-paymentsconnectiviteitsoplossing op het SWIFT Network bouwde. Het systeem ontvangt berichten van financiële instellingen via REST API's en message queue brokers en stuurt deze veilig door naar het netwerk. Ik ontwierp en leverde features die de betrouwbaarheid en schaalbaarheid van de oplossing verbeterden.",
           "highlights": [
-            "Een volledige end-to-end- en load-teststraat gebouwd ter vervanging van een handmatig testproces, waardoor het team knelpunten kon opsporen en oplossen voordat ze productie bereikten.",
-            "CI/CD-pipelines met statische analyse opgezet over meerdere componenten, wat de codekwaliteit verbeterde en deployments automatiseerde."
+            "Bouwde de end-to-end testautomatisatie opnieuw op nadat het team beide QA-engineers verloor. Ik consolideerde verspreide Robot Framework-suites in één repository en generaliseerde tests voor IBM MQ, ActiveMQ en REST-endpoints, met door Ansible geprovisioneerde multi-node omgevingen voor geautomatiseerde compatibiliteitstests.",
+            "Bouwde een custom Docker image integrity checker die image manifests en layers parseert en cryptografische digests onafhankelijk opnieuw berekent om de integriteit van images te verifiëren.",
+            "Moderniseerde Jenkins- en CloudBees-pipelines door imperatieve scripts te migreren naar declaratieve pipelines met shared libraries, waardoor logica over verschillende componenten kon worden gemodulariseerd.",
+            "Automatiseerde performancetesting door JMeter-scripts te parametriseren en loadtests in de Jenkins-pipeline te integreren, met live metrics naar InfluxDB en Grafana-dashboards voor realtime inzicht in regressies."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
               "slug": "swift-load-testing-stack",
-              "label": "Prestatietests automatiseren"
+              "label": "Performancetesting automatiseren"
             },
             {
               "slug": "swift-test-automation",
-              "label": "Testautomatisering en CI/CD heropbouwen"
+              "label": "Volledig naar CI/CD"
             }
           ]
         },
         {
           "id": "swift-developer",
-          "role": "Ontwikkelaar / systeemingenieur",
+          "role": "Developer / Systems Engineer",
           "start": "2016-04",
           "end": "2019-10",
-          "summary": "Deel van het backendteam dat de platformonafhankelijke messaginginterface bouwde voor veilige uitwisseling van financiële informatie tussen bankorganisaties en zakelijke klanten, uitrolbaar op Windows, Red Hat, SunOS en AIX.",
+          "summary": "Maakte deel uit van het back-endteam dat de cross-platform messaging interface bouwde voor veilige financiële informatie-uitwisseling tussen banken en zakelijke klanten, deploybaar op Windows, Red Hat, SunOS en AIX.",
           "highlights": [
-            "Een cloudgebaseerde microservice ontwikkeld voor het beheren van relaties tussen financiële instellingen, wat veilige en betrouwbare uitwisseling van financiële informatie mogelijk maakte.",
-            "Een Named-Entity Recognition-systeem (NER) gebouwd als onderdeel van een NLP-proof-of-concept, dat gestructureerde informatie uit ongestructureerde financiële data haalde.",
-            "De dekking van unit- en integratietests vergroot, wat de betrouwbaarheid van een platformonafhankelijke applicatie ten goede kwam."
+            "Ontwikkelde een cloud-based microservice voor het beheren van relaties tussen financiële instellingen, waarmee veilige en betrouwbare uitwisseling van financiële informatie mogelijk werd.",
+            "Bouwde een Named-Entity Recognition (NER)-systeem als onderdeel van een NLP proof of concept, waarmee gestructureerde adresgegevens uit ongestructureerde vrije tekst werden gehaald.",
+            "Verving Oracle-specifieke backup- en restoretools door een uniform, application-driven migration framework en refactorde complexe legacy C++98-functies om de databaselogica te ontkoppelen zonder de backupoperaties van een mission-critical financial messaging system te verstoren."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
               "slug": "swift-db-migration",
-              "label": "Het databasemigratiepad moderniseren"
+              "label": "De database-backup moderniseren"
             },
             {
               "slug": "swift-cloud-secondment",
-              "label": "Een monoliet herbouwen als microservices"
+              "label": "Een monolith heropbouwen als microservice"
             },
             {
               "slug": "swift-nlp-lab",
-              "label": "Een NLP-prototype bouwen"
+              "label": "Prototyping in SWIFT's R&D Lab"
             }
           ]
         }
@@ -237,14 +268,26 @@
       "skills": [
         {
           "category": "Talen",
-          "items": ["Java", "C/C++", "Python", "Bash"]
+          "items": [
+            "Java",
+            "C/C++",
+            "Python",
+            "Bash"
+          ]
         },
         {
           "category": "Frameworks",
-          "items": ["Spring Boot", "gRPC", "JPA", "JUnit", "Mockito", "JMeter"]
+          "items": [
+            "Spring Boot",
+            "gRPC",
+            "JPA",
+            "JUnit",
+            "Mockito",
+            "JMeter"
+          ]
         },
         {
-          "category": "Infra & tools",
+          "category": "Infra & Tools",
           "items": [
             "Kafka",
             "IBM MQ",
@@ -276,29 +319,29 @@
       "roles": [
         {
           "id": "intergraph-system-engineer",
-          "role": "Systeemingenieur",
+          "role": "System Engineer",
           "start": "2013-04",
           "end": "2016-04",
-          "summary": "Bedrijfskritische software voor openbare veiligheid geanalyseerd, ontworpen, gebouwd en ondersteund — call-taking- en dispatchingoplossingen voor de Belgische federale en lokale politie en de brandweer- en medische hulpdiensten.",
+          "summary": "Analyseerde, ontwierp, implementeerde en ondersteunde mission-critical software voor openbare veiligheid, met call-taking- en dispatchingoplossingen voor de Belgische Federale en Lokale Politie en de hulpverleningsdiensten.",
           "highlights": [
-            "Dubbele rol als business analist en technisch leider voor een applicatie die XML naar een database mapte; requirements opgehaald bij stakeholders en een team van 4 personen begeleid van ontwerp tot oplevering.",
-            "Een plugin-gebaseerd platform ontworpen en gebouwd waarmee klanten complexe datastructuren via een intuïtieve interface konden beheren — datastructuren konden onafhankelijk worden ontwikkeld, met een kortere time-to-market.",
-            "Het soundex-algoritme geoptimaliseerd met een trie en gebatchte database-updates, waardoor de updatetijd van 8 uur naar enkele minuten ging en rekentijd geen knelpunt meer was.",
-            "Interne tooling gebouwd (XML-vergelijker, validator voor bestandsformaten) en het patchen van builds en de installatie geautomatiseerd, wat het handwerk in het team sterk terugbracht."
+            "Sprong in een businessanalistrol voor een nieuwe requirement, leverde de proof of concept en nam vervolgens de leiding over het onboarden van een team van drie externe ontwikkelaars, terwijl ik samen met hen bleef programmeren.",
+            "Ontwierp en implementeerde een dynamisch C#-pluginframework met reflectie ter vervanging van een sterk gekoppelde fat-clientcodebase van een satellite applicatie, waardoor features onafhankelijk konden worden ontwikkeld en de time-to-market aanzienlijk werd verkort.",
+            "Optimaliseerde het Soundex-algoritme met een trie en gebatchte database-updates, waardoor de verwerkingstijd van 8 uur naar enkele minuten werd teruggebracht.",
+            "Bouwde interne tooling (XML-comparator, file-formatvalidator) en automatiseerde build patching en installatie, waardoor manueel werk binnen het team aanzienlijk werd verminderd."
           ],
           "includeInPdf": true,
           "deepDives": [
             {
               "slug": "intergraph-excel-ingestion",
-              "label": "Een leadrol overnemen"
+              "label": "Een leadrol opnemen"
             },
             {
               "slug": "intergraph-plugin-framework",
-              "label": "Pleiten voor een herschrijving"
+              "label": "Draagvlak creëren voor een rewrite"
             },
             {
               "slug": "intergraph-soundex-optimisation",
-              "label": "Een prestatieprobleem oplossen"
+              "label": "Een performantieprobleem oplossen"
             }
           ]
         }
@@ -306,15 +349,26 @@
       "skills": [
         {
           "category": "Talen",
-          "items": ["C#", "C/C++", "Bash"]
+          "items": [
+            "C#",
+            "C/C++",
+            "Bash"
+          ]
         },
         {
-          "category": "Infra & tools",
-          "items": ["Oracle DB", "Jenkins", "SVN"]
+          "category": "Infra & Tools",
+          "items": [
+            "Oracle DB",
+            "Jenkins",
+            "SVN"
+          ]
         },
         {
-          "category": "Soft skills",
-          "items": ["Requirementsanalyse", "Projectleiding"]
+          "category": "Soft Skills",
+          "items": [
+            "Requirementsanalyse",
+            "Project Leadership"
+          ]
         }
       ]
     }
@@ -334,20 +388,22 @@
       "degrees": [
         {
           "id": "ulb-master-engineering",
-          "degree": "Master in de computerwetenschappen (ingenieursrichting)",
+          "degree": "Master in Computer Engineering",
           "start": "2012-09",
           "end": "2013-06",
-          "notes": ["Aanvullende master"],
+          "notes": [
+            "Aanvullende master"
+          ],
           "includeInPdf": true
         },
         {
           "id": "ulb-cs",
-          "degree": "Bachelor en master informatica",
+          "degree": "Bachelor en Master in Computer Science",
           "start": "2007-09",
           "end": "2012-06",
           "notes": [
-            "Afstudeerrichting artificiële intelligentie",
-            "Masterproef bij IRIDIA ULB: \"Formal Verification of Flexibility in Swarm Robotic Systems\""
+            "Specialisatie in Artificial Intelligence",
+            "Masterproef aan IRIDIA ULB: \"Formal Verification of Flexibility in Swarm Robotic Systems\""
           ],
           "includeInPdf": true
         }
